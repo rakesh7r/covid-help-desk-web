@@ -1,11 +1,18 @@
+import { Button } from "@material-ui/core"
 import "./App.css"
+import fire from "./Config/fire"
 
-function App() {
+function App(props) {
     return (
         <div className="App">
-            <header className="App-header">
-                <h1>Code Goes here</h1>
-            </header>
+            <h1>App Component</h1>
+            <Button
+                onClick={() => {
+                    props.handleLogout()
+                }}
+            >
+                Logout
+            </Button>
         </div>
     )
 }

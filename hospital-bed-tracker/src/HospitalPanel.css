@@ -1,0 +1,17 @@
+.hospital-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: rgb(131, 38, 218);
+    color: white;
+    align-items: center;
+}
+.hospital-signout-btn {
+    width: 150px;
+}
+.hospital-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
