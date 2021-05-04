@@ -4,6 +4,7 @@ import Modal from "@material-ui/core/Modal"
 import Backdrop from "@material-ui/core/Backdrop"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
+import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -116,16 +117,81 @@ const Login = (props) => {
                     />
                 )}
                 {hasAccount ? null : (
-                    <TextField
-                        id="outlined-basic"
-                        label="District"
+                    <FormControl
                         variant="outlined"
-                        style={{
-                            marginBottom: "15px",
-                        }}
-                        value={hospitalDistrict}
-                        onChange={(e) => setHospitalDistrict(e.target.value)}
-                    />
+                        className={classes.formControl}
+                    >
+                        <InputLabel id="demo-simple-select-outlined-label">
+                            Select District
+                        </InputLabel>
+                        <Select
+                            labelId="demo-simple-select-outlined-label"
+                            id="demo-simple-select-outlined"
+                            value={hospitalDistrict}
+                            onChange={(e) =>
+                                setHospitalDistrict(e.target.value)
+                            }
+                            style={{
+                                marginBottom: "15px",
+                            }}
+                            label="Select District"
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            <MenuItem value="Adilabad">Adilabad</MenuItem>
+                            <MenuItem value="Komaram Bheem Asifabad">
+                                Komaram Bheem Asifabad
+                            </MenuItem>
+                            <MenuItem value="Bhadradri Kothagudem">
+                                Bhadradri Kothagudem
+                            </MenuItem>
+                            <MenuItem value="Jayashankar Bhupalapally">
+                                Jayashankar Bhupalapally
+                            </MenuItem>
+                            <MenuItem value="Jogulamba Gadwal">
+                                Jogulamba Gadwal
+                            </MenuItem>
+                            <MenuItem value="Jagital">Jagital</MenuItem>
+                            <MenuItem value="Jangaon">Jangaon</MenuItem>
+                            <MenuItem value="Kamareddy">Kamareddy</MenuItem>
+                            <MenuItem value="Karimnagar">Karimnagar</MenuItem>
+                            <MenuItem value="Khammam">Khammam</MenuItem>
+                            <MenuItem value="Mahbubabad">Mahbubabad</MenuItem>
+                            <MenuItem value="Mancherial">Mancherial</MenuItem>
+                            <MenuItem value="Mahbubnagar">Mahbubnagar</MenuItem>
+                            <MenuItem value="Medak">Medak</MenuItem>
+                            <MenuItem value="Medchal">Medchal</MenuItem>
+                            <MenuItem value="Mulugu">Mulugu</MenuItem>
+                            <MenuItem value="Nagarkurnool">
+                                Nagarkurnool
+                            </MenuItem>
+                            <MenuItem value="Nalgonda">Nalgonda</MenuItem>
+                            <MenuItem value="Narayanpet">Narayanpet</MenuItem>
+                            <MenuItem value="Nirmal">Nirmal</MenuItem>
+                            <MenuItem value="Nizamabad">Nizamabad</MenuItem>
+                            <MenuItem value="Pedapally">Pedapally</MenuItem>
+                            <MenuItem value="Rangareddy">Rangareddy</MenuItem>
+                            <MenuItem value="Sangareddy">Sangareddy</MenuItem>
+                            <MenuItem value="Siddipet">Siddipet</MenuItem>
+                            <MenuItem value="Suryapet">Suryapet</MenuItem>
+                            <MenuItem value="Rajanna Sircilla">
+                                Rajanna Sircilla
+                            </MenuItem>
+                            <MenuItem value="Vikarabad">Vikarabad</MenuItem>
+                            <MenuItem value="Wanaparthy">Wanaparthy</MenuItem>
+                            <MenuItem value="Warangal Rural">
+                                Warangal Rural
+                            </MenuItem>
+                            <MenuItem value="Yadadri Bhuvanagiri">
+                                Yadadri Bhuvanagiri
+                            </MenuItem>
+                            <MenuItem value="Warangal Urban">
+                                Warangal Urban
+                            </MenuItem>
+                            <MenuItem value="GHMC">GHMC</MenuItem>
+                        </Select>
+                    </FormControl>
                 )}
 
                 <TextField
