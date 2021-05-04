@@ -3,6 +3,7 @@ import fire from "./Config/fire"
 import App from "./App"
 import Login from "./Login"
 import HospitalPanel from "./HospitalPanel"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 const CheckAuth = () => {
     const [user, setUser] = useState(null)
@@ -46,7 +47,7 @@ const CheckAuth = () => {
         fire.auth()
             .createUserWithEmailAndPassword(email, password)
             .then((user) => {
-                firestore
+                fire.firestore()
                     .collection("hospitals")
                     .doc(email)
                     .set({
@@ -54,12 +55,23 @@ const CheckAuth = () => {
                         area: hospitalArea,
                         district: hospitalDistrict,
                         email: email,
-                    })
-                    .then(() => {
-                        console.log("Document successfully written!")
-                    })
-                    .catch((error) => {
-                        console.error("Error writing document: ", error)
+                        beds: {
+                            available: 0,
+                            total: 0,
+                        },
+                        daytoday: [],
+                        oxygen: {
+                            Available: 0,
+                            lastsFor: 0,
+                        },
+                        totalPatients: 0,
+                        ventilators: 0,
+                        patients: {
+                            deaths: 0,
+                            discharged: 0,
+                            positive: 0,
+                            recovered: 0,
+                        },
                     })
             })
             .catch((err) => {
