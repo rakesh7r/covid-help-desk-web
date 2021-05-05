@@ -1,0 +1,75 @@
+[debug] [2021-05-05T10:08:05.027Z] ----------------------------------------------------------------------
+[debug] [2021-05-05T10:08:05.033Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Rakesh Gandla\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2021-05-05T10:08:05.033Z] CLI Version:   9.10.0
+[debug] [2021-05-05T10:08:05.034Z] Platform:      win32
+[debug] [2021-05-05T10:08:05.034Z] Node Version:  v12.18.0
+[debug] [2021-05-05T10:08:05.037Z] Time:          Wed May 05 2021 15:38:05 GMT+0530 (India Standard Time)
+[debug] [2021-05-05T10:08:05.037Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-05-05T10:08:05.055Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-05-05T10:08:05.055Z] > authorizing via signed-in user (rakeshraki2453@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Workspace\hospital-bed-tracker\hospital-bed-tracker
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using covid19-bed-tracker-27cc5. 
+[debug] [2021-05-05T10:08:08.314Z] > refreshing access token with scopes: []
+[debug] [2021-05-05T10:08:08.315Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-05-05T10:08:08.963Z] <<< HTTP RESPONSE 200 {"date":"Wed, 05 May 2021 10:08:09 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-05-05T10:08:09.003Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/covid19-bed-tracker-27cc5 [none]
+[debug] [2021-05-05T10:08:10.295Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/covid19-bed-tracker-27cc5 200
+[debug] [2021-05-05T10:08:10.295Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/covid19-bed-tracker-27cc5 {"projectId":"covid19-bed-tracker-27cc5","projectNumber":"453017607259","displayName":"covid19-bed-tracker","name":"projects/covid19-bed-tracker-27cc5","resources":{"hostingSite":"covid19-bed-tracker-27cc5","storageBucket":"covid19-bed-tracker-27cc5.appspot.com","locationId":"us-east1"},"state":"ACTIVE"}
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2021-05-05T10:09:03.903Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2021-05-05T10:09:04.760Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2021-05-05T10:09:04.761Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"8.4.3","browserURL":"https://www.gstatic.com/firebasejs/8.4.3/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/8.4.3/firebase.tgz"},"live":{"version":"8.4","browserURL":"https://www.gstatic.com/firebasejs/live/8.4/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/8.4/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js","auth":"https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js","database":"https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js","firestore":"https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js","functions":"https://www.gstatic.com/firebasejs/8.4.3/firebase-functions.js","installations":"https://www.gstatic.com/firebasejs/8.4.3/firebase-installations.js","messaging":"https://www.gstatic.com/firebasejs/8.4.3/firebase-messaging.js","storage":"https://www.gstatic.com/firebasejs/8.4.3/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/8.4.3/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/8.4.3/firebase-remote-config.js","firestore.memory":"https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.memory.js"}}
+[info] +  Wrote public/index.html 
+[info] 
+[info] i  Detected a .git folder at C:\Workspace\hospital-bed-tracker 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=713871304&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2021-05-05T10:09:10.824Z] >>> HTTP REQUEST POST https://github.com/login/oauth/access_token  
+ {"client_id":"89cf50f02ac6aaed3484","client_secret":"3330d14abc895d9a74d5f17cd7a00711fa2c5bf0","code":"ab76e28995202830e8d5","redirect_uri":"http://localhost:9005","state":"713871304"}
+[debug] [2021-05-05T10:09:12.644Z] <<< HTTP RESPONSE 200 {"server":"GitHub.com","date":"Wed, 05 May 2021 10:09:12 GMT","content-type":"application/json; charset=utf-8","transfer-encoding":"chunked","vary":"X-PJAX, Accept-Encoding, Accept, X-Requested-With","permissions-policy":"interest-cohort=()","etag":"W/\"e0c8d23b5c41b2838e2fc15e5809fe8c\"","cache-control":"max-age=0, private, must-revalidate","strict-transport-security":"max-age=31536000; includeSubdomains; preload","x-frame-options":"deny","x-content-type-options":"nosniff","x-xss-protection":"0","referrer-policy":"origin-when-cross-origin, strict-origin-when-cross-origin","expect-ct":"max-age=2592000, report-uri=\"https://api.github.com/_private/browser/errors\"","content-security-policy":"default-src 'none'; base-uri 'self'; block-all-mixed-content; connect-src 'self' uploads.github.com www.githubstatus.com collector.githubapp.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com cdn.optimizely.com logx.optimizely.com/v1/events wss://alive.github.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com; frame-ancestors 'none'; frame-src render.githubusercontent.com; img-src 'self' data: github.githubassets.com identicons.github.com collector.githubapp.com github-cloud.s3.amazonaws.com secured-user-images.githubusercontent.com/ *.githubusercontent.com; manifest-src 'self'; media-src 'none'; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com; worker-src github.com/socket-worker-3f088aa2.js gist.github.com/socket-worker-3f088aa2.js","x-github-request-id":"375A:1924:2328D9:28326E:60926EC8"}
+[debug] [2021-05-05T10:09:12.654Z] >>> [apiv2][query] GET https://api.github.com/user [none]
+[debug] [2021-05-05T10:09:14.490Z] <<< [apiv2][status] GET https://api.github.com/user 200
+[debug] [2021-05-05T10:09:14.491Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"rakesh7r","id":41822443,"node_id":"MDQ6VXNlcjQxODIyNDQz","avatar_url":"https://avatars.githubusercontent.com/u/41822443?v=4","gravatar_id":"","url":"https://api.github.com/users/rakesh7r","html_url":"https://github.com/rakesh7r","followers_url":"https://api.github.com/users/rakesh7r/followers","following_url":"https://api.github.com/users/rakesh7r/following{/other_user}","gists_url":"https://api.github.com/users/rakesh7r/gists{/gist_id}","starred_url":"https://api.github.com/users/rakesh7r/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/rakesh7r/subscriptions","organizations_url":"https://api.github.com/users/rakesh7r/orgs","repos_url":"https://api.github.com/users/rakesh7r/repos","events_url":"https://api.github.com/users/rakesh7r/events{/privacy}","received_events_url":"https://api.github.com/users/rakesh7r/received_events","type":"User","site_admin":false,"name":"Rakesh Gandla","company":null,"blog":"","location":"Hyderabad","email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":7,"public_gists":0,"followers":0,"following":0,"created_at":"2018-07-28T09:21:36Z","updated_at":"2021-05-05T08:31:50Z","private_gists":0,"total_private_repos":6,"owned_private_repos":6,"disk_usage":4771,"collaborators":0,"two_factor_authentication":false,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}
+[info] 
+[info] +  Success! Logged into GitHub as rakesh7r 
+[info] 
+[debug] [2021-05-05T10:09:25.753Z] >>> [apiv2][query] GET https://api.github.com/repos/https://github.com/rakesh7r/hospital-bed-tracker/tree/main/hospital-bed-tracker/actions/secrets/public-key type=owner
+[debug] [2021-05-05T10:09:26.879Z] <<< [apiv2][status] GET https://api.github.com/repos/https://github.com/rakesh7r/hospital-bed-tracker/tree/main/hospital-bed-tracker/actions/secrets/public-key 404
+[debug] [2021-05-05T10:09:26.880Z] <<< [apiv2][body] GET https://api.github.com/repos/https://github.com/rakesh7r/hospital-bed-tracker/tree/main/hospital-bed-tracker/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2021-05-05T10:10:10.921Z] >>> [apiv2][query] GET https://api.github.com/repos/rakesh7r/hospital-bed-tracker/tree/main/hospital-bed-tracker/actions/secrets/public-key type=owner
+[debug] [2021-05-05T10:10:12.241Z] <<< [apiv2][status] GET https://api.github.com/repos/rakesh7r/hospital-bed-tracker/tree/main/hospital-bed-tracker/actions/secrets/public-key 404
+[debug] [2021-05-05T10:10:12.242Z] <<< [apiv2][body] GET https://api.github.com/repos/rakesh7r/hospital-bed-tracker/tree/main/hospital-bed-tracker/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
