@@ -12,6 +12,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 7px;
+    padding-right: 20px;
 }
 .hospital-editdata {
     width: 150px;
@@ -27,8 +28,16 @@
 .hospital-signout-btn {
     width: 150px;
 }
-.hospital-edit-cont {
-}
 .hospital-edit-text {
     margin-bottom: 15px;
+}
+.hospital-panel-cont {
+    border: 0.5px solid lightgray;
+    padding: 20px;
+    border-radius: 4px;
+}
+.hospital-panel-cont:hover {
+    -moz-box-shadow: 3px 3px 3px #ccc;
+    -webkit-box-shadow: 3px 3px 3px #ccc;
+    box-shadow: 3px 3px 3px #ccc;
 }

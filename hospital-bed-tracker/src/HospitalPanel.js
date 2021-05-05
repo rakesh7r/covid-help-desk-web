@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react"
 import fire from "./Config/fire"
 import "./HospitalPanel.css"
 import firebase from "firebase"
+import HospitalDashBoard from "./HospitalDashBoard"
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -360,42 +361,70 @@ function HospitalPanel(props) {
                     </div>
                 ) : hospital ? (
                     <div className="hospital-show-cont">
-                        <h1 className="hospital-title">{hospital.name}</h1>
-                        <p className="hospital-area">Area : {hospital.area}</p>
-                        <p className="hospital-district">
-                            District : {hospital.district}
-                        </p>
+                        <div className="hospital-panel-cont">
+                            <h1 className="hospital-title">{hospital.name}</h1>
+                            <p className="hospital-area">
+                                Area : {hospital.area}
+                            </p>
+                            <p className="hospital-district">
+                                District : {hospital.district}
+                            </p>
+                        </div>
                         <br />
-                        <h2>Oxygen Supplies</h2>
-                        <p>Available(in ltrs): {hospital.oxygen.Available}</p>
-                        <p>might last for {hospital.oxygen.lastsFor} days</p>
+                        <div className="hospital-panel-cont">
+                            <h2>Oxygen Supplies</h2>
+                            <p>
+                                Available(in ltrs): {hospital.oxygen.Available}
+                            </p>
+                            <p>
+                                might last for {hospital.oxygen.lastsFor} days
+                            </p>
+                        </div>
                         <br />
-                        <h2>Covid-19 Beds Information</h2>
-                        <p>Available Beds: {hospital.beds.available}</p>
-                        <p>Total Beds : {hospital.beds.total}</p>
+                        <div className="hospital-panel-cont">
+                            <h2>Covid-19 Beds Information</h2>
+                            <p>Available Beds: {hospital.beds.available}</p>
+                            <p>Total Beds : {hospital.beds.total}</p>
+                        </div>
                         <br />
-                        <h2>Ventilators Available : {hospital.ventilators}</h2>
+                        <div className="hospital-panel-cont">
+                            <h2>
+                                Ventilators Available : {hospital.ventilators}
+                            </h2>
+                        </div>
                         <br />
-                        <h3>Total Patients : {hospital.totalPatients}</h3>
-                        <h3>Total Deaths : {hospital.patients.deaths}</h3>
-                        <h3>discharged : {hospital.patients.discharged}</h3>
-                        <h3>Recovered : {hospital.patients.recovered}</h3>
-                        <h3>
-                            Positive Cases Today : {hospital.patients.positive}
-                        </h3>
+                        <div className="hospital-panel-cont">
+                            <h3>Total Patients : {hospital.totalPatients}</h3>
+                            <h3>Total Deaths : {hospital.patients.deaths}</h3>
+                            <h3>discharged : {hospital.patients.discharged}</h3>
+                            <h3>Recovered : {hospital.patients.recovered}</h3>
+                            <h3>
+                                Positive Cases Today :{" "}
+                                {hospital.patients.positive}
+                            </h3>
+                        </div>
                     </div>
                 ) : null}
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    className="hospital-editdata"
-                    style={{ marginTop: "7px" }}
-                    onClick={() => {
-                        setEdit(!edit)
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "flex-start",
                     }}
                 >
-                    {edit ? <span>Cancel</span> : <span>Edit Data</span>}
-                </Button>
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        className="hospital-editdata"
+                        style={{ marginTop: "7px" }}
+                        onClick={() => {
+                            setEdit(!edit)
+                        }}
+                    >
+                        {edit ? <span>Cancel</span> : <span>Edit Data</span>}
+                    </Button>
+                    <HospitalDashBoard />
+                </div>
             </div>
         </div>
     )
