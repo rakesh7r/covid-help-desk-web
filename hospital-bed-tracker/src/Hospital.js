@@ -1,21 +1,7 @@
-import { Button, makeStyles, Tooltip } from "@material-ui/core"
 import React, { useState } from "react"
-const useStyles = makeStyles({
-    root: {
-        width: 500,
-    },
-})
 function Hospital(props) {
-    const classes = useStyles()
     const { hospital } = props
     const [show, setShow] = useState(false)
-    const [showTooltip, setTooltip] = useState(true)
-    useState(() => {
-        setTimeout(() => {
-            setTooltip(false)
-        }, 2000)
-        console.log(showTooltip)
-    }, [])
     return (
         <div>
             <div

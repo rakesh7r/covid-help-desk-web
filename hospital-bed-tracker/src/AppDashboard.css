@@ -1,0 +1,16 @@
+.dash-cont {
+    border: 1px solid #ccc;
+    padding: 20px;
+    position: fixed;
+    top: 85px;
+    right: 3vw;
+    z-index: 9;
+    background-color: white;
+    border-radius: 4px;
+}
+.app-dash-search {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 20px;
+}

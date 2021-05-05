@@ -9,7 +9,7 @@ import { useEffect, useState } from "react"
 import "./App.css"
 import fire from "./Config/fire"
 import Hospital from "./Hospital"
-import HospitalDashBoard from "./HospitalDashBoard"
+import AppDashboard from "./AppDashboard"
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -36,19 +36,10 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
     const classes = useStyles()
-    const [district, setDistrict] = useState("")
+    const [district, setDistrict] = useState("GHMC")
     const [hospitals, setHospitals] = useState([])
     useEffect(() => {
         setHospitals([])
-        // fire.firestore()
-        //     .collection("hospitals")
-        //     .where("district", "==", district)
-        //     .get()
-        //     .then((docs) => {
-        //         docs.forEach((doc) => {
-        //             setHospitals((oldArr) => [...oldArr, doc.data()])
-        //         })
-        //     })
         fire.firestore()
             .collection("hospitals")
             .where("district", "==", district)
@@ -87,9 +78,7 @@ function App() {
                         }}
                         label="Select District"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="GHMC">GHMC</MenuItem>
                         <MenuItem value="Adilabad">Adilabad</MenuItem>
                         <MenuItem value="Komaram Bheem Asifabad">
                             Komaram Bheem Asifabad
@@ -138,7 +127,6 @@ function App() {
                         <MenuItem value="Warangal Urban">
                             Warangal Urban
                         </MenuItem>
-                        <MenuItem value="GHMC">GHMC</MenuItem>
                     </Select>
                 </FormControl>
             </div>
@@ -147,6 +135,9 @@ function App() {
                     {hospitals.map((hospital) => (
                         <Hospital key={hospital.id} hospital={hospital} />
                     ))}
+                </div>
+                <div className="app-dashboard">
+                    <AppDashboard />
                 </div>
             </div>
         </div>

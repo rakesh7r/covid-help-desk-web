@@ -1,3 +1,10 @@
 .h-dashboard {
-    background-color: red;
+    padding: 10px;
+    width: 200px;
+    border: 0.1px solid #ccc;
+    box-shadow: 3px 3px 3px rgb(221, 221, 221);
+    border-radius: 4px;
+}
+.h-dashboard-title {
+    margin-bottom: 13px;
 }

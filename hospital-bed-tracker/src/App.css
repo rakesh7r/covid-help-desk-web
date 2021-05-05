@@ -21,7 +21,7 @@
 }
 
 .hospital-cont {
-    width: 65vw;
+    width: 55vw;
     padding: 17px;
     border: 1px groove lightgray;
     margin-bottom: 10px;
@@ -29,4 +29,11 @@
 }
 .hospital-cont:hover {
     cursor: pointer;
+}
+
+.app-modal-contents {
+    padding: 20px;
+    background-color: white;
+    width: 30vw;
+    min-width: 200px;
 }

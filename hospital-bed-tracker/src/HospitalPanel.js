@@ -257,7 +257,7 @@ function HospitalPanel(props) {
                             onChange={(e) => setAvailableOxygen(e.target.value)}
                             className="hospital-edit-text"
                             id="outlined-basic"
-                            label="Available Oxygen(ltrs)"
+                            label="Available Oxygen(no of Cylinders)"
                             variant="outlined"
                         />
                         <TextField
@@ -374,7 +374,8 @@ function HospitalPanel(props) {
                         <div className="hospital-panel-cont">
                             <h2>Oxygen Supplies</h2>
                             <p>
-                                Available(in ltrs): {hospital.oxygen.Available}
+                                Available(no. of Cylinders) :{" "}
+                                {hospital.oxygen.Available}
                             </p>
                             <p>
                                 might last for {hospital.oxygen.lastsFor} days
@@ -416,14 +417,20 @@ function HospitalPanel(props) {
                         variant="contained"
                         color="secondary"
                         className="hospital-editdata"
-                        style={{ marginTop: "7px" }}
+                        style={{
+                            marginTop: "7px",
+                            marginLeft: "70px",
+                            marginBottom: "50px",
+                        }}
                         onClick={() => {
                             setEdit(!edit)
                         }}
                     >
                         {edit ? <span>Cancel</span> : <span>Edit Data</span>}
                     </Button>
-                    <HospitalDashBoard />
+                    {hospital ? (
+                        <HospitalDashBoard hospital={hospital} />
+                    ) : null}
                 </div>
             </div>
         </div>
