@@ -12,6 +12,9 @@
     align-items: center;
     padding: 15px;
     color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 .app-main {
     display: flex;

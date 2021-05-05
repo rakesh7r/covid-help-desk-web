@@ -41,3 +41,15 @@
     -webkit-box-shadow: 3px 3px 3px #ccc;
     box-shadow: 3px 3px 3px #ccc;
 }
+.hospital-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border: 0.5px solid lightgray;
+    padding: 20px;
+    border-radius: 4px;
+    align-items: center;
+}
+.hospital-details:hover {
+    box-shadow: 3px 3px 3px #ccc;
+}

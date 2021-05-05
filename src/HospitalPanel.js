@@ -1,4 +1,5 @@
 import {
+    Avatar,
     Button,
     FormControl,
     InputLabel,
@@ -12,7 +13,8 @@ import fire from "./Config/fire"
 import "./HospitalPanel.css"
 import firebase from "firebase"
 import HospitalDashBoard from "./HospitalDashBoard"
-
+import HotelIcon from "@material-ui/icons/Hotel"
+import OxygenLogo from "./OxygenLogo"
 const useStyles = makeStyles((theme) => ({
     modal: {
         display: "flex",
@@ -50,6 +52,8 @@ function HospitalPanel(props) {
     const [discharged, setDischarged] = useState("")
     const [recovered, setRecovered] = useState("")
     const [positive, setPositive] = useState("")
+    const [image, setImage] = useState(null)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         fire.firestore()
@@ -135,6 +139,38 @@ function HospitalPanel(props) {
                     })
                     .catch((err) => console.log(err.message))
             })
+    }
+    const handleLogoUpdate = () => {
+        setLoading(true)
+        const imageName = user.email + image.slice(-4)
+        const uploadTask = fire.storage().ref(`logos/${imageName}`).put(image)
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+                // var progress = Math.round(
+                //     (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                // )
+            },
+            (error) => {
+                console.log(error)
+                alert(error.message)
+            },
+            fire
+                .storage()
+                .ref("logos")
+                .child(imageName)
+                .getDownloadURL((downloadURL) => {
+                    fire.firestore()
+                        .collection("hospitals")
+                        .doc(user.email)
+                        .update({
+                            logoURL: downloadURL,
+                        })
+                        .then(() => {
+                            setLoading(false)
+                        })
+                })
+        )
     }
     return (
         <div className="hospital-outer-cont">
@@ -273,7 +309,7 @@ function HospitalPanel(props) {
                             onChange={(e) => setAvailableOxygen(e.target.value)}
                             className="hospital-edit-text"
                             id="outlined-basic"
-                            label="Available Oxygen(no of Cylinders)"
+                            label="Available Oxygen(in ltrs)"
                             variant="outlined"
                         />
                         <TextField
@@ -360,7 +396,36 @@ function HospitalPanel(props) {
                             label="Covid-19 Patients admitted today"
                             variant="outlined"
                         />
-
+                        {/* <Button
+                            variant="contained"
+                            color="primary"
+                            component="label"
+                            style={{
+                                backgroundColor: "#8E44AD",
+                                color: " white",
+                                marginBottom: "20px",
+                                height: "38px",
+                            }}
+                        >
+                            {loading ? (
+                                <img
+                                    alt="Loading"
+                                    src="Loading.gif"
+                                    height="20px"
+                                ></img>
+                            ) : (
+                                <span>Set Hospital Logo</span>
+                            )}
+                            <input
+                                type="file"
+                                accept="image/*"
+                                hidden
+                                onChange={(event) => {
+                                    setImage(event.target.files[0])
+                                    handleLogoUpdate()
+                                }}
+                            />
+                        </Button> */}
                         <Button
                             variant="contained"
                             style={{
@@ -377,21 +442,37 @@ function HospitalPanel(props) {
                     </div>
                 ) : hospital ? (
                     <div className="hospital-show-cont">
-                        <div className="hospital-panel-cont">
-                            <h1 className="hospital-title">{hospital.name}</h1>
-                            <p className="hospital-area">
-                                Area : {hospital.area}
-                            </p>
-                            <p className="hospital-district">
-                                District : {hospital.district}
-                            </p>
+                        <div className="hospital-details">
+                            <Avatar
+                                alt={user.email}
+                                src={hospital.icon}
+                                style={{
+                                    width: "100px",
+                                    height: "100px",
+                                }}
+                            />
+                            <div
+                                // className="hospital-panel-cont"
+                                style={{ marginLeft: "20px" }}
+                            >
+                                <h1 className="hospital-title">
+                                    {hospital.name}
+                                </h1>
+                                <p className="hospital-area">
+                                    Area : {hospital.area}
+                                </p>
+                                <p className="hospital-district">
+                                    District : {hospital.district}
+                                </p>
+                            </div>
                         </div>
                         <br />
                         <div className="hospital-panel-cont">
-                            <h2>Oxygen Supplies</h2>
+                            <h2>
+                                <OxygenLogo /> Oxygen
+                            </h2>
                             <p>
-                                Available(no. of Cylinders) :{" "}
-                                {hospital.oxygen.Available}
+                                Available(in ltrs) : {hospital.oxygen.Available}
                             </p>
                             <p>
                                 might last for {hospital.oxygen.lastsFor} days
@@ -399,7 +480,9 @@ function HospitalPanel(props) {
                         </div>
                         <br />
                         <div className="hospital-panel-cont">
-                            <h2>Covid-19 Beds Information</h2>
+                            <h2>
+                                <HotelIcon /> Covid-19 Beds
+                            </h2>
                             <p>Available Beds: {hospital.beds.available}</p>
                             <p>Total Beds : {hospital.beds.total}</p>
                         </div>
@@ -411,12 +494,19 @@ function HospitalPanel(props) {
                         </div>
                         <br />
                         <div className="hospital-panel-cont">
-                            <h3>Total Patients : {hospital.totalPatients}</h3>
-                            <h3>Total Deaths : {hospital.patients.deaths}</h3>
+                            <strong>
+                                Today : {new Date().toJSON().slice(0, 10)}
+                            </strong>
+                            <br />
+                            <h3>
+                                Total Patients in Hospital :{" "}
+                                {hospital.totalPatients}
+                            </h3>
+                            <h3> Deaths : {hospital.patients.deaths}</h3>
                             <h3>discharged : {hospital.patients.discharged}</h3>
                             <h3>Recovered : {hospital.patients.recovered}</h3>
                             <h3>
-                                Positive Cases Today :{" "}
+                                Positive Cases Today :
                                 {hospital.patients.positive}
                             </h3>
                         </div>

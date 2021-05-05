@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import OxygenLogo from "./OxygenLogo"
+import HotelIcon from "@material-ui/icons/Hotel"
 function Hospital(props) {
     const { hospital } = props
     const [show, setShow] = useState(false)
@@ -16,11 +18,15 @@ function Hospital(props) {
                 {show ? (
                     <div>
                         <br />
-                        <h2>Oxygen Supplies</h2>
+                        <h2>
+                            <OxygenLogo /> Oxygen{" "}
+                        </h2>
                         <p>Available(in ltrs): {hospital.oxygen.Available}</p>
                         <p>might last for {hospital.oxygen.lastsFor} days</p>
                         <br />
-                        <h2>Covid-19 Beds Information</h2>
+                        <h2>
+                            <HotelIcon /> Covid-19 Beds
+                        </h2>
                         <p>Available Beds: {hospital.beds.available}</p>
                         <p>Total Beds : {hospital.beds.total}</p>
                         <br />
