@@ -136,9 +136,7 @@ const Login = (props) => {
                             }}
                             label="Select District"
                         >
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
+                            <MenuItem value="GHMC">Hyderabad</MenuItem>
                             <MenuItem value="Adilabad">Adilabad</MenuItem>
                             <MenuItem value="Komaram Bheem Asifabad">
                                 Komaram Bheem Asifabad

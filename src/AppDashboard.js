@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import fire from "./Config/fire"
 import "./AppDashboard.css"
 import { Button, TextField } from "@material-ui/core"
+
 function AppDashboard() {
     const [date, setDate] = useState(new Date().toJSON().slice(0, 10))
     const [deaths, setDeaths] = useState(0)
@@ -47,7 +48,8 @@ function AppDashboard() {
         console.clear()
         fire.firestore()
             .collection("dayToDayInfo")
-            .onSnapshot((snapshot) => {
+            .get()
+            .then((snapshot) => {
                 snapshot.forEach((doc) => {
                     if (
                         doc.id.slice(-8) ===

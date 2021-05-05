@@ -74,6 +74,21 @@ function HospitalPanel(props) {
             })
     }, [])
     const handleSave = () => {
+        //validation
+        if (
+            isNaN(availableOxygen) ||
+            isNaN(oxygenLastsfor) ||
+            isNaN(availbleBeds) ||
+            isNaN(totalBeds) ||
+            isNaN(ventilators) ||
+            isNaN(totalPatients) ||
+            isNaN(deathsToday) ||
+            isNaN(discharged) ||
+            isNaN(recovered) ||
+            isNaN(positive)
+        ) {
+            return alert("Trying to Add Invalid Data")
+        }
         const date = new Date().toJSON().slice(0, 10).replaceAll("-", "")
         fire.firestore()
             .collection("dayToDayInfo")
@@ -85,6 +100,7 @@ function HospitalPanel(props) {
                 discharged: discharged,
                 positive: positive,
                 recovered: recovered,
+                hospitalid: user.email,
             })
             .then((docRef) => {
                 fire.firestore()

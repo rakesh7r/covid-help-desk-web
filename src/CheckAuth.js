@@ -56,21 +56,21 @@ const CheckAuth = () => {
                         district: hospitalDistrict,
                         email: email,
                         beds: {
-                            available: "Unavailable",
-                            total: "Unavailable",
+                            available: 0,
+                            total: 0,
                         },
                         daytoday: [],
                         oxygen: {
-                            Available: "Unavailable",
-                            lastsFor: "Unavailable",
+                            Available: 0,
+                            lastsFor: 0,
                         },
-                        totalPatients: "Unavailable",
-                        ventilators: "Unavailable",
+                        totalPatients: 0,
+                        ventilators: 0,
                         patients: {
-                            deaths: "Unavailable",
-                            discharged: "Unavailable",
-                            positive: "Unavailable",
-                            recovered: "Unavailable",
+                            deaths: 0,
+                            discharged: 0,
+                            positive: 0,
+                            recovered: 0,
                         },
                     })
             })
