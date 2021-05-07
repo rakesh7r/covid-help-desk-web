@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react"
 import fire from "./Config/fire"
-import App from "./App"
 import Login from "./Login"
 import HospitalPanel from "./HospitalPanel"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 const CheckAuth = () => {
     const [user, setUser] = useState(null)
@@ -37,7 +35,6 @@ const CheckAuth = () => {
             })
     }
 
-    const firestore = fire.firestore()
     const handleSignup = () => {
         if (password !== verifyPassword) {
             setEmailError("Password mismatched!")

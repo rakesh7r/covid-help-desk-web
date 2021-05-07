@@ -31,7 +31,11 @@ function Distircts(props) {
 
     return (
         <div>
-            <FormControl variant="outlined" className={classes.formControl}>
+            <FormControl
+                variant="outlined"
+                className={classes.formControl}
+                style={{ width: "100%" }}
+            >
                 <InputLabel id="demo-simple-select-outlined-label">
                     Select District
                 </InputLabel>

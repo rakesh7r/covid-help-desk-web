@@ -6,8 +6,7 @@ function HospitalDashBoard(props) {
     const [recovered, setRecovered] = useState(0)
     const [discharged, setDischarged] = useState(0)
     const [deaths, setDeaths] = useState(0)
-    const [deathRate, setDeathRate] = useState(0)
-    const [flag, setFlag] = useState(true)
+
     useEffect(() => {
         hospital.daytoday.map((id) => {
             setRecovered(0)

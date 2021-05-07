@@ -38,6 +38,7 @@ function App() {
     const classes = useStyles()
     const [district, setDistrict] = useState("GHMC")
     const [hospitals, setHospitals] = useState([])
+
     useEffect(() => {
         setHospitals([])
         fire.firestore()
@@ -49,7 +50,8 @@ function App() {
                     setHospitals((oldArr) => [...oldArr, doc.data()])
                 })
             })
-    }, [district])
+    }, [])
+
     return (
         <div className="App">
             <div className="app-header">
@@ -140,6 +142,7 @@ function App() {
                     <AppDashboard />
                 </div>
             </div>
+            <div className="app-footer"></div>
         </div>
     )
 }
