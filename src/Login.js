@@ -5,6 +5,7 @@ import Backdrop from "@material-ui/core/Backdrop"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import Districts from "./Distircts"
+import MandalSelector from "./Mandals/MandalSelector"
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -100,25 +101,20 @@ const Login = (props) => {
                         onChange={(e) => setHospitalName(e.target.value)}
                     />
                 )}
-                {hasAccount ? null : (
-                    <TextField
-                        id="outlined-basic"
-                        label="Hospital Area"
-                        variant="outlined"
-                        style={{
-                            marginBottom: "15px",
-                        }}
-                        value={hospitalArea}
-                        onChange={(e) => setHospitalArea(e.target.value)}
-                    />
-                )}
+
                 {hasAccount ? null : (
                     <Districts
                         district={hospitalDistrict}
                         setDistrict={setHospitalDistrict}
                     />
                 )}
-
+                {hasAccount && hospitalDistrict ? null : (
+                    <MandalSelector
+                        district={hospitalDistrict}
+                        mandal={hospitalArea}
+                        setMandal={setHospitalArea}
+                    />
+                )}
                 <TextField
                     id="outlined-basic"
                     label="Email"

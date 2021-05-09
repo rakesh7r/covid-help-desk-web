@@ -49,7 +49,7 @@ const CheckAuth = () => {
                     .doc(email)
                     .set({
                         name: hospitalName,
-                        area: hospitalArea,
+                        mandal: hospitalArea,
                         district: hospitalDistrict,
                         email: email,
                         beds: {

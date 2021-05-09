@@ -51,6 +51,18 @@ function App() {
                 })
             })
     }, [])
+    useEffect(() => {
+        setHospitals([])
+        fire.firestore()
+            .collection("hospitals")
+            .where("district", "==", district)
+            .onSnapshot((docs) => {
+                setHospitals([])
+                docs.forEach((doc) => {
+                    setHospitals((oldArr) => [...oldArr, doc.data()])
+                })
+            })
+    }, [district])
 
     return (
         <div className="App">

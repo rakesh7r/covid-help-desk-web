@@ -1,7 +1,7 @@
 .dash-cont {
     border: 1px solid #ccc;
     padding: 20px;
-    position: fixed;
+    position: absolute;
     top: 85px;
     right: 3vw;
     z-index: 9;

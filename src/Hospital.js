@@ -15,6 +15,35 @@ function Hospital(props) {
                 <p>
                     Area : {hospital.area} , Dist : {hospital.district}
                 </p>
+                {show ? null : (
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "flex-start",
+                            padding: "4px",
+                            paddingTop: "10px",
+                            alignItems: "center",
+                        }}
+                    >
+                        <span>
+                            {<OxygenLogo />}Oxygen :
+                            {hospital.oxygen.Available > 0 ? (
+                                <span>Available</span>
+                            ) : (
+                                <span>Unavailable</span>
+                            )}
+                        </span>
+                        <p style={{ marginLeft: "5vw" }}>
+                            <HotelIcon /> Covid-19 Beds :
+                            {hospital.beds.available > 0 ? (
+                                <span>Available</span>
+                            ) : (
+                                <span>Unavailable</span>
+                            )}
+                        </p>
+                    </div>
+                )}
                 {show ? (
                     <div>
                         <br />

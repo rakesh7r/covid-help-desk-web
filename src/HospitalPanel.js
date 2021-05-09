@@ -1,4 +1,9 @@
-import { Avatar, Button, TextField } from "@material-ui/core"
+import {
+    Button,
+    Checkbox,
+    FormControlLabel,
+    TextField,
+} from "@material-ui/core"
 import React, { useEffect, useState } from "react"
 import fire from "./Config/fire"
 import "./HospitalPanel.css"
@@ -7,24 +12,7 @@ import HospitalDashBoard from "./HospitalDashBoard"
 import HotelIcon from "@material-ui/icons/Hotel"
 import OxygenLogo from "./OxygenLogo"
 import Districts from "./Distircts"
-// const useStyles = makeStyles((theme) => ({
-//     modal: {
-//         display: "flex",
-//         alignItems: "center",
-//         justifyContent: "center",
-//     },
-//     paper: {
-//         backgroundColor: theme.palette.background.paper,
-//         border: "2px solid #000",
-//         boxShadow: theme.shadows[5],
-//         padding: theme.spacing(2, 4, 3),
-//     },
-//     root: {
-//         "& > *": {
-//             margin: theme.spacing(1),
-//         },
-//     },
-// }))
+import MandalSelector from "./Mandals/MandalSelector"
 
 function HospitalPanel(props) {
     // const classes = useStyles()
@@ -32,7 +20,7 @@ function HospitalPanel(props) {
     const [hospital, setHospital] = useState("")
     const [edit, setEdit] = useState(false)
     const [hospitalName, setHospitalName] = useState("")
-    const [area, setArea] = useState("")
+    const [mandal, setMandal] = useState("")
     const [district, setDistrict] = useState("")
     const [availableOxygen, setAvailableOxygen] = useState("")
     const [oxygenLastsfor, setOxygenLastsfor] = useState("")
@@ -44,8 +32,11 @@ function HospitalPanel(props) {
     const [discharged, setDischarged] = useState("")
     const [recovered, setRecovered] = useState("")
     const [positive, setPositive] = useState("")
-    // const [image, setImage] = useState(null)
-    // const [loading, setLoading] = useState(false)
+    const [isVaccinationCenter, setIsVaccinationCenter] = useState(false)
+    const [covaxin, setCovaxin] = useState("")
+    const [covishield, setCovishield] = useState("")
+    const [remedesivir, setRemedesivir] = useState("")
+    const [isPHC, setIsPHC] = useState(false)
 
     useEffect(() => {
         fire.firestore()
@@ -55,7 +46,7 @@ function HospitalPanel(props) {
                 setHospital(doc.data())
                 console.log(doc.data())
                 setHospitalName(doc.data().name)
-                setArea(doc.data().area)
+                setMandal(doc.data().area)
                 setDistrict(doc.data().district)
                 setAvailableOxygen(doc.data().oxygen.Available)
                 setOxygenLastsfor(doc.data().oxygen.lastsFor)
@@ -105,7 +96,7 @@ function HospitalPanel(props) {
                     .doc(user.email)
                     .update({
                         name: hospitalName,
-                        area: area,
+                        mandal: mandal,
                         district: district,
                         beds: {
                             available: availbleBeds,
@@ -127,6 +118,12 @@ function HospitalPanel(props) {
                         daytoday: firebase.firestore.FieldValue.arrayUnion(
                             user.email + date
                         ),
+                        isVaccinationCenter: isVaccinationCenter,
+                        vaccine: {
+                            covaxin: covaxin,
+                            covishield: covishield,
+                            remedesivir: remedesivir,
+                        },
                     })
                     .then(() => {
                         setEdit(!edit)
@@ -167,22 +164,21 @@ function HospitalPanel(props) {
                             label="Hospital Name"
                             variant="outlined"
                         />
-                        <TextField
-                            style={{ marginBottom: "15px" }}
-                            value={area}
-                            onChange={(e) => setArea(e.target.value)}
-                            className="hospital-edit-text"
-                            id="outlined-basic"
-                            label="Hospital Area"
-                            variant="outlined"
-                        />
                         {/* districts drop down */}
                         <div style={{ width: "100%" }}>
                             <Districts
                                 district={district}
                                 setDistrict={setDistrict}
                             />
+                            {district ? (
+                                <MandalSelector
+                                    district={district}
+                                    mandal={mandal}
+                                    setMandal={setMandal}
+                                />
+                            ) : null}
                         </div>
+
                         <TextField
                             style={{ marginBottom: "15px" }}
                             value={availableOxygen}
@@ -276,6 +272,72 @@ function HospitalPanel(props) {
                             label="Covid-19 Patients admitted today"
                             variant="outlined"
                         />
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={isVaccinationCenter}
+                                    onChange={() => {
+                                        setIsVaccinationCenter(
+                                            (prevState) => !prevState
+                                        )
+                                    }}
+                                />
+                            }
+                            label="Is This a Vaccination Centre?"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={isPHC}
+                                    onChange={() => {
+                                        setIsPHC((prevState) => !prevState)
+                                    }}
+                                />
+                            }
+                            label="Is This a Primary Health Care Centre?"
+                        />
+                        {isPHC || isVaccinationCenter ? (
+                            <div
+                                className="hospital-vaccination-details-cont"
+                                style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                }}
+                            >
+                                <TextField
+                                    style={{ marginBottom: "15px" }}
+                                    value={covaxin}
+                                    onChange={(e) => setCovaxin(e.target.value)}
+                                    className="hospital-edit-text"
+                                    id="outlined-basic"
+                                    label="Available Covaxin doses(Qty)"
+                                    variant="outlined"
+                                />
+                                <TextField
+                                    style={{ marginBottom: "15px" }}
+                                    value={covishield}
+                                    onChange={(e) =>
+                                        setCovishield(e.target.value)
+                                    }
+                                    className="hospital-edit-text"
+                                    id="outlined-basic"
+                                    label="Available Covishield doses(Qty)"
+                                    variant="outlined"
+                                />
+                                <TextField
+                                    style={{ marginBottom: "15px" }}
+                                    value={remedesivir}
+                                    onChange={(e) =>
+                                        setRemedesivir(e.target.value)
+                                    }
+                                    className="hospital-edit-text"
+                                    id="outlined-basic"
+                                    label="Available Remdesivir Doses(Qty)"
+                                    variant="outlined"
+                                />
+                            </div>
+                        ) : null}
+
                         <Button
                             variant="contained"
                             style={{
@@ -293,14 +355,6 @@ function HospitalPanel(props) {
                 ) : hospital ? (
                     <div className="hospital-show-cont">
                         <div className="hospital-details">
-                            <Avatar
-                                alt={user.email}
-                                src={hospital.icon}
-                                style={{
-                                    width: "100px",
-                                    height: "100px",
-                                }}
-                            />
                             <div
                                 // className="hospital-panel-cont"
                                 style={{ marginLeft: "20px" }}

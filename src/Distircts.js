@@ -52,22 +52,23 @@ function Distircts(props) {
                     <MenuItem value="">
                         <em>None</em>
                     </MenuItem>
+                    <MenuItem value="GHMC">GHMC</MenuItem>
                     <MenuItem value="Adilabad">Adilabad</MenuItem>
-                    <MenuItem value="Komaram Bheem Asifabad">
-                        Komaram Bheem Asifabad
-                    </MenuItem>
                     <MenuItem value="Bhadradri Kothagudem">
                         Bhadradri Kothagudem
                     </MenuItem>
+                    <MenuItem value="Jagital">Jagital</MenuItem>
+                    <MenuItem value="Jangaon">Jangaon</MenuItem>{" "}
                     <MenuItem value="Jayashankar Bhupalapally">
                         Jayashankar Bhupalapally
                     </MenuItem>
                     <MenuItem value="Jogulamba Gadwal">
                         Jogulamba Gadwal
                     </MenuItem>
-                    <MenuItem value="Jagital">Jagital</MenuItem>
-                    <MenuItem value="Jangaon">Jangaon</MenuItem>
                     <MenuItem value="Kamareddy">Kamareddy</MenuItem>
+                    <MenuItem value="Komaram Bheem Asifabad">
+                        Komaram Bheem Asifabad
+                    </MenuItem>
                     <MenuItem value="Karimnagar">Karimnagar</MenuItem>
                     <MenuItem value="Khammam">Khammam</MenuItem>
                     <MenuItem value="Mahbubabad">Mahbubabad</MenuItem>
@@ -96,7 +97,6 @@ function Distircts(props) {
                         Yadadri Bhuvanagiri
                     </MenuItem>
                     <MenuItem value="Warangal Urban">Warangal Urban</MenuItem>
-                    <MenuItem value="GHMC">GHMC</MenuItem>
                 </Select>
             </FormControl>
         </div>

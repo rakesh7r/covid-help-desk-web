@@ -14,6 +14,10 @@ function AppDashboard() {
         fire.firestore()
             .collection("dayToDayInfo")
             .onSnapshot((snapshot) => {
+                setDeaths(0)
+                setPositives(0)
+                setDischarged(0)
+                setRecovered(0)
                 snapshot.forEach((doc) => {
                     if (
                         doc.id.slice(-8) ===
