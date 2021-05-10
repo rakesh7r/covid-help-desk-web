@@ -2,23 +2,28 @@ import React from "react"
 import "./SelectArea.css"
 import Distircts from "./Distircts"
 import MandalSelector from "./Mandals/MandalSelector"
-import { Checkbox } from "@material-ui/core"
+import {
+    Button,
+    FormControl,
+    FormControlLabel,
+    FormLabel,
+    Radio,
+    RadioGroup,
+} from "@material-ui/core"
 function SelectArea(props) {
     const {
         mandal,
         setMandal,
         district,
         setDistrict,
-        searchPHC,
-        searchCovaxin,
-        searchCovishield,
-        searchRemedesivir,
-        setSearchPHC,
-        setSearchCovaxin,
-        setSearchCovishield,
-        setsearchRemedesivir,
-        searchVaccinationCentre,
-        setSearchVaccinationCentre,
+        // searchCovaxin,
+        // searchCovishield,
+        // searchRemedesivir,
+        // setSearchCovaxin,
+        // setSearchCovishield,
+        // setsearchRemedesivir,
+        filter,
+        setFilter,
     } = props
     return (
         <div className="selectarea-cont">
@@ -32,30 +37,9 @@ function SelectArea(props) {
                 setMandal={setMandal}
             />
             <div className="card-checkbox-cont">
-                <Checkbox
-                    color="primary"
-                    value={searchPHC}
-                    onChange={() => setSearchPHC(!searchPHC)}
-                    style={{ width: "10px" }}
-                    inputProps={{ "aria-label": "secondary checkbox" }}
-                />
-                Primary Health Care Centre
-            </div>
-            <div className="card-checkbox-cont">
-                <Checkbox
-                    color="primary"
-                    value={searchVaccinationCentre}
-                    onChange={() =>
-                        setSearchVaccinationCentre((prevState) => !prevState)
-                    }
-                    style={{ width: "10px" }}
-                    inputProps={{ "aria-label": "secondary checkbox" }}
-                />
-                Vaccination Centre
-            </div>
-
-            <div className="card-checkbox-cont">
-                <Checkbox
+                <div>
+                    {" "}
+                    {/* <Checkbox
                     color="primary"
                     value={searchCovaxin}
                     onChange={() => setSearchCovaxin((prevState) => !prevState)}
@@ -86,7 +70,42 @@ function SelectArea(props) {
                     style={{ width: "10px" }}
                     inputProps={{ "aria-label": "secondary checkbox" }}
                 />
-                Remedesivir
+                Remedesivir */}
+                </div>
+                <FormControl component="fieldset" style={{ width: "100%" }}>
+                    <FormLabel component="legend">Apply a Filter</FormLabel>
+                    <RadioGroup
+                        aria-label="gender"
+                        name="gender1"
+                        value={filter}
+                        onChange={(e) => setFilter(e.target.value)}
+                    >
+                        <FormControlLabel
+                            value="covaxin"
+                            control={<Radio />}
+                            label="Covaxin"
+                        />
+                        <FormControlLabel
+                            value="covishield"
+                            control={<Radio />}
+                            label="Covishield"
+                        />
+                        <FormControlLabel
+                            value="remedesivir"
+                            control={<Radio />}
+                            label="Remedesivir"
+                        />
+                    </RadioGroup>
+                    <div className="card-clear-filter">
+                        <Button
+                            onClick={() => {
+                                setFilter("")
+                            }}
+                        >
+                            Clear Filter
+                        </Button>
+                    </div>
+                </FormControl>
             </div>
         </div>
     )

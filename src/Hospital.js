@@ -56,20 +56,17 @@ function Hospital(props) {
                             ) : null}
                         </div>
                         <div className="hospital-vaccine">
-                            {hospital.vaccine &&
-                            hospital.vaccine.covaxin > 0 ? (
+                            {hospital && hospital.covaxin > 0 ? (
                                 <p>Covaxin : Available</p>
                             ) : (
                                 <p>Covaxin : Unavailable</p>
                             )}
-                            {hospital.vaccine &&
-                            hospital.vaccine.covishield > 0 ? (
+                            {hospital && hospital.covishield > 0 ? (
                                 <p>Covishield : Available</p>
                             ) : (
                                 <p>Covishield : Unavailable</p>
                             )}
-                            {hospital.vaccine &&
-                            hospital.vaccine.remedesivir > 0 ? (
+                            {hospital && hospital.remedesivir > 0 ? (
                                 <p>Remedesivir : Available</p>
                             ) : (
                                 <p>Remedesivir : Unavailable</p>

@@ -17,4 +17,8 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    padding: 10px;
+}
+.card-clear-filter {
+    width: 100%;
 }

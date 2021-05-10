@@ -45,14 +45,12 @@ function App() {
     const [mandal, setMandal] = useState("")
     const [hospitals, setHospitals] = useState([])
     const [search, setSearch] = useState("")
-    const [searchVaccinationCentre, setSearchVaccinationCentre] = useState(
-        false
-    )
-    const [searchPHC, setSearchPHC] = useState(false)
     const [searchCovaxin, setSearchCovaxin] = useState(false)
     const [searchCovishield, setSearchCovishield] = useState(false)
     const [searchRemedesivir, setsearchRemedesivir] = useState(false)
-
+    const [filter, setFilter] = useState("")
+    const [found, setFound] = useState(false)
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         setHospitals([])
         fire.firestore()
@@ -68,35 +66,113 @@ function App() {
     useEffect(() => {
         setHospitals([])
         if (mandal === "" && district !== "") {
-            fire.firestore()
-                .collection("hospitals")
-                .where("district", "==", district)
-                .onSnapshot((docs) => {
-                    setHospitals([])
-                    docs.forEach((doc) => {
-                        setHospitals((oldArr) => [...oldArr, doc.data()])
+            if (filter.length === 0) {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("district", "==", district)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
                     })
-                })
+            } else if (filter === "covaxin") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("district", "==", district)
+                    .where("covaxin", ">", 0)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            } else if (filter === "covishield") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("district", "==", district)
+                    .where("covishiled", ">", 0)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            } else if (filter === "remedesivir") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("district", "==", district)
+                    .where("remedesivir", ">", 0)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            }
         } else if (mandal !== "") {
-            fire.firestore()
-                .collection("hospitals")
-                .where("mandal", "==", mandal)
-                .onSnapshot((docs) => {
-                    setHospitals([])
-                    docs.forEach((doc) => {
-                        setHospitals((oldArr) => [...oldArr, doc.data()])
+            if (filter.length === 0) {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("mandal", "==", mandal)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
                     })
-                })
+            } else if (filter === "covaxin") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("mandal", "==", mandal)
+                    .where("covaxin", ">", 0)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            } else if (filter === "covishield") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("mandal", "==", mandal)
+                    .where("covishiled", ">", 0)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            } else if (filter === "remedesivir") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("mandal", "==", mandal)
+                    .where("remedesivir", ">", 0)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            }
         }
-    }, [
-        district,
-        mandal,
-        searchPHC,
-        searchRemedesivir,
-        searchCovaxin,
-        searchCovishield,
-        searchVaccinationCentre,
-    ])
+    }, [district, mandal, filter])
     const handleSearch = (e) => {
         console.log(e.target.value)
     }
@@ -119,9 +195,19 @@ function App() {
 
             <div className="app-main">
                 <div className="app-intermediate">
-                    {hospitals.map((hospital) => (
-                        <Hospital key={hospital.id} hospital={hospital} />
-                    ))}
+                    {hospitals.length > 0 ? (
+                        hospitals.map((hospital) => (
+                            <Hospital key={hospital.id} hospital={hospital} />
+                        ))
+                    ) : loading ? (
+                        <center>
+                            <h2 className="app-notfound">Loading...</h2>
+                        </center>
+                    ) : found ? null : (
+                        <center>
+                            <h2 className="app-notfound">No Hospitals Found</h2>
+                        </center>
+                    )}
                 </div>
                 <div className="app-dashboard">
                     <AppDashboard />
@@ -130,16 +216,14 @@ function App() {
                         setMandal={setMandal}
                         district={district}
                         setDistrict={setDistrict}
-                        searchPHC={searchPHC}
                         searchCovaxin={searchCovaxin}
                         searchCovishield={searchCovishield}
                         searchRemedesivir={searchRemedesivir}
-                        setSearchPHC={setSearchPHC}
                         setSearchCovaxin={setSearchCovaxin}
                         setSearchCovishield={setSearchCovishield}
                         setsearchRemedesivir={setsearchRemedesivir}
-                        searchVaccinationCentre={searchVaccinationCentre}
-                        setSearchVaccinationCentre={setSearchVaccinationCentre}
+                        filter={filter}
+                        setFilter={setFilter}
                     />
                 </div>
             </div>

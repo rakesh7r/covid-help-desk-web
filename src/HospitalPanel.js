@@ -60,9 +60,9 @@ function HospitalPanel(props) {
                     setRecovered(doc.data().patients.recovered)
                     setPositive(doc.data().patients.positive)
                     setIsVaccinationCenter(doc.data().isVaccinationCenter)
-                    setCovaxin(doc.data().vaccine.covaxin)
-                    setCovishield(doc.data().vaccine.covishield)
-                    setRemedesivir(doc.data().vaccine.remedesivir)
+                    setCovaxin(doc.data().covaxin)
+                    setCovishield(doc.data().covishield)
+                    setRemedesivir(doc.data().remedesivir)
                     setIsPHC(doc.data().isPHC)
                 }
             })
@@ -106,32 +106,30 @@ function HospitalPanel(props) {
                         mandal: mandal,
                         district: district,
                         beds: {
-                            available: availbleBeds,
-                            total: totalBeds,
+                            available: parseInt(availbleBeds),
+                            total: parseInt(totalBeds),
                         },
                         oxygen: {
-                            Available: availableOxygen,
-                            lastsFor: oxygenLastsfor,
+                            Available: parseInt(availableOxygen),
+                            lastsFor: parseInt(oxygenLastsfor),
                         },
-                        ventilators: ventilators,
-                        totalPatients: totalPatients,
+                        ventilators: parseInt(ventilators),
+                        totalPatients: parseInt(totalPatients),
                         date: dt,
                         patients: {
-                            deaths: deathsToday,
-                            discharged: discharged,
-                            positive: positive,
-                            recovered: recovered,
+                            deaths: parseInt(deathsToday),
+                            discharged: parseInt(discharged),
+                            positive: parseInt(positive),
+                            recovered: parseInt(recovered),
                         },
                         daytoday: firebase.firestore.FieldValue.arrayUnion(
                             user.email + date
                         ),
                         isVaccinationCenter: isVaccinationCenter,
                         isPHC: isPHC,
-                        vaccine: {
-                            covaxin: covaxin,
-                            covishield: covishield,
-                            remedesivir: remedesivir,
-                        },
+                        covaxin: parseInt(covaxin),
+                        covishield: parseInt(covishield),
+                        remedesivir: parseInt(remedesivir),
                     })
                     .then(() => {
                         setEdit(!edit)

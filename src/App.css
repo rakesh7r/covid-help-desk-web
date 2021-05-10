@@ -23,6 +23,7 @@
     background-color: #5398dd;
     padding: 7px;
     color: white;
+    border-radius: 4px;
 }
 .app-header-search:focus {
     outline: none;
@@ -47,6 +48,9 @@
 }
 .app-intermediate {
     margin-right: 30px;
+}
+.app-notfound {
+    width: 70vw;
 }
 .hospital-cont:hover {
     cursor: pointer;
@@ -74,7 +78,7 @@
     justify-content: space-between;
     color: white;
     background-color: rgb(56, 46, 46);
-    padding: 20px;
+    padding: 25px;
 }
 .app-reachus {
     text-decoration: none;
