@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import fire from "./Config/fire"
 import Login from "./Login"
 import HospitalPanel from "./HospitalPanel"
+import firebase from "firebase"
 
 const CheckAuth = () => {
     const [user, setUser] = useState(null)
@@ -63,12 +64,21 @@ const CheckAuth = () => {
                         },
                         totalPatients: 0,
                         ventilators: 0,
+                        date: undefined,
                         patients: {
                             deaths: 0,
                             discharged: 0,
                             positive: 0,
                             recovered: 0,
                         },
+                    })
+                fire.firestore()
+                    .collection("hopital-names")
+                    .doc("names")
+                    .set({
+                        names: firebase.firestore.FieldValue.arrayUnion(
+                            hospitalName
+                        ),
                     })
             })
             .catch((err) => {

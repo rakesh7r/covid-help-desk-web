@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import OxygenLogo from "./OxygenLogo"
 import HotelIcon from "@material-ui/icons/Hotel"
+import "./Hospital.css"
 function Hospital(props) {
     const { hospital } = props
     const [show, setShow] = useState(false)
@@ -13,35 +14,67 @@ function Hospital(props) {
             >
                 <h2>{hospital.name}</h2>
                 <p>
-                    Area : {hospital.area} , Dist : {hospital.district}
+                    Area : {hospital.mandal || hospital.area} , Dist :{" "}
+                    {hospital.district}
                 </p>
                 {show ? null : (
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "flex-start",
-                            padding: "4px",
-                            paddingTop: "10px",
-                            alignItems: "center",
-                        }}
-                    >
-                        <span>
-                            {<OxygenLogo />}Oxygen :
-                            {hospital.oxygen.Available > 0 ? (
-                                <span>Available</span>
+                    <div>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "flex-start",
+                                padding: "4px",
+                                paddingTop: "10px",
+                                alignItems: "center",
+                            }}
+                        >
+                            <span>
+                                {<OxygenLogo />}Oxygen :
+                                {hospital.oxygen.Available > 0 ? (
+                                    <span>Available</span>
+                                ) : (
+                                    <span>Unavailable</span>
+                                )}
+                            </span>
+                            <p style={{ marginLeft: "5vw" }}>
+                                <HotelIcon /> Covid-19 Beds :
+                                {hospital.beds.available > 0 ? (
+                                    <span>Available</span>
+                                ) : (
+                                    <span>Unavailable</span>
+                                )}
+                            </p>
+                        </div>
+                        <div className="flex-row hospital-vac-phc">
+                            {hospital.isPHC && hospital.isPHC === true ? (
+                                <span>Primary Health Care Center</span>
+                            ) : null}
+                            {hospital.isVaccinationCenter &&
+                            hospital.isVaccinationCenter === true ? (
+                                <span>Vaccination Centre</span>
+                            ) : null}
+                        </div>
+                        <div className="hospital-vaccine">
+                            {hospital.vaccine &&
+                            hospital.vaccine.covaxin > 0 ? (
+                                <p>Covaxin : Available</p>
                             ) : (
-                                <span>Unavailable</span>
+                                <p>Covaxin : Unavailable</p>
                             )}
-                        </span>
-                        <p style={{ marginLeft: "5vw" }}>
-                            <HotelIcon /> Covid-19 Beds :
-                            {hospital.beds.available > 0 ? (
-                                <span>Available</span>
+                            {hospital.vaccine &&
+                            hospital.vaccine.covishield > 0 ? (
+                                <p>Covishield : Available</p>
                             ) : (
-                                <span>Unavailable</span>
+                                <p>Covishield : Unavailable</p>
                             )}
-                        </p>
+                            {hospital.vaccine &&
+                            hospital.vaccine.remedesivir > 0 ? (
+                                <p>Remedesivir : Available</p>
+                            ) : (
+                                <p>Remedesivir : Unavailable</p>
+                            )}
+                        </div>
                     </div>
                 )}
                 {show ? (

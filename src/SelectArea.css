@@ -1,0 +1,20 @@
+.selectarea-cont {
+    background-color: white;
+    padding: 20px;
+    border: 0.2px solid #ccc;
+    border-radius: 4px;
+    width: 255px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.select-area-h2 {
+    margin-bottom: 12px;
+}
+.card-checkbox-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}

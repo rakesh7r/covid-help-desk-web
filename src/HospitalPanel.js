@@ -22,20 +22,20 @@ function HospitalPanel(props) {
     const [hospitalName, setHospitalName] = useState("")
     const [mandal, setMandal] = useState("")
     const [district, setDistrict] = useState("")
-    const [availableOxygen, setAvailableOxygen] = useState("")
-    const [oxygenLastsfor, setOxygenLastsfor] = useState("")
-    const [availbleBeds, setAvailbleBeds] = useState("")
-    const [totalBeds, setTotalBeds] = useState("")
-    const [ventilators, setVentilators] = useState("")
-    const [totalPatients, setTotalPatients] = useState("")
-    const [deathsToday, setDeathsToday] = useState("")
-    const [discharged, setDischarged] = useState("")
-    const [recovered, setRecovered] = useState("")
-    const [positive, setPositive] = useState("")
+    const [availableOxygen, setAvailableOxygen] = useState(0)
+    const [oxygenLastsfor, setOxygenLastsfor] = useState(0)
+    const [availbleBeds, setAvailbleBeds] = useState(0)
+    const [totalBeds, setTotalBeds] = useState(0)
+    const [ventilators, setVentilators] = useState(0)
+    const [totalPatients, setTotalPatients] = useState(0)
+    const [deathsToday, setDeathsToday] = useState(0)
+    const [discharged, setDischarged] = useState(0)
+    const [recovered, setRecovered] = useState(0)
+    const [positive, setPositive] = useState(0)
     const [isVaccinationCenter, setIsVaccinationCenter] = useState(false)
-    const [covaxin, setCovaxin] = useState("")
-    const [covishield, setCovishield] = useState("")
-    const [remedesivir, setRemedesivir] = useState("")
+    const [covaxin, setCovaxin] = useState(0)
+    const [covishield, setCovishield] = useState(0)
+    const [remedesivir, setRemedesivir] = useState(0)
     const [isPHC, setIsPHC] = useState(false)
 
     useEffect(() => {
@@ -43,21 +43,28 @@ function HospitalPanel(props) {
             .collection("hospitals")
             .doc(user.email)
             .onSnapshot((doc) => {
-                setHospital(doc.data())
-                console.log(doc.data())
-                setHospitalName(doc.data().name)
-                setMandal(doc.data().area)
-                setDistrict(doc.data().district)
-                setAvailableOxygen(doc.data().oxygen.Available)
-                setOxygenLastsfor(doc.data().oxygen.lastsFor)
-                setAvailbleBeds(doc.data().beds.available)
-                setTotalBeds(doc.data().beds.total)
-                setVentilators(doc.data().ventilators)
-                setTotalPatients(doc.data().totalPatients)
-                setDeathsToday(doc.data().patients.deaths)
-                setDischarged(doc.data().patients.discharged)
-                setRecovered(doc.data().patients.recovered)
-                setPositive(doc.data().patients.positive)
+                if (doc.data()) {
+                    setHospital(doc.data())
+                    console.log(doc.data())
+                    setHospitalName(doc.data().name)
+                    setMandal(doc.data().area || doc.data().mandal)
+                    setDistrict(doc.data().district)
+                    setAvailableOxygen(doc.data().oxygen.Available)
+                    setOxygenLastsfor(doc.data().oxygen.lastsFor)
+                    setAvailbleBeds(doc.data().beds.available)
+                    setTotalBeds(doc.data().beds.total)
+                    setVentilators(doc.data().ventilators)
+                    setTotalPatients(doc.data().totalPatients)
+                    setDeathsToday(doc.data().patients.deaths)
+                    setDischarged(doc.data().patients.discharged)
+                    setRecovered(doc.data().patients.recovered)
+                    setPositive(doc.data().patients.positive)
+                    setIsVaccinationCenter(doc.data().isVaccinationCenter)
+                    setCovaxin(doc.data().vaccine.covaxin)
+                    setCovishield(doc.data().vaccine.covishield)
+                    setRemedesivir(doc.data().vaccine.remedesivir)
+                    setIsPHC(doc.data().isPHC)
+                }
             })
     }, [])
     const handleSave = () => {
@@ -119,6 +126,7 @@ function HospitalPanel(props) {
                             user.email + date
                         ),
                         isVaccinationCenter: isVaccinationCenter,
+                        isPHC: isPHC,
                         vaccine: {
                             covaxin: covaxin,
                             covishield: covishield,
@@ -363,7 +371,7 @@ function HospitalPanel(props) {
                                     {hospital.name}
                                 </h1>
                                 <p className="hospital-area">
-                                    Area : {hospital.area}
+                                    Area : {hospital.mandal || hospital.area}
                                 </p>
                                 <p className="hospital-district">
                                     District : {hospital.district}

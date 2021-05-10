@@ -48,11 +48,9 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Amberpet">Amberpet</MenuItem>
-                        <MenuItem value="Asif">Asif Nagar</MenuItem>
+                        <MenuItem value="Asif Nagar">Asif Nagar</MenuItem>
                         <MenuItem value="Bahadurpura">Bahadurpura</MenuItem>
                         <MenuItem value="Bandlaguda">Bandlaguda</MenuItem>
                         <MenuItem value="Charminar">Charminar</MenuItem>
@@ -89,9 +87,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Adilabad urban">
                             Adilabad (urban)
                         </MenuItem>
@@ -130,9 +126,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Kothagudem">Kothagudem</MenuItem>
                         <MenuItem value="Palwancha">Palwancha</MenuItem>
                         <MenuItem value="Tekulapalli">Tekulapalli</MenuItem>
@@ -182,9 +176,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Bhupalpalle">Bhupalpalle</MenuItem>
                         <MenuItem value="Chityal">Chityal</MenuItem>
                         <MenuItem value="Ghanpur">Ghanpur</MenuItem>
@@ -229,9 +221,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -254,9 +244,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Jagitial urban">
                             Jagitial(urban)
                         </MenuItem>
@@ -301,9 +289,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Bachannapeta">Bachannapeta</MenuItem>
                         <MenuItem value="Devaruppala">Devaruppala</MenuItem>
                         <MenuItem value="Gundala">Gundala</MenuItem>
@@ -343,9 +329,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -368,9 +352,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -393,9 +375,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -418,9 +398,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -443,9 +421,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -468,9 +444,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Chennur">Chennur</MenuItem>
                         <MenuItem value="Jaipur">Jaipur</MenuItem>
                         <MenuItem value="Bheemaram">Bheemaram</MenuItem>
@@ -513,9 +487,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -538,9 +510,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -563,9 +533,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Alwal">Alwal</MenuItem>
                         <MenuItem value="Bachupally">Bachupally</MenuItem>
                         <MenuItem value="Balanagar">Balanagar</MenuItem>
@@ -602,9 +570,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -627,9 +593,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -652,9 +616,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -677,9 +639,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -702,9 +662,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -727,9 +685,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -752,9 +708,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -777,9 +731,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -802,9 +754,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Kalher">Kalher</MenuItem>
                         <MenuItem value="Kangti">Kangti</MenuItem>
                         <MenuItem value="Manoor">Manoor</MenuItem>
@@ -855,9 +805,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Siddipet urban">
                             Siddipet(Urban)
                         </MenuItem>
@@ -906,9 +854,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Atmakur(s)">Atmakur(s)</MenuItem>
                         <MenuItem value="Chivvemla">Chivvemla</MenuItem>
                         <MenuItem value="Jajireddygudem">
@@ -958,9 +904,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -983,9 +927,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Basheerabad">Basheerabad</MenuItem>
                         <MenuItem value="Bommaraspet">Bommaraspet</MenuItem>
                         <MenuItem value="Doulthabad">Doulthabad</MenuItem>
@@ -1026,9 +968,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                     </Select>
                 </FormControl>
             ) : null}
@@ -1051,9 +991,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Atmakur">Atmakur</MenuItem>
                         <MenuItem value="Damera">Damera</MenuItem>
                         <MenuItem value="Geesugonda">Geesugonda</MenuItem>
@@ -1092,9 +1030,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Bheemadevarpalli">
                             Bheemadevarpalli
                         </MenuItem>
@@ -1130,9 +1066,7 @@ function MandalSelector(props) {
                         }}
                         label="Select Mandal"
                     >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        <MenuItem value="">All </MenuItem>
                         <MenuItem value="Addaguduru">Addaguduru</MenuItem>
                         <MenuItem value="Alair">Alair</MenuItem>
                         <MenuItem value="Atmakur(m)">Atmakur(M)</MenuItem>

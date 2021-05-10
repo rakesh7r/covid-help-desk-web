@@ -1,15 +1,10 @@
-import {
-    FormControl,
-    InputLabel,
-    makeStyles,
-    MenuItem,
-    Select,
-} from "@material-ui/core"
+import { makeStyles } from "@material-ui/core"
 import { useEffect, useState } from "react"
 import "./App.css"
 import fire from "./Config/fire"
 import Hospital from "./Hospital"
 import AppDashboard from "./AppDashboard"
+import SelectArea from "./SelectArea"
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -32,12 +27,31 @@ const useStyles = makeStyles((theme) => ({
             marginTop: theme.spacing(2),
         },
     },
+    input: {
+        color: "white",
+        border: "0.5px solid #4498ed",
+        "&::placeholder": {
+            color: "white",
+        },
+        "&::focus": {
+            outline: "none",
+        },
+    },
 }))
 
 function App() {
     const classes = useStyles()
     const [district, setDistrict] = useState("GHMC")
+    const [mandal, setMandal] = useState("")
     const [hospitals, setHospitals] = useState([])
+    const [search, setSearch] = useState("")
+    const [searchVaccinationCentre, setSearchVaccinationCentre] = useState(
+        false
+    )
+    const [searchPHC, setSearchPHC] = useState(false)
+    const [searchCovaxin, setSearchCovaxin] = useState(false)
+    const [searchCovishield, setSearchCovishield] = useState(false)
+    const [searchRemedesivir, setsearchRemedesivir] = useState(false)
 
     useEffect(() => {
         setHospitals([])
@@ -53,97 +67,56 @@ function App() {
     }, [])
     useEffect(() => {
         setHospitals([])
-        fire.firestore()
-            .collection("hospitals")
-            .where("district", "==", district)
-            .onSnapshot((docs) => {
-                setHospitals([])
-                docs.forEach((doc) => {
-                    setHospitals((oldArr) => [...oldArr, doc.data()])
+        if (mandal === "" && district !== "") {
+            fire.firestore()
+                .collection("hospitals")
+                .where("district", "==", district)
+                .onSnapshot((docs) => {
+                    setHospitals([])
+                    docs.forEach((doc) => {
+                        setHospitals((oldArr) => [...oldArr, doc.data()])
+                    })
                 })
-            })
-    }, [district])
-
+        } else if (mandal !== "") {
+            fire.firestore()
+                .collection("hospitals")
+                .where("mandal", "==", mandal)
+                .onSnapshot((docs) => {
+                    setHospitals([])
+                    docs.forEach((doc) => {
+                        setHospitals((oldArr) => [...oldArr, doc.data()])
+                    })
+                })
+        }
+    }, [
+        district,
+        mandal,
+        searchPHC,
+        searchRemedesivir,
+        searchCovaxin,
+        searchCovishield,
+        searchVaccinationCentre,
+    ])
+    const handleSearch = (e) => {
+        console.log(e.target.value)
+    }
     return (
         <div className="App">
             <div className="app-header">
                 <h1>Covid-19 Help Desk</h1>
-                <FormControl
-                    variant="outlined"
-                    className={classes.formControl}
-                    style={{ width: "150px", color: "white" }}
-                >
-                    <InputLabel
-                        id="demo-simple-select-outlined-label"
-                        style={{ color: "white" }}
-                    >
-                        Select District
-                    </InputLabel>
-                    <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
-                        value={district}
-                        onChange={(e) => {
-                            setDistrict(e.target.value)
-                        }}
-                        style={{
-                            marginBottom: "15px",
-                            color: "white",
-                        }}
-                        label="Select District"
-                    >
-                        <MenuItem value="GHMC">GHMC</MenuItem>
-                        <MenuItem value="Adilabad">Adilabad</MenuItem>
-                        <MenuItem value="Komaram Bheem Asifabad">
-                            Komaram Bheem Asifabad
-                        </MenuItem>
-                        <MenuItem value="Bhadradri Kothagudem">
-                            Bhadradri Kothagudem
-                        </MenuItem>
-                        <MenuItem value="Jayashankar Bhupalapally">
-                            Jayashankar Bhupalapally
-                        </MenuItem>
-                        <MenuItem value="Jogulamba Gadwal">
-                            Jogulamba Gadwal
-                        </MenuItem>
-                        <MenuItem value="Jagital">Jagital</MenuItem>
-                        <MenuItem value="Jangaon">Jangaon</MenuItem>
-                        <MenuItem value="Kamareddy">Kamareddy</MenuItem>
-                        <MenuItem value="Karimnagar">Karimnagar</MenuItem>
-                        <MenuItem value="Khammam">Khammam</MenuItem>
-                        <MenuItem value="Mahbubabad">Mahbubabad</MenuItem>
-                        <MenuItem value="Mancherial">Mancherial</MenuItem>
-                        <MenuItem value="Mahbubnagar">Mahbubnagar</MenuItem>
-                        <MenuItem value="Medak">Medak</MenuItem>
-                        <MenuItem value="Medchal">Medchal</MenuItem>
-                        <MenuItem value="Mulugu">Mulugu</MenuItem>
-                        <MenuItem value="Nagarkurnool">Nagarkurnool</MenuItem>
-                        <MenuItem value="Nalgonda">Nalgonda</MenuItem>
-                        <MenuItem value="Narayanpet">Narayanpet</MenuItem>
-                        <MenuItem value="Nirmal">Nirmal</MenuItem>
-                        <MenuItem value="Nizamabad">Nizamabad</MenuItem>
-                        <MenuItem value="Pedapally">Pedapally</MenuItem>
-                        <MenuItem value="Rangareddy">Rangareddy</MenuItem>
-                        <MenuItem value="Sangareddy">Sangareddy</MenuItem>
-                        <MenuItem value="Siddipet">Siddipet</MenuItem>
-                        <MenuItem value="Suryapet">Suryapet</MenuItem>
-                        <MenuItem value="Rajanna Sircilla">
-                            Rajanna Sircilla
-                        </MenuItem>
-                        <MenuItem value="Vikarabad">Vikarabad</MenuItem>
-                        <MenuItem value="Wanaparthy">Wanaparthy</MenuItem>
-                        <MenuItem value="Warangal Rural">
-                            Warangal Rural
-                        </MenuItem>
-                        <MenuItem value="Yadadri Bhuvanagiri">
-                            Yadadri Bhuvanagiri
-                        </MenuItem>
-                        <MenuItem value="Warangal Urban">
-                            Warangal Urban
-                        </MenuItem>
-                    </Select>
-                </FormControl>
+                <input
+                    type="text"
+                    placeholder="Enter Hospital Name"
+                    value={search}
+                    className="app-header-search"
+                    autoFocus
+                    onChange={(e) => {
+                        setSearch(e.target.value)
+                        handleSearch(e)
+                    }}
+                />
             </div>
+
             <div className="app-main">
                 <div className="app-intermediate">
                     {hospitals.map((hospital) => (
@@ -152,9 +125,33 @@ function App() {
                 </div>
                 <div className="app-dashboard">
                     <AppDashboard />
+                    <SelectArea
+                        mandal={mandal}
+                        setMandal={setMandal}
+                        district={district}
+                        setDistrict={setDistrict}
+                        searchPHC={searchPHC}
+                        searchCovaxin={searchCovaxin}
+                        searchCovishield={searchCovishield}
+                        searchRemedesivir={searchRemedesivir}
+                        setSearchPHC={setSearchPHC}
+                        setSearchCovaxin={setSearchCovaxin}
+                        setSearchCovishield={setSearchCovishield}
+                        setsearchRemedesivir={setsearchRemedesivir}
+                        searchVaccinationCentre={searchVaccinationCentre}
+                        setSearchVaccinationCentre={setSearchVaccinationCentre}
+                    />
                 </div>
             </div>
-            <div className="app-footer"></div>
+            <div className="app-footer flex-row">
+                <p>Telangana Covid-19 Help line Number : 104</p>
+                <a
+                    className="app-reachus"
+                    href="mailto:rakeshgandla201@gmail.com"
+                >
+                    <p>Reach us</p>
+                </a>
+            </div>
         </div>
     )
 }

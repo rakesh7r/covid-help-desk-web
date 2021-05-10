@@ -16,11 +16,26 @@
     top: 0;
     z-index: 10;
 }
+.app-header-search {
+    width: 220px;
+    height: 32px;
+    border: 0.5px solid #2678ca;
+    background-color: #5398dd;
+    padding: 7px;
+    color: white;
+}
+.app-header-search:focus {
+    outline: none;
+}
+.app-header-search::placeholder {
+    color: white;
+}
 .app-main {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     padding: 10px;
+    padding-right: 20px;
 }
 
 .hospital-cont {
@@ -29,6 +44,9 @@
     border: 1px groove lightgray;
     margin-bottom: 10px;
     border-radius: 7px;
+}
+.app-intermediate {
+    margin-right: 30px;
 }
 .hospital-cont:hover {
     cursor: pointer;
@@ -40,12 +58,25 @@
     width: 30vw;
     min-width: 200px;
 }
+.app-dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 77vh;
+}
+.app-select-area-cont {
+    margin-top: 20px;
+}
 .app-footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    height: 70px;
-    width: 100vw;
-    background-color: gray;
+    color: white;
+    background-color: rgb(56, 46, 46);
+    padding: 20px;
+}
+.app-reachus {
+    text-decoration: none;
+    color: white;
 }

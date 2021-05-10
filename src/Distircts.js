@@ -58,7 +58,7 @@ function Distircts(props) {
                         Bhadradri Kothagudem
                     </MenuItem>
                     <MenuItem value="Jagital">Jagital</MenuItem>
-                    <MenuItem value="Jangaon">Jangaon</MenuItem>{" "}
+                    <MenuItem value="Jangaon">Jangaon</MenuItem>
                     <MenuItem value="Jayashankar Bhupalapally">
                         Jayashankar Bhupalapally
                     </MenuItem>
