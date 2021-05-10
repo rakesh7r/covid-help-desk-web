@@ -111,8 +111,7 @@ function Hospital(props) {
                                             width: "30px",
                                             height: "30px",
                                         }}
-                                    />
-                                    {"   "}
+                                    />{" "}
                                     <h2>Vaccine Information : </h2>
                                 </div>
                                 <p>Covishield : {hospital.covishield} Doses</p>

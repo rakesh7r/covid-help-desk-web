@@ -17,12 +17,6 @@ function SelectArea(props) {
         setMandal,
         district,
         setDistrict,
-        // searchCovaxin,
-        // searchCovishield,
-        // searchRemedesivir,
-        // setSearchCovaxin,
-        // setSearchCovishield,
-        // setsearchRemedesivir,
         filter,
         setFilter,
     } = props
@@ -102,6 +96,7 @@ function SelectArea(props) {
                             onClick={() => {
                                 setFilter("")
                             }}
+                            width={{ width: "100%" }}
                         >
                             Clear Filter
                         </Button>
