@@ -95,7 +95,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("district", "==", district)
-                    .where("covishiled", ">", 0)
+                    .where("covishield", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
                         setLoading(false)
@@ -144,11 +144,12 @@ function App() {
                             setHospitals((oldArr) => [...oldArr, doc.data()])
                         })
                     })
-            } else if (filter === "covishield") {
+            }
+            if (filter === "covishield") {
                 fire.firestore()
                     .collection("hospitals")
                     .where("mandal", "==", mandal)
-                    .where("covishiled", ">", 0)
+                    .where("covishield", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
                         setLoading(false)

@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import OxygenLogo from "./OxygenLogo"
 import HotelIcon from "@material-ui/icons/Hotel"
 import "./Hospital.css"
+import Injection from "./Icons/Injection"
+import { Avatar } from "@material-ui/core"
 function Hospital(props) {
     const { hospital } = props
     const [show, setShow] = useState(false)
@@ -12,7 +14,14 @@ function Hospital(props) {
                 className="hospital-cont"
                 onClick={() => setShow(!show)}
             >
-                <h2>{hospital.name}</h2>
+                <div className="flex-row hospital-card-title-cont">
+                    <h2>{hospital.name}</h2>
+                    {hospital.isVaccinationCenter || hospital.isPHC ? (
+                        <strong className="vaccination-center-text">
+                            Vaccination Center
+                        </strong>
+                    ) : null}
+                </div>
                 <p>
                     Area : {hospital.mandal || hospital.area} , Dist :{" "}
                     {hospital.district}
@@ -46,32 +55,25 @@ function Hospital(props) {
                                 )}
                             </p>
                         </div>
-                        <div className="flex-row hospital-vac-phc">
-                            {hospital.isPHC && hospital.isPHC === true ? (
-                                <span>Primary Health Care Center</span>
-                            ) : null}
-                            {hospital.isVaccinationCenter &&
-                            hospital.isVaccinationCenter === true ? (
-                                <span>Vaccination Centre</span>
-                            ) : null}
-                        </div>
-                        <div className="hospital-vaccine">
-                            {hospital && hospital.covaxin > 0 ? (
-                                <p>Covaxin : Available</p>
-                            ) : (
-                                <p>Covaxin : Unavailable</p>
-                            )}
-                            {hospital && hospital.covishield > 0 ? (
-                                <p>Covishield : Available</p>
-                            ) : (
-                                <p>Covishield : Unavailable</p>
-                            )}
-                            {hospital && hospital.remedesivir > 0 ? (
-                                <p>Remedesivir : Available</p>
-                            ) : (
-                                <p>Remedesivir : Unavailable</p>
-                            )}
-                        </div>
+                        {hospital.isPHC || hospital.isVaccinationCenter ? (
+                            <div className="hospital-vaccine">
+                                {hospital && hospital.covaxin > 0 ? (
+                                    <p>Covaxin : Available</p>
+                                ) : (
+                                    <p>Covaxin : Unavailable</p>
+                                )}
+                                {hospital && hospital.covishield > 0 ? (
+                                    <p>Covishield : Available</p>
+                                ) : (
+                                    <p>Covishield : Unavailable</p>
+                                )}
+                                {hospital && hospital.remedesivir > 0 ? (
+                                    <p>Remedesivir : Available</p>
+                                ) : (
+                                    <p>Remedesivir : Unavailable</p>
+                                )}
+                            </div>
+                        ) : null}
                     </div>
                 )}
                 {show ? (
@@ -89,15 +91,37 @@ function Hospital(props) {
                         <p>Available Beds: {hospital.beds.available}</p>
                         <p>Total Beds : {hospital.beds.total}</p>
                         <br />
-                        <h2>Ventilators Available : {hospital.ventilators}</h2>
+                        <p>Ventilators Available : {hospital.ventilators}</p>
                         <br />
-                        <h3>Total Patients : {hospital.totalPatients}</h3>
-                        <h3>Total Deaths : {hospital.patients.deaths}</h3>
-                        <h3>discharged : {hospital.patients.discharged}</h3>
-                        <h3>Recovered : {hospital.patients.recovered}</h3>
-                        <h3>
+                        <h3> As of : {hospital.date} </h3>
+                        <p>Total Patients : {hospital.totalPatients}</p>
+                        <p>Total Deaths : {hospital.patients.deaths}</p>
+                        <p>discharged : {hospital.patients.discharged}</p>
+                        <p>Recovered : {hospital.patients.recovered}</p>
+                        <p>
                             Positive Cases Today : {hospital.patients.positive}
-                        </h3>
+                        </p>
+                        {hospital.isVaccinationCenter || hospital.isPHC ? (
+                            <div className="app-card-vaccine-info">
+                                <div className="flex-row">
+                                    <Avatar
+                                        src="injection.png"
+                                        variant="square"
+                                        style={{
+                                            width: "30px",
+                                            height: "30px",
+                                        }}
+                                    />
+                                    {"   "}
+                                    <h2>Vaccine Information : </h2>
+                                </div>
+                                <p>Covishield : {hospital.covishield} Doses</p>
+                                <p>Covaxin : {hospital.covaxin} Doses</p>
+                                <p>
+                                    Remedesivir : {hospital.remedesivir} Doses
+                                </p>
+                            </div>
+                        ) : null}
                     </div>
                 ) : null}
             </div>

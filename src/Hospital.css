@@ -1,3 +1,6 @@
+.hospital-cont {
+    background-color: white;
+}
 .hospital-vac-phc {
     width: 50%;
     display: flex;
@@ -11,4 +14,25 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-top: 5px;
+}
+.vaccination-center-text {
+    color: rgb(0, 131, 0);
+}
+.hospital-vac-phc {
+    float: right;
+    position: relative;
+    right: -27%;
+}
+.hospital-card-title-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.app-card-vaccine-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 20px;
 }
