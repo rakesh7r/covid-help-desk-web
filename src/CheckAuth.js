@@ -37,8 +37,16 @@ const CheckAuth = () => {
     }
 
     const handleSignup = () => {
+        if (hospitalName.length === 0) {
+            setEmailError("Enter Hospital Name")
+            return false
+        }
         if (password !== verifyPassword) {
             setEmailError("Password mismatched!")
+            return false
+        }
+        if (hospitalArea === "") {
+            setEmailError("No Mandal/Area Selected!")
             return false
         }
         clearErrors()

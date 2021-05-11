@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "covid19-bed-tracker-27cc5"
+    "default": "covid19-bed-tracker-27cc5",
+    "covidhelpdesk": "covidhelpdesk-ts"
   }
 }
