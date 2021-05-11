@@ -120,6 +120,32 @@ function App() {
                             setHospitals((oldArr) => [...oldArr, doc.data()])
                         })
                     })
+            } else if (filter === "private") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("district", "==", district)
+                    .where("isPrivate", "==", true)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            } else if (filter === "govt") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("district", "==", district)
+                    .where("isPrivate", "==", false)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
             }
         } else if (mandal !== "") {
             if (filter.length === 0) {
@@ -205,6 +231,32 @@ function App() {
                     .collection("hospitals")
                     .where("mandal", "==", mandal)
                     .where("isVaccinationCenter", "==", true)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            } else if (filter === "private") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("mandal", "==", mandal)
+                    .where("isPrivate", "==", true)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            } else if (filter === "govt") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("mandal", "==", mandal)
+                    .where("isPrivate", "==", false)
                     .onSnapshot((docs) => {
                         setHospitals([])
                         setLoading(false)

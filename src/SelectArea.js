@@ -75,6 +75,8 @@ function SelectArea(props) {
                     <MenuItem value="beds">Search for Beds</MenuItem>
                     <MenuItem value="ventilators">ventilators</MenuItem>
                     <MenuItem value="vaccinations">Vaccination Center</MenuItem>
+                    <MenuItem value="private">Private Hospitals</MenuItem>
+                    <MenuItem value="govt">Government Hospitals</MenuItem>
                     <MenuItem value="covaxin">Covaxin</MenuItem>
                     <MenuItem value="covishield">Covishield</MenuItem>
                     <MenuItem value="remedesivir">Remedesivir</MenuItem>
