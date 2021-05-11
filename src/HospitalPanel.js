@@ -22,6 +22,7 @@ function HospitalPanel(props) {
     const [hospitalName, setHospitalName] = useState("")
     const [mandal, setMandal] = useState("")
     const [district, setDistrict] = useState("")
+
     const [availableOxygen, setAvailableOxygen] = useState(0)
     const [oxygenLastsfor, setOxygenLastsfor] = useState(0)
     const [availbleBeds, setAvailbleBeds] = useState(0)
@@ -32,11 +33,13 @@ function HospitalPanel(props) {
     const [discharged, setDischarged] = useState(0)
     const [recovered, setRecovered] = useState(0)
     const [positive, setPositive] = useState(0)
-    const [isVaccinationCenter, setIsVaccinationCenter] = useState(false)
     const [covaxin, setCovaxin] = useState(0)
     const [covishield, setCovishield] = useState(0)
     const [remedesivir, setRemedesivir] = useState(0)
+
+    const [isVaccinationCenter, setIsVaccinationCenter] = useState(false)
     const [isPHC, setIsPHC] = useState(false)
+    const [isPrivate, setIsPrivate] = useState(false)
 
     useEffect(() => {
         fire.firestore()
@@ -127,6 +130,7 @@ function HospitalPanel(props) {
                         ),
                         isVaccinationCenter: isVaccinationCenter,
                         isPHC: isPHC,
+                        isPrivate: isPrivate,
                         covaxin: parseInt(covaxin),
                         covishield: parseInt(covishield),
                         remedesivir: parseInt(remedesivir),
@@ -277,6 +281,17 @@ function HospitalPanel(props) {
                             id="outlined-basic"
                             label="Covid-19 Patients admitted today"
                             variant="outlined"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={isPrivate}
+                                    onChange={() => {
+                                        setIsPrivate((prevState) => !prevState)
+                                    }}
+                                />
+                            }
+                            label="Is This a Private hospital?"
                         />
                         <FormControlLabel
                             control={

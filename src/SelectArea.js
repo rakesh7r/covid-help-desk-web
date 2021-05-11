@@ -8,18 +8,15 @@ import {
     FormControl,
     FormControlLabel,
     FormLabel,
+    InputLabel,
+    MenuItem,
     Radio,
     RadioGroup,
+    Select,
 } from "@material-ui/core"
 function SelectArea(props) {
-    const {
-        mandal,
-        setMandal,
-        district,
-        setDistrict,
-        filter,
-        setFilter,
-    } = props
+    const { mandal, setMandal, district, setDistrict, filter, setFilter } =
+        props
     return (
         <div className="selectarea-cont">
             <center className="select-area-h2">
@@ -31,10 +28,10 @@ function SelectArea(props) {
                 mandal={mandal}
                 setMandal={setMandal}
             />
-            <div className="card-checkbox-cont">
-                <div>
-                    {" "}
-                    {/* <Checkbox
+            {/* <div className="card-checkbox-cont"> */}
+            <div>
+                {" "}
+                {/* <Checkbox
                     color="primary"
                     value={searchCovaxin}
                     onChange={() => setSearchCovaxin((prevState) => !prevState)}
@@ -66,12 +63,40 @@ function SelectArea(props) {
                     inputProps={{ "aria-label": "secondary checkbox" }}
                 />
                 Remedesivir */}
-                </div>
+            </div>
+            <FormControl
+                variant="outlined"
+                // className={classes.formControl}
+                style={{ width: "100%" }}
+            >
+                <InputLabel id="demo-simple-select-outlined-label">
+                    Apply A Filter
+                </InputLabel>
+                <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    value={props.filter}
+                    onChange={(e) => props.setFilter(e.target.value)}
+                    style={{
+                        marginBottom: "15px",
+                    }}
+                    label="Apply a Filter"
+                >
+                    <MenuItem value="">All</MenuItem>
+                    <MenuItem value="beds">Search for Beds</MenuItem>
+                    <MenuItem value="ventilators">ventilators</MenuItem>
+                    <MenuItem value="vaccinations">Vaccination Center</MenuItem>
+                    <MenuItem value="covaxin">Covaxin</MenuItem>
+                    <MenuItem value="covishield">Covishield</MenuItem>
+                    <MenuItem value="remedesivir">Remedesivir</MenuItem>
+                </Select>
+            </FormControl>
+            {/* 
                 <FormControl component="fieldset" style={{ width: "100%" }}>
                     <FormLabel component="legend">Apply a Filter</FormLabel>
                     <RadioGroup
-                        aria-label="gender"
-                        name="gender1"
+                        aria-label="Filter"
+                        name="Filter"
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
                     >
@@ -101,8 +126,8 @@ function SelectArea(props) {
                             Clear Filter
                         </Button>
                     </div>
-                </FormControl>
-            </div>
+                </FormControl> */}
+            {/* </div> */}
         </div>
     )
 }

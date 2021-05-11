@@ -181,7 +181,7 @@ function App() {
         <div className="App">
             <div className="app-header">
                 <h1>Covid-19 Help Desk</h1>
-                <input
+                {/* <input
                     type="text"
                     placeholder="Enter Hospital Name"
                     value={search}
@@ -191,7 +191,7 @@ function App() {
                         setSearch(e.target.value)
                         handleSearch(e)
                     }}
-                />
+                /> */}
             </div>
 
             <div className="app-main">

@@ -42,6 +42,8 @@ const CheckAuth = () => {
             return false
         }
         clearErrors()
+        const dt = new Date().toJSON().slice(0, 10)
+        const date = new Date().toJSON().slice(0, 10).replaceAll("-", "")
         fire.auth()
             .createUserWithEmailAndPassword(email, password)
             .then((user) => {
@@ -52,25 +54,32 @@ const CheckAuth = () => {
                         name: hospitalName,
                         mandal: hospitalArea,
                         district: hospitalDistrict,
-                        email: email,
                         beds: {
                             available: 0,
                             total: 0,
                         },
-                        daytoday: [],
                         oxygen: {
                             Available: 0,
                             lastsFor: 0,
                         },
-                        totalPatients: 0,
                         ventilators: 0,
-                        date: undefined,
+                        totalPatients: 0,
+                        date: dt,
                         patients: {
                             deaths: 0,
                             discharged: 0,
                             positive: 0,
                             recovered: 0,
                         },
+                        daytoday: firebase.firestore.FieldValue.arrayUnion(
+                            user.email + date
+                        ),
+                        isVaccinationCenter: false,
+                        isPHC: false,
+                        isPrivate: false,
+                        covaxin: 0,
+                        covishield: 0,
+                        remedesivir: 0,
                     })
                 fire.firestore()
                     .collection("hopital-names")
