@@ -6,7 +6,8 @@ import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import Districts from "./Distircts"
 import MandalSelector from "./Mandals/MandalSelector"
-
+import "./Login.css"
+import { Link } from "react-router-dom"
 const useStyles = makeStyles((theme) => ({
     modal: {
         display: "flex",
@@ -74,7 +75,8 @@ const Login = (props) => {
                 style={{
                     width: "30%",
                     backgroundColor: "white",
-                    padding: "80px",
+                    padding: "50px",
+                    borderRadius: "5px",
                     paddingTop: "30px",
                     display: "flex",
                     flexDirection: "column",
@@ -136,6 +138,17 @@ const Login = (props) => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                {hasAccount ? (
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "flex-end",
+                        }}
+                    >
+                        <Link to="/forgotPassword">Forgot Password</Link>
+                    </div>
+                ) : null}
                 {hasAccount ? null : (
                     <TextField
                         type="password"

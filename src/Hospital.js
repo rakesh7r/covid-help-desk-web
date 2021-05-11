@@ -16,10 +16,24 @@ function Hospital(props) {
             >
                 <div className="flex-row hospital-card-title-cont">
                     <h2>{hospital.name}</h2>
-                    {hospital.isVaccinationCenter || hospital.isPHC ? (
-                        <strong className="vaccination-center-text">
-                            Vaccination Center
-                        </strong>
+                    {hospital.isVaccinationCenter ||
+                    hospital.isPHC ||
+                    hospital.isPrivate ? (
+                        <div
+                            className="flex-column"
+                            style={{ alignItems: "center" }}
+                        >
+                            {hospital.isVaccinationCenter || hospital.isPHC ? (
+                                <strong className="vaccination-center-text">
+                                    Vaccination Center
+                                </strong>
+                            ) : null}
+                            {hospital.isPrivate ? (
+                                <strong className="error-text">
+                                    Private hospital
+                                </strong>
+                            ) : null}
+                        </div>
                     ) : null}
                 </div>
                 <p>
@@ -111,7 +125,7 @@ function Hospital(props) {
                                             width: "30px",
                                             height: "30px",
                                         }}
-                                    />{" "}
+                                    />
                                     <h2>Vaccine Information : </h2>
                                 </div>
                                 <p>Covishield : {hospital.covishield} Doses</p>

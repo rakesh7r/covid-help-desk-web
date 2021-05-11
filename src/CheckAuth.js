@@ -51,7 +51,7 @@ const CheckAuth = () => {
         }
         clearErrors()
         const dt = new Date().toJSON().slice(0, 10)
-        const date = new Date().toJSON().slice(0, 10).replaceAll("-", "")
+        // const date = new Date().toJSON().slice(0, 10).replaceAll("-", "")
         fire.auth()
             .createUserWithEmailAndPassword(email, password)
             .then((user) => {

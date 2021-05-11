@@ -10,13 +10,12 @@
 .hospital-main {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 7px;
     padding-right: 20px;
 }
-.hospital-editdata {
-    width: 150px;
-    height: 40px;
+.hospital-intermediate {
+    margin-right: 7vw;
 }
 .hospital-show-cont,
 .hospital-edit-cont {
@@ -53,4 +52,8 @@
 }
 .hospital-details:hover {
     box-shadow: 1px 1px 1px #ccc;
+}
+.hospital-panel-account-settings {
+    margin-right: 5vw;
+    width: 50vw;
 }

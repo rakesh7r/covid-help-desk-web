@@ -20,3 +20,18 @@ code {
     display: flex;
     flex-direction: column;
 }
+.margin-b-10 {
+    margin-bottom: 10px;
+}
+.margin-b-20 {
+    margin-bottom: 20px;
+}
+.margin-b-30 {
+    margin-bottom: 30px;
+}
+.error-text {
+    color: red;
+}
+.width-100 {
+    width: 100%;
+}

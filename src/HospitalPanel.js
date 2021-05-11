@@ -1,28 +1,21 @@
-import {
-    Button,
-    Checkbox,
-    FormControlLabel,
-    TextField,
-} from "@material-ui/core"
+import { Button } from "@material-ui/core"
 import React, { useEffect, useState } from "react"
 import fire from "./Config/fire"
 import "./HospitalPanel.css"
 import firebase from "firebase"
-import HospitalDashBoard from "./HospitalDashBoard"
-import HotelIcon from "@material-ui/icons/Hotel"
-import OxygenLogo from "./OxygenLogo"
-import Districts from "./Distircts"
-import MandalSelector from "./Mandals/MandalSelector"
-
+import EditData from "./Hospital Panel Containers/EditData"
+import HospitalPanelShowData from "./HospitalPanelShowData"
+import HospitalSideBar from "./HospitalSideBar"
+import EditAccountSettings from "./EditAccountSettings"
 function HospitalPanel(props) {
     // const classes = useStyles()
     const { user } = props
     const [hospital, setHospital] = useState("")
     const [edit, setEdit] = useState(false)
+    const [editSettings, setEditSettings] = useState(false)
     const [hospitalName, setHospitalName] = useState("")
     const [mandal, setMandal] = useState("")
     const [district, setDistrict] = useState("")
-
     const [availableOxygen, setAvailableOxygen] = useState(0)
     const [oxygenLastsfor, setOxygenLastsfor] = useState(0)
     const [availbleBeds, setAvailbleBeds] = useState(0)
@@ -36,7 +29,6 @@ function HospitalPanel(props) {
     const [covaxin, setCovaxin] = useState(0)
     const [covishield, setCovishield] = useState(0)
     const [remedesivir, setRemedesivir] = useState(0)
-
     const [isVaccinationCenter, setIsVaccinationCenter] = useState(false)
     const [isPHC, setIsPHC] = useState(false)
     const [isPrivate, setIsPrivate] = useState(false)
@@ -160,307 +152,67 @@ function HospitalPanel(props) {
                 </Button>
             </div>
             <div className="hospital-main">
-                {edit ? (
-                    <div className="hospital-edit-cont">
-                        <center style={{ marginBottom: "15px" }}>
-                            <h1>Edit data</h1>
-                        </center>
-                        <TextField
-                            style={{ marginBottom: "15px" }}
-                            value={hospitalName}
-                            onChange={(e) => setHospitalName(e.target.value)}
-                            className="hospital-edit-text"
-                            id="outlined-basic"
-                            label="Hospital Name"
-                            variant="outlined"
-                        />
-                        {/* districts drop down */}
-                        <div style={{ width: "100%" }}>
-                            <Districts
+                <div className="hospital-intermediate">
+                    {edit || editSettings ? (
+                        edit ? (
+                            <EditData
+                                hospitalName={hospitalName}
+                                mandal={mandal}
                                 district={district}
+                                availableOxygen={availableOxygen}
+                                oxygenLastsfor={oxygenLastsfor}
+                                availbleBeds={availbleBeds}
+                                totalBeds={totalBeds}
+                                ventilators={ventilators}
+                                totalPatients={totalPatients}
+                                deathsToday={deathsToday}
+                                discharged={discharged}
+                                recovered={recovered}
+                                positive={positive}
+                                covaxin={covaxin}
+                                covishield={covishield}
+                                remedesivir={remedesivir}
+                                isVaccinationCenter={isVaccinationCenter}
+                                isPHC={isPHC}
+                                isPrivate={isPrivate}
+                                setHospitalName={setHospitalName}
+                                setMandal={setMandal}
                                 setDistrict={setDistrict}
+                                setAvailableOxygen={setAvailableOxygen}
+                                setOxygenLastsfor={setOxygenLastsfor}
+                                setAvailbleBeds={setAvailbleBeds}
+                                setTotalBeds={setTotalBeds}
+                                setVentilators={setVentilators}
+                                setTotalPatients={setTotalPatients}
+                                setDeathsToday={setDeathsToday}
+                                setDischarged={setDischarged}
+                                setRecovered={setRecovered}
+                                setPositive={setPositive}
+                                setCovaxin={setCovaxin}
+                                setCovishield={setCovishield}
+                                setRemedesivir={setRemedesivir}
+                                setIsVaccinationCenter={setIsVaccinationCenter}
+                                setIsPHC={setIsPHC}
+                                setIsPrivate={setIsPrivate}
+                                hospital={hospital}
+                                handleSave={handleSave}
                             />
-                            {district ? (
-                                <MandalSelector
-                                    district={district}
-                                    mandal={mandal}
-                                    setMandal={setMandal}
-                                />
-                            ) : null}
-                        </div>
-
-                        <TextField
-                            style={{ marginBottom: "15px" }}
-                            value={availableOxygen}
-                            onChange={(e) => setAvailableOxygen(e.target.value)}
-                            className="hospital-edit-text"
-                            id="outlined-basic"
-                            label="Available Oxygen(in ltrs)"
-                            variant="outlined"
-                        />
-                        <TextField
-                            style={{ marginBottom: "15px" }}
-                            value={oxygenLastsfor}
-                            onChange={(e) => setOxygenLastsfor(e.target.value)}
-                            className="hospital-edit-text"
-                            id="outlined-basic"
-                            label="Oxygen might last for(days)"
-                            variant="outlined"
-                        />
-                        <TextField
-                            style={{ marginBottom: "15px" }}
-                            value={availbleBeds}
-                            onChange={(e) => setAvailbleBeds(e.target.value)}
-                            className="hospital-edit-text"
-                            id="outlined-basic"
-                            label="Available Beds"
-                            variant="outlined"
-                        />
-                        <TextField
-                            style={{ marginBottom: "15px" }}
-                            value={totalBeds}
-                            onChange={(e) => setTotalBeds(e.target.value)}
-                            className="hospital-edit-text"
-                            id="outlined-basic"
-                            label="Total Beds"
-                            variant="outlined"
-                        />
-                        <TextField
-                            style={{ marginBottom: "15px" }}
-                            value={ventilators}
-                            onChange={(e) => setVentilators(e.target.value)}
-                            className="hospital-edit-text"
-                            id="outlined-basic"
-                            label="Available Ventilators"
-                            variant="outlined"
-                        />
-                        <TextField
-                            style={{ marginBottom: "15px" }}
-                            value={totalPatients}
-                            onChange={(e) => setTotalPatients(e.target.value)}
-                            className="hospital-edit-text"
-                            id="outlined-basic"
-                            label="Total Patients in hospital"
-                            variant="outlined"
-                        />
-                        <span style={{ marginBottom: "15px" }}>
-                            On : {hospital.date}
-                        </span>
-                        <TextField
-                            style={{ marginBottom: "15px" }}
-                            value={deathsToday}
-                            onChange={(e) => setDeathsToday(e.target.value)}
-                            className="hospital-edit-text"
-                            id="outlined-basic"
-                            label="Deaths Today"
-                            variant="outlined"
-                        />
-                        <TextField
-                            style={{ marginBottom: "15px" }}
-                            value={discharged}
-                            onChange={(e) => setDischarged(e.target.value)}
-                            className="hospital-edit-text"
-                            id="outlined-basic"
-                            label="Patients Discharged Today"
-                            variant="outlined"
-                        />
-                        <TextField
-                            style={{ marginBottom: "15px" }}
-                            value={recovered}
-                            onChange={(e) => setRecovered(e.target.value)}
-                            className="hospital-edit-text"
-                            id="outlined-basic"
-                            label="Patients Recovered today"
-                            variant="outlined"
-                        />
-                        <TextField
-                            style={{ marginBottom: "15px" }}
-                            value={positive}
-                            onChange={(e) => setPositive(e.target.value)}
-                            className="hospital-edit-text"
-                            id="outlined-basic"
-                            label="Covid-19 Patients admitted today"
-                            variant="outlined"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    checked={isPrivate}
-                                    onChange={() => {
-                                        setIsPrivate((prevState) => !prevState)
-                                    }}
-                                />
-                            }
-                            label="Is This a Private hospital?"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    checked={isVaccinationCenter}
-                                    onChange={() => {
-                                        setIsVaccinationCenter(
-                                            (prevState) => !prevState
-                                        )
-                                    }}
-                                />
-                            }
-                            label="Is This a Vaccination Centre?"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    checked={isPHC}
-                                    onChange={() => {
-                                        setIsPHC((prevState) => !prevState)
-                                    }}
-                                />
-                            }
-                            label="Is This a Primary Health Care Centre?"
-                        />
-                        {isPHC || isVaccinationCenter ? (
-                            <div
-                                className="hospital-vaccination-details-cont"
-                                style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                }}
-                            >
-                                <TextField
-                                    style={{ marginBottom: "15px" }}
-                                    value={covaxin}
-                                    onChange={(e) => setCovaxin(e.target.value)}
-                                    className="hospital-edit-text"
-                                    id="outlined-basic"
-                                    label="Available Covaxin doses(Qty)"
-                                    variant="outlined"
-                                />
-                                <TextField
-                                    style={{ marginBottom: "15px" }}
-                                    value={covishield}
-                                    onChange={(e) =>
-                                        setCovishield(e.target.value)
-                                    }
-                                    className="hospital-edit-text"
-                                    id="outlined-basic"
-                                    label="Available Covishield doses(Qty)"
-                                    variant="outlined"
-                                />
-                                <TextField
-                                    style={{ marginBottom: "15px" }}
-                                    value={remedesivir}
-                                    onChange={(e) =>
-                                        setRemedesivir(e.target.value)
-                                    }
-                                    className="hospital-edit-text"
-                                    id="outlined-basic"
-                                    label="Available Remdesivir Doses(Qty)"
-                                    variant="outlined"
-                                />
+                        ) : editSettings ? (
+                            <div className="hospital-panel-account-settings">
+                                <EditAccountSettings user={user} />
                             </div>
-                        ) : null}
-
-                        <Button
-                            variant="contained"
-                            style={{
-                                backgroundColor: "#8E44AD",
-                                color: " white",
-                                marginBottom: "30px",
-                            }}
-                            onClick={() => {
-                                handleSave()
-                            }}
-                        >
-                            Save
-                        </Button>
-                    </div>
-                ) : hospital ? (
-                    <div className="hospital-show-cont">
-                        <div className="hospital-details">
-                            <div
-                                // className="hospital-panel-cont"
-                                style={{ marginLeft: "20px" }}
-                            >
-                                <h1 className="hospital-title">
-                                    {hospital.name}
-                                </h1>
-                                <p className="hospital-area">
-                                    Area : {hospital.mandal || hospital.area}
-                                </p>
-                                <p className="hospital-district">
-                                    District : {hospital.district}
-                                </p>
-                            </div>
-                        </div>
-                        <br />
-                        <div className="hospital-panel-cont">
-                            <h2>
-                                <OxygenLogo /> Oxygen
-                            </h2>
-                            <p>
-                                Available(in ltrs) : {hospital.oxygen.Available}
-                            </p>
-                            <p>
-                                might last for {hospital.oxygen.lastsFor} days
-                            </p>
-                        </div>
-                        <br />
-                        <div className="hospital-panel-cont">
-                            <h2>
-                                <HotelIcon /> Covid-19 Beds
-                            </h2>
-                            <p>Available Beds: {hospital.beds.available}</p>
-                            <p>Total Beds : {hospital.beds.total}</p>
-                        </div>
-                        <br />
-                        <div className="hospital-panel-cont">
-                            <h2>
-                                Ventilators Available : {hospital.ventilators}
-                            </h2>
-                        </div>
-                        <br />
-                        <div className="hospital-panel-cont">
-                            <strong>On : {hospital.date}</strong>
-                            <br />
-                            <h3>
-                                Total Patients in Hospital :{" "}
-                                {hospital.totalPatients}
-                            </h3>
-                            <h3> Deaths : {hospital.patients.deaths}</h3>
-                            <h3>discharged : {hospital.patients.discharged}</h3>
-                            <h3>Recovered : {hospital.patients.recovered}</h3>
-                            <h3>
-                                Positive Cases Today :
-                                {hospital.patients.positive}
-                            </h3>
-                        </div>
-                    </div>
-                ) : null}
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "flex-start",
-                    }}
-                >
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        className="hospital-editdata"
-                        style={{
-                            marginTop: "7px",
-                            marginLeft: "70px",
-                            marginBottom: "50px",
-                        }}
-                        onClick={() => {
-                            setEdit(!edit)
-                        }}
-                    >
-                        {edit ? <span>Cancel</span> : <span>Edit Data</span>}
-                    </Button>
-                    {hospital ? (
-                        <HospitalDashBoard hospital={hospital} />
+                        ) : null
+                    ) : hospital ? (
+                        <HospitalPanelShowData hospital={hospital} />
                     ) : null}
                 </div>
+                <HospitalSideBar
+                    edit={edit}
+                    setEdit={setEdit}
+                    editSettings={editSettings}
+                    setEditSettings={setEditSettings}
+                    hospital={hospital}
+                />
             </div>
         </div>
     )

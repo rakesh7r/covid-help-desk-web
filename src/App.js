@@ -1,4 +1,3 @@
-import { makeStyles } from "@material-ui/core"
 import { useEffect, useState } from "react"
 import "./App.css"
 import fire from "./Config/fire"
@@ -6,45 +5,10 @@ import Hospital from "./Hospital"
 import AppDashboard from "./AppDashboard"
 import SelectArea from "./SelectArea"
 
-const useStyles = makeStyles((theme) => ({
-    modal: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    paper: {
-        backgroundColor: theme.palette.background.paper,
-        border: "2px solid #000",
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-    },
-    root: {
-        width: 500,
-        "& > *": {
-            margin: theme.spacing(1),
-        },
-        "& > * + *": {
-            marginTop: theme.spacing(2),
-        },
-    },
-    input: {
-        color: "white",
-        border: "0.5px solid #4498ed",
-        "&::placeholder": {
-            color: "white",
-        },
-        "&::focus": {
-            outline: "none",
-        },
-    },
-}))
-
 function App() {
-    const classes = useStyles()
     const [district, setDistrict] = useState("GHMC")
     const [mandal, setMandal] = useState("")
     const [hospitals, setHospitals] = useState([])
-    const [search, setSearch] = useState("")
     const [searchCovaxin, setSearchCovaxin] = useState(false)
     const [searchCovishield, setSearchCovishield] = useState(false)
     const [searchRemedesivir, setsearchRemedesivir] = useState(false)
@@ -117,6 +81,45 @@ function App() {
                             setHospitals((oldArr) => [...oldArr, doc.data()])
                         })
                     })
+            } else if (filter === "beds") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("district", "==", district)
+                    .where("beds.available", ">", 0)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            } else if (filter === "ventilators") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("district", "==", district)
+                    .where("ventilators", ">", 0)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            } else if (filter === "vaccinations") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("district", "==", district)
+                    .where("isVaccinationCenter", "==", true)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
             }
         } else if (mandal !== "") {
             if (filter.length === 0) {
@@ -171,12 +174,49 @@ function App() {
                             setHospitals((oldArr) => [...oldArr, doc.data()])
                         })
                     })
+            } else if (filter === "beds") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("mandal", "==", mandal)
+                    .where("beds.available", ">", 0)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            } else if (filter === "ventilators") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("mandal", "==", mandal)
+                    .where("ventilators", ">", 0)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            } else if (filter === "vaccinations") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("mandal", "==", mandal)
+                    .where("isVaccinationCenter", "==", true)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
             }
         }
     }, [district, mandal, filter])
-    const handleSearch = (e) => {
-        console.log(e.target.value)
-    }
+
     return (
         <div className="App">
             <div className="app-header">

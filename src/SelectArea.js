@@ -2,18 +2,7 @@ import React from "react"
 import "./SelectArea.css"
 import Distircts from "./Distircts"
 import MandalSelector from "./Mandals/MandalSelector"
-import {
-    Button,
-    Checkbox,
-    FormControl,
-    FormControlLabel,
-    FormLabel,
-    InputLabel,
-    MenuItem,
-    Radio,
-    RadioGroup,
-    Select,
-} from "@material-ui/core"
+import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core"
 function SelectArea(props) {
     const { mandal, setMandal, district, setDistrict, filter, setFilter } =
         props
@@ -75,8 +64,8 @@ function SelectArea(props) {
                 <Select
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
-                    value={props.filter}
-                    onChange={(e) => props.setFilter(e.target.value)}
+                    value={filter}
+                    onChange={(e) => setFilter(e.target.value)}
                     style={{
                         marginBottom: "15px",
                     }}
