@@ -8,7 +8,7 @@ function HospitalDashBoard(props) {
     const [deaths, setDeaths] = useState(0)
 
     useEffect(() => {
-        hospital.daytoday.map((id) => {
+        hospital.daytoday.forEach((id) => {
             setRecovered(0)
             setDischarged(0)
             setDeaths(0)
@@ -17,17 +17,20 @@ function HospitalDashBoard(props) {
                 .doc(id)
                 .get()
                 .then((doc) => {
-                    setRecovered(
-                        (prevState) =>
-                            prevState + parseInt(doc.data().recovered)
-                    )
-                    setDischarged(
-                        (prevState) =>
-                            prevState + parseInt(doc.data().discharged)
-                    )
-                    setDeaths(
-                        (prevState) => prevState + parseInt(doc.data().deaths)
-                    )
+                    if (doc.exists) {
+                        setRecovered(
+                            (prevState) =>
+                                prevState + parseInt(doc.data().recovered)
+                        )
+                        setDischarged(
+                            (prevState) =>
+                                prevState + parseInt(doc.data().discharged)
+                        )
+                        setDeaths(
+                            (prevState) =>
+                                prevState + parseInt(doc.data().deaths)
+                        )
+                    }
                 })
         })
     }, [hospital])

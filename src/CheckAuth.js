@@ -71,9 +71,7 @@ const CheckAuth = () => {
                             positive: 0,
                             recovered: 0,
                         },
-                        daytoday: firebase.firestore.FieldValue.arrayUnion(
-                            user.email + date
-                        ),
+                        daytoday: [],
                         isVaccinationCenter: false,
                         isPHC: false,
                         isPrivate: false,
