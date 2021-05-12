@@ -9,8 +9,8 @@ function Routing() {
         <div>
             <Router>
                 <Switch>
-                    <Route path="/" exact component={App} />
                     <Route path="/hospitalPanel" exact component={CheckAuth} />
+                    <Route path="/" default component={App} />
                     <Route
                         path="/forgotPassword"
                         exact

@@ -16,6 +16,7 @@
     position: sticky;
     top: 0;
     z-index: 10;
+    width: 100vw;
 }
 .app-header-search {
     width: 220px;
@@ -80,6 +81,7 @@
     color: white;
     background-color: rgb(56, 46, 46);
     padding: 25px;
+    width: 96vw;
 }
 .app-reachus {
     text-decoration: none;
