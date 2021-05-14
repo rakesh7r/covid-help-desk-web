@@ -1,5 +1,6 @@
 import React from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Analytics from "./Analytics/Analytics"
 import App from "./App"
 import CheckAuth from "./CheckAuth"
 import ForgotPassword from "./ForgotPassword"
@@ -15,7 +16,8 @@ function Routing() {
                         exact
                         component={ForgotPassword}
                     />
-                    <Route path="/" component={App} />
+                    <Route path="/analytics" exact component={Analytics} />
+                    <Route path="/" default component={App} />
                 </Switch>
             </Router>
         </div>

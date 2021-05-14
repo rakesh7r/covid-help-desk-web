@@ -96,7 +96,9 @@ function Hospital(props) {
                         <h2>
                             <OxygenLogo /> Oxygen{" "}
                         </h2>
-                        <p>Available(in ltrs): {hospital.oxygen.Available}</p>
+                        <p>
+                            Available(in cylinders): {hospital.oxygen.Available}
+                        </p>
                         <p>might last for {hospital.oxygen.lastsFor} days</p>
                         <br />
                         <h2>

@@ -7,6 +7,7 @@ import EditData from "./Hospital Panel Containers/EditData"
 import HospitalPanelShowData from "./HospitalPanelShowData"
 import HospitalSideBar from "./HospitalSideBar"
 import EditAccountSettings from "./EditAccountSettings"
+import { Link } from "react-router-dom"
 function HospitalPanel(props) {
     // const classes = useStyles()
     const { user } = props
@@ -137,19 +138,20 @@ function HospitalPanel(props) {
     return (
         <div className="hospital-outer-cont">
             <div className="hospital-header">
-                <h1>Hospital Panel</h1>
-                <Button
-                    variant="contained"
-                    type="button"
-                    onClick={props.handleLogout}
-                    className="hospital-signout-btn"
+                <p className="hospital-header-title">Hospital Panel</p>
+                <Link
+                    to="/"
                     style={{
-                        backgroundColor: "transparent",
+                        textDecoration: "none",
                         color: "white",
+                        width: "fitContent",
                     }}
                 >
-                    sign out
-                </Button>
+                    {" "}
+                    <p className="hospital-header-link-to-home">
+                        Go To Help Desk
+                    </p>
+                </Link>
             </div>
             <div className="hospital-main">
                 <div className="hospital-intermediate">

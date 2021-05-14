@@ -13,7 +13,6 @@ function EditData(props) {
         mandal,
         district,
         availableOxygen,
-        oxygenLastsfor,
         availbleBeds,
         totalBeds,
         ventilators,
@@ -32,7 +31,6 @@ function EditData(props) {
         setMandal,
         setDistrict,
         setAvailableOxygen,
-        setOxygenLastsfor,
         setAvailbleBeds,
         setTotalBeds,
         setVentilators,
@@ -83,7 +81,7 @@ function EditData(props) {
                     onChange={(e) => setAvailableOxygen(e.target.value)}
                     className="hospital-edit-text"
                     id="outlined-basic"
-                    label="Available Oxygen(in ltrs)"
+                    label="Available Oxygen(in cylinders)"
                     variant="outlined"
                     type="number"
                 />

@@ -7,26 +7,21 @@ function HospitalPanelShowData(props) {
     return (
         <div>
             <div className="hospital-show-cont">
-                <div className="hospital-details">
-                    <div
-                        // className="hospital-panel-cont"
-                        style={{ marginLeft: "20px" }}
-                    >
-                        <h1 className="hospital-title">{hospital.name}</h1>
-                        <p className="hospital-area">
-                            Area : {hospital.mandal || hospital.area}
-                        </p>
-                        <p className="hospital-district">
-                            District : {hospital.district}
-                        </p>
-                    </div>
+                <div className="hospital-panel-cont">
+                    <h2 className="hospital-title">{hospital.name}</h2>
+                    <p className="hospital-area">
+                        Area : {hospital.mandal || hospital.area}
+                    </p>
+                    <p className="hospital-district">
+                        District : {hospital.district}
+                    </p>
                 </div>
                 <br />
                 <div className="hospital-panel-cont">
                     <h2>
                         <OxygenLogo /> Oxygen
                     </h2>
-                    <p>Available(in ltrs) : {hospital.oxygen.Available}</p>
+                    <p>Available(in cylinders) : {hospital.oxygen.Available}</p>
                 </div>
                 <br />
                 <div className="hospital-panel-cont">

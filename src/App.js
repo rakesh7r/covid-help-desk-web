@@ -4,6 +4,8 @@ import fire from "./Config/fire"
 import Hospital from "./Hospital"
 import AppDashboard from "./AppDashboard"
 import SelectArea from "./SelectArea"
+import ShowChartIcon from "@material-ui/icons/ShowChart"
+import { Link } from "react-router-dom"
 
 function App() {
     const [district, setDistrict] = useState("GHMC")
@@ -272,7 +274,16 @@ function App() {
     return (
         <div className="App">
             <div className="app-header">
-                <h1>Covid-19 Help Desk</h1>
+                <Link
+                    to="/"
+                    style={{
+                        textDecoration: "none",
+                        color: "white",
+                        width: "fitContent",
+                    }}
+                >
+                    <p>Covid-19 Help Desk</p>
+                </Link>
                 {/* <input
                     type="text"
                     placeholder="Enter Hospital Name"
@@ -284,6 +295,14 @@ function App() {
                         handleSearch(e)
                     }}
                 /> */}
+                {/* <Link
+                    to="/analytics"
+                    style={{ textDecoration: "none", color: "white" }}
+                >
+                    <h2>
+                        Analytics <ShowChartIcon />
+                    </h2>
+                </Link> */}
             </div>
 
             <div className="app-main">

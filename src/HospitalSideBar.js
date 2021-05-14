@@ -7,6 +7,11 @@ function HospitalSideBar(props) {
     const { edit, setEdit, editSettings, setEditSettings, hospital } = props
     return (
         <div>
+            {hospital ? (
+                <div style={{ marginTop: "20px" }}>
+                    <HospitalDashBoard hospital={hospital} />
+                </div>
+            ) : null}
             <div
                 className="hospital-panel-sidebar"
                 style={{
@@ -48,7 +53,16 @@ function HospitalSideBar(props) {
                         <span>Account Settings</span>
                     )}
                 </Button>
-                {hospital ? <HospitalDashBoard hospital={hospital} /> : null}
+                <Button
+                    variant="contained"
+                    type="button"
+                    color="secondary"
+                    style={{ marginBottom: "20px", width: "100%" }}
+                    onClick={props.handleLogout}
+                    className="hospital-signout-btn"
+                >
+                    sign out
+                </Button>
             </div>
         </div>
     )

@@ -4,6 +4,7 @@
     z-index: 9;
     background-color: white;
     border-radius: 4px;
+    /* box-shadow: 6px 6px 20px #ccc; */
 }
 .app-dash-search {
     display: flex;

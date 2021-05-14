@@ -90,7 +90,7 @@ const CheckAuth = () => {
                 fire.firestore()
                     .collection("hopital-names")
                     .doc("names")
-                    .set({
+                    .update({
                         names: firebase.firestore.FieldValue.arrayUnion(
                             hospitalName
                         ),
