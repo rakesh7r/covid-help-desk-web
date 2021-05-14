@@ -10,12 +10,12 @@ function Routing() {
             <Router>
                 <Switch>
                     <Route path="/hospitalPanel" exact component={CheckAuth} />
-                    <Route path="/" default component={App} />
                     <Route
                         path="/forgotPassword"
                         exact
                         component={ForgotPassword}
                     />
+                    <Route path="/" component={App} />
                 </Switch>
             </Router>
         </div>
