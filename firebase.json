@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "covidhelpdesk-ts",
     "public": "build",
     "ignore": [
       "firebase.json",

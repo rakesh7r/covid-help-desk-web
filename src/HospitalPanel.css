@@ -1,5 +1,6 @@
 .hospital-outer-cont {
     background-color: white;
+    min-height: 100vh;
 }
 .hospital-header {
     display: flex;

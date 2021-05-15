@@ -3,6 +3,7 @@ import fire from "./Config/fire"
 import Login from "./Login"
 import HospitalPanel from "./HospitalPanel"
 import firebase from "firebase"
+import Loading from "./Loading"
 
 const CheckAuth = () => {
     const [user, setUser] = useState(null)
@@ -15,6 +16,7 @@ const CheckAuth = () => {
     const [hospitalDistrict, setHospitalDistrict] = useState("")
     const [verifyPassword, setVerifyPassword] = useState("")
     const [hasAccount, setHasAccount] = useState(true)
+    const [loading, setLoading] = useState(true)
 
     const handleLogin = () => {
         clearErrors()
@@ -116,7 +118,11 @@ const CheckAuth = () => {
             if (user) {
                 clearInputs()
                 setUser(user)
-            } else setUser(null)
+                setLoading(false)
+            } else {
+                setLoading(false)
+                setUser(null)
+            }
         })
         return () => {
             unsubscribe()
@@ -136,7 +142,9 @@ const CheckAuth = () => {
     }
     return (
         <div>
-            {!user ? (
+            {loading ? (
+                <Loading />
+            ) : !user ? (
                 <Login
                     email={email}
                     password={password}

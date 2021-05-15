@@ -1,4 +1,3 @@
-import { Button } from "@material-ui/core"
 import React, { useEffect, useState } from "react"
 import fire from "./Config/fire"
 import "./HospitalPanel.css"
@@ -8,6 +7,7 @@ import HospitalPanelShowData from "./HospitalPanelShowData"
 import HospitalSideBar from "./HospitalSideBar"
 import EditAccountSettings from "./EditAccountSettings"
 import { Link } from "react-router-dom"
+import Loading from "./Loading"
 function HospitalPanel(props) {
     // const classes = useStyles()
     const { user } = props
@@ -206,7 +206,9 @@ function HospitalPanel(props) {
                         ) : null
                     ) : hospital ? (
                         <HospitalPanelShowData hospital={hospital} />
-                    ) : null}
+                    ) : (
+                        <Loading />
+                    )}
                 </div>
                 <HospitalSideBar
                     edit={edit}
