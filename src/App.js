@@ -4,8 +4,8 @@ import fire from "./Config/fire"
 import Hospital from "./Hospital"
 import AppDashboard from "./AppDashboard"
 import SelectArea from "./SelectArea"
-import ShowChartIcon from "@material-ui/icons/ShowChart"
 import { Link } from "react-router-dom"
+import Loading from "./Loading"
 
 function App() {
     const [district, setDistrict] = useState("GHMC")
@@ -313,7 +313,8 @@ function App() {
                         ))
                     ) : loading ? (
                         <center>
-                            <h2 className="app-notfound">Loading...</h2>
+                            {/* <h2 className="app-notfound">Loading...</h2> */}
+                            <Loading />
                         </center>
                     ) : found ? null : (
                         <center>
