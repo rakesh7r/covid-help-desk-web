@@ -5,7 +5,7 @@ import {
     Modal,
     TextField,
 } from "@material-ui/core"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import fire from "./Config/fire"
 import "./ForgotPassword.css"
@@ -28,13 +28,6 @@ function ForgotPassword() {
     const [open, setOpen] = React.useState(true)
     const [email, setEmail] = useState("")
     const [error, setError] = useState("")
-    const [user, setUser] = useState(null)
-    const handleOpen = () => {
-        setOpen(true)
-    }
-    useEffect(() => {
-        setUser(fire.auth().currentUser)
-    }, [])
     const handleClose = () => {
         setOpen(false)
     }

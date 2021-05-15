@@ -33,6 +33,7 @@ const CheckAuth = () => {
                         setPasswordError(err.message)
                         break
                     default:
+                        setEmailError(err.message)
                         break
                 }
             })
@@ -108,6 +109,7 @@ const CheckAuth = () => {
                         setPasswordError(err.message)
                         break
                     default:
+                        setEmailError(err.message)
                         break
                 }
             })

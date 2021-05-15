@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import OxygenLogo from "./OxygenLogo"
 import HotelIcon from "@material-ui/icons/Hotel"
 import "./Hospital.css"
-import Injection from "./Icons/Injection"
 import { Avatar } from "@material-ui/core"
 function Hospital(props) {
     const { hospital } = props
