@@ -58,7 +58,9 @@ function HospitalSideBar(props) {
                     type="button"
                     color="secondary"
                     style={{ marginBottom: "20px", width: "100%" }}
-                    onClick={props.handleLogout}
+                    onClick={() => {
+                        fire.auth().signOut()
+                    }}
                     className="hospital-signout-btn"
                 >
                     sign out

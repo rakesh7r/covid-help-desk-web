@@ -95,6 +95,7 @@ const Login = (props) => {
                     <TextField
                         id="outlined-basic"
                         label="Hospital Name"
+                        type="text"
                         variant="outlined"
                         style={{
                             marginBottom: "15px",
@@ -120,6 +121,7 @@ const Login = (props) => {
                 <TextField
                     id="outlined-basic"
                     label="Email"
+                    type="email"
                     variant="outlined"
                     style={{
                         marginBottom: "15px",
