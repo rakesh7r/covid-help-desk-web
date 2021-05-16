@@ -1,0 +1,29 @@
+.admin-main {
+    width: 50vw;
+    min-height: 100vh;
+    border: 0.5px solid #ccc;
+    box-shadow: 2px 2px 2px #ccc;
+    margin-left: 17vw;
+    margin-top: 2vh;
+    padding: 1.7rem;
+    margin-bottom: 5px;
+}
+.admin-mini-cont {
+    padding: 1vw;
+}
+.heading-underline {
+    padding-bottom: 5px;
+}
+.underline {
+    width: 100%;
+    border-bottom: 0.5px solid #ccc;
+}
+.admin-main-outer {
+    display: flex;
+    justify-content: flex-end;
+}
+.admin-sidebar {
+    padding: 1.7rem;
+    width: 20vw;
+    margin-left: 3vw;
+}

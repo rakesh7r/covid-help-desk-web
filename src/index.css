@@ -56,3 +56,15 @@ code {
     background: #555;
     width: 25px;
 }
+.heading-big {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+.heading-medium {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.heading-small {
+    font-weight: 400;
+    font-size: 1rem;
+}

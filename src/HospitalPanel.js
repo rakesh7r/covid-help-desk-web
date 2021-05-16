@@ -8,6 +8,7 @@ import HospitalSideBar from "./HospitalSideBar"
 import EditAccountSettings from "./EditAccountSettings"
 import { Link } from "react-router-dom"
 import Loading from "./Loading"
+import ErrorPage from "./error/ErrorPage"
 function HospitalPanel(props) {
     // const classes = useStyles()
     const { user } = props
@@ -33,33 +34,47 @@ function HospitalPanel(props) {
     const [isVaccinationCenter, setIsVaccinationCenter] = useState(false)
     const [isPHC, setIsPHC] = useState(false)
     const [isPrivate, setIsPrivate] = useState(false)
+    const [errorPage, setErrorPage] = useState(false)
 
     useEffect(() => {
+        document.title = "Hospital Panel"
         fire.firestore()
             .collection("hospitals")
             .doc(user.email)
-            .onSnapshot((doc) => {
-                if (doc.data()) {
-                    setHospital(doc.data())
-                    console.log(doc.data())
-                    setHospitalName(doc.data().name)
-                    setMandal(doc.data().area || doc.data().mandal)
-                    setDistrict(doc.data().district)
-                    setAvailableOxygen(doc.data().oxygen.Available)
-                    setOxygenLastsfor(doc.data().oxygen.lastsFor)
-                    setAvailbleBeds(doc.data().beds.available)
-                    setTotalBeds(doc.data().beds.total)
-                    setVentilators(doc.data().ventilators)
-                    setTotalPatients(doc.data().totalPatients)
-                    setDeathsToday(doc.data().patients.deaths)
-                    setDischarged(doc.data().patients.discharged)
-                    setRecovered(doc.data().patients.recovered)
-                    setPositive(doc.data().patients.positive)
-                    setIsVaccinationCenter(doc.data().isVaccinationCenter)
-                    setCovaxin(doc.data().covaxin)
-                    setCovishield(doc.data().covishield)
-                    setRemedesivir(doc.data().remedesivir)
-                    setIsPHC(doc.data().isPHC)
+            .get()
+            .then((u) => {
+                if (u.exists) {
+                    fire.firestore()
+                        .collection("hospitals")
+                        .doc(user.email)
+                        .onSnapshot((doc) => {
+                            if (doc.data()) {
+                                setHospital(doc.data())
+                                console.log(doc.data())
+                                setHospitalName(doc.data().name)
+                                setMandal(doc.data().area || doc.data().mandal)
+                                setDistrict(doc.data().district)
+                                setAvailableOxygen(doc.data().oxygen.Available)
+                                setOxygenLastsfor(doc.data().oxygen.lastsFor)
+                                setAvailbleBeds(doc.data().beds.available)
+                                setTotalBeds(doc.data().beds.total)
+                                setVentilators(doc.data().ventilators)
+                                setTotalPatients(doc.data().totalPatients)
+                                setDeathsToday(doc.data().patients.deaths)
+                                setDischarged(doc.data().patients.discharged)
+                                setRecovered(doc.data().patients.recovered)
+                                setPositive(doc.data().patients.positive)
+                                setIsVaccinationCenter(
+                                    doc.data().isVaccinationCenter
+                                )
+                                setCovaxin(doc.data().covaxin)
+                                setCovishield(doc.data().covishield)
+                                setRemedesivir(doc.data().remedesivir)
+                                setIsPHC(doc.data().isPHC)
+                            }
+                        })
+                } else {
+                    setErrorPage(true)
                 }
             })
     }, [])
@@ -137,87 +152,97 @@ function HospitalPanel(props) {
 
     return (
         <div className="hospital-outer-cont">
-            <div className="hospital-header">
-                <p className="hospital-header-title">Hospital Panel</p>
-                <Link
-                    to="/"
-                    style={{
-                        textDecoration: "none",
-                        color: "white",
-                        width: "fitContent",
-                    }}
-                >
-                    {" "}
-                    <p className="hospital-header-link-to-home">
-                        Go To Help Desk
-                    </p>
-                </Link>
-            </div>
-            <div className="hospital-main">
-                <div className="hospital-intermediate">
-                    {edit || editSettings ? (
-                        edit ? (
-                            <EditData
-                                hospitalName={hospitalName}
-                                mandal={mandal}
-                                district={district}
-                                availableOxygen={availableOxygen}
-                                oxygenLastsfor={oxygenLastsfor}
-                                availbleBeds={availbleBeds}
-                                totalBeds={totalBeds}
-                                ventilators={ventilators}
-                                totalPatients={totalPatients}
-                                deathsToday={deathsToday}
-                                discharged={discharged}
-                                recovered={recovered}
-                                positive={positive}
-                                covaxin={covaxin}
-                                covishield={covishield}
-                                remedesivir={remedesivir}
-                                isVaccinationCenter={isVaccinationCenter}
-                                isPHC={isPHC}
-                                isPrivate={isPrivate}
-                                setHospitalName={setHospitalName}
-                                setMandal={setMandal}
-                                setDistrict={setDistrict}
-                                setAvailableOxygen={setAvailableOxygen}
-                                setOxygenLastsfor={setOxygenLastsfor}
-                                setAvailbleBeds={setAvailbleBeds}
-                                setTotalBeds={setTotalBeds}
-                                setVentilators={setVentilators}
-                                setTotalPatients={setTotalPatients}
-                                setDeathsToday={setDeathsToday}
-                                setDischarged={setDischarged}
-                                setRecovered={setRecovered}
-                                setPositive={setPositive}
-                                setCovaxin={setCovaxin}
-                                setCovishield={setCovishield}
-                                setRemedesivir={setRemedesivir}
-                                setIsVaccinationCenter={setIsVaccinationCenter}
-                                setIsPHC={setIsPHC}
-                                setIsPrivate={setIsPrivate}
-                                hospital={hospital}
-                                handleSave={handleSave}
-                            />
-                        ) : editSettings ? (
-                            <div className="hospital-panel-account-settings">
-                                <EditAccountSettings user={user} />
-                            </div>
-                        ) : null
-                    ) : hospital ? (
-                        <HospitalPanelShowData hospital={hospital} />
-                    ) : (
-                        <Loading />
-                    )}
+            {errorPage ? (
+                <ErrorPage />
+            ) : (
+                <div>
+                    <div className="hospital-header">
+                        <p className="hospital-header-title">Hospital Panel</p>
+                        <Link
+                            to="/"
+                            style={{
+                                textDecoration: "none",
+                                color: "white",
+                                width: "fitContent",
+                            }}
+                        >
+                            {" "}
+                            <p className="hospital-header-link-to-home">
+                                Go To Help Desk
+                            </p>
+                        </Link>
+                    </div>
+                    <div className="hospital-main">
+                        <div className="hospital-intermediate">
+                            {edit || editSettings ? (
+                                edit ? (
+                                    <EditData
+                                        hospitalName={hospitalName}
+                                        mandal={mandal}
+                                        district={district}
+                                        availableOxygen={availableOxygen}
+                                        oxygenLastsfor={oxygenLastsfor}
+                                        availbleBeds={availbleBeds}
+                                        totalBeds={totalBeds}
+                                        ventilators={ventilators}
+                                        totalPatients={totalPatients}
+                                        deathsToday={deathsToday}
+                                        discharged={discharged}
+                                        recovered={recovered}
+                                        positive={positive}
+                                        covaxin={covaxin}
+                                        covishield={covishield}
+                                        remedesivir={remedesivir}
+                                        isVaccinationCenter={
+                                            isVaccinationCenter
+                                        }
+                                        isPHC={isPHC}
+                                        isPrivate={isPrivate}
+                                        setHospitalName={setHospitalName}
+                                        setMandal={setMandal}
+                                        setDistrict={setDistrict}
+                                        setAvailableOxygen={setAvailableOxygen}
+                                        setOxygenLastsfor={setOxygenLastsfor}
+                                        setAvailbleBeds={setAvailbleBeds}
+                                        setTotalBeds={setTotalBeds}
+                                        setVentilators={setVentilators}
+                                        setTotalPatients={setTotalPatients}
+                                        setDeathsToday={setDeathsToday}
+                                        setDischarged={setDischarged}
+                                        setRecovered={setRecovered}
+                                        setPositive={setPositive}
+                                        setCovaxin={setCovaxin}
+                                        setCovishield={setCovishield}
+                                        setRemedesivir={setRemedesivir}
+                                        setIsVaccinationCenter={
+                                            setIsVaccinationCenter
+                                        }
+                                        setIsPHC={setIsPHC}
+                                        setIsPrivate={setIsPrivate}
+                                        hospital={hospital}
+                                        handleSave={handleSave}
+                                    />
+                                ) : editSettings ? (
+                                    <div className="hospital-panel-account-settings">
+                                        <EditAccountSettings user={user} />
+                                    </div>
+                                ) : null
+                            ) : hospital ? (
+                                <HospitalPanelShowData hospital={hospital} />
+                            ) : (
+                                <Loading />
+                            )}
+                        </div>
+                        <HospitalSideBar
+                            edit={edit}
+                            setEdit={setEdit}
+                            editSettings={editSettings}
+                            setEditSettings={setEditSettings}
+                            hospital={hospital}
+                        />
+                    </div>
                 </div>
-                <HospitalSideBar
-                    edit={edit}
-                    setEdit={setEdit}
-                    editSettings={editSettings}
-                    setEditSettings={setEditSettings}
-                    hospital={hospital}
-                />
-            </div>
+            )}
         </div>
     )
 }
