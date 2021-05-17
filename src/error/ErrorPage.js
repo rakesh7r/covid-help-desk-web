@@ -16,27 +16,10 @@ function ErrorPage() {
                         className="error-gif"
                     />
                 </div>
-                <div style={{ width: "40%" }}>
+                <div style={{ width: "40%" }} className="error-text">
                     <center>
-                        <p
-                            style={{
-                                fontSize: "2rem",
-                                color: "gray",
-                                marginBottom: "10px",
-                            }}
-                        >
-                            Access Denied:(
-                        </p>
-                        <p
-                            style={{
-                                fontSize: "2rem",
-                                color: "gray",
-                                marginBottom: "20px",
-                            }}
-                        >
-                            {" "}
-                            Sign out and try again...
-                        </p>
+                        <p>Access Denied:(</p>
+                        <p> Sign out and try again...</p>
                     </center>
                     <Button
                         variant="contained"

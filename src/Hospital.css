@@ -1,6 +1,7 @@
 .hospital-cont {
     background-color: white;
     box-shadow: 6px 6px 20px #ccc;
+    color: rgb(65, 65, 65);
 }
 .hospital-vac-phc {
     width: 50%;

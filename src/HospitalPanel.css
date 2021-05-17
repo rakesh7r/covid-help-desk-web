@@ -41,6 +41,9 @@
     margin-left: 15vw;
     padding: 20px;
 }
+.hospital-show-cont {
+    color: rgb(45, 45, 45);
+}
 .hospital-signout-btn {
     width: 150px;
 }
