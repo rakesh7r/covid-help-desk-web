@@ -28,5 +28,5 @@ This panel is designed for the admin of this entire web application. An admin is
 2. GPS based hospital listing
 3. Analytics which shows the graph of the Covid-19 cases
 
-* *This application is still under developement 
+ *This application is still under developement 
 
