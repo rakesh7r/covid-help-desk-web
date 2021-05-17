@@ -8,3 +8,17 @@ The information regarding the resources is mainly provided by the hospital manag
 The government can monitor the validity of the information uploaded by the hospitals.
 This would not only help the people but also help the government where and when the resources are being used, which prevents the moving out of such important resources into the black markets.
 
+This application has 3 panels
+### 1.User/Client
+### 2.Hospital panel
+### 3.Admin Panel
+
+## User Panel (https://covidhelpdesk-ts.web.app/)
+This panel is built for end-users, at which user can list all the hospitals which are at the selected location. A user can aslo apply filters based on available beds, vaccines, ventilators and private/government hospital.
+There is a dashboard on this page shows the Covid-19 cases on that particular day.
+
+## Hospital Panel (https://covidhelpdesk-ts.web.app/hospitalpanel)
+This panel is built for hospitals to add/edit information about beds, vaccines, ventilator information and vaccination information in their hospital. Hospital management can also add day-to-day Covid-19 cases details of that hospital.
+
+## Admin panel (https://covidhelpdesk-ts.web.app/adminpanel) 
+This panel is designed for the admin of this entire web application. An admin is a person who can manage all the data in the website. 
