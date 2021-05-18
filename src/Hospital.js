@@ -3,9 +3,17 @@ import OxygenLogo from "./OxygenLogo"
 import HotelIcon from "@material-ui/icons/Hotel"
 import "./Hospital.css"
 import { Avatar } from "@material-ui/core"
+import DoneIcon from "@material-ui/icons/Done"
+import Unavailable from "./Icons/Unavaliable"
+import ClearSharpIcon from "@material-ui/icons/ClearSharp"
 function Hospital(props) {
     const { hospital } = props
     const [show, setShow] = useState(false)
+    const paraStyle = {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+    }
     return (
         <div>
             <div
@@ -31,7 +39,11 @@ function Hospital(props) {
                                 <strong className="error-text">
                                     Private hospital
                                 </strong>
-                            ) : null}
+                            ) : (
+                                <strong className="govt-hospital-text">
+                                    Government Hospital
+                                </strong>
+                            )}
                         </div>
                     ) : null}
                 </div>
@@ -51,39 +63,125 @@ function Hospital(props) {
                                 alignItems: "center",
                             }}
                         >
-                            <span>
+                            <span
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
                                 {<OxygenLogo />}Oxygen :
                                 {hospital.oxygen.Available > 0 ? (
-                                    <span>Available</span>
+                                    <DoneIcon style={{ color: "green" }} />
                                 ) : (
-                                    <span>Unavailable</span>
+                                    <ClearSharpIcon style={{ color: "red" }} />
                                 )}
                             </span>
-                            <p style={{ marginLeft: "5vw" }}>
+                            <p
+                                style={{
+                                    marginLeft: "5vw",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
                                 <HotelIcon /> Covid-19 Beds :
                                 {hospital.beds.available > 0 ? (
-                                    <span>Available</span>
+                                    <DoneIcon style={{ color: "green" }} />
                                 ) : (
-                                    <span>Unavailable</span>
+                                    <ClearSharpIcon style={{ color: "red" }} />
                                 )}
                             </p>
                         </div>
                         {hospital.isPHC || hospital.isVaccinationCenter ? (
                             <div className="hospital-vaccine">
                                 {hospital && hospital.covaxin > 0 ? (
-                                    <p>Covaxin : Available</p>
+                                    <p
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "Center",
+                                        }}
+                                    >
+                                        Covaxin :
+                                        <DoneIcon
+                                            style={{
+                                                color: "green",
+                                            }}
+                                        />
+                                    </p>
                                 ) : (
-                                    <p>Covaxin : Unavailable</p>
+                                    <p
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "Center",
+                                        }}
+                                    >
+                                        Covaxin :{" "}
+                                        <ClearSharpIcon
+                                            style={{ color: "Red" }}
+                                        />
+                                    </p>
                                 )}
                                 {hospital && hospital.covishield > 0 ? (
-                                    <p>Covishield : Available</p>
+                                    <p
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "Center",
+                                        }}
+                                    >
+                                        Covishield :
+                                        <DoneIcon
+                                            style={{
+                                                color: "green",
+                                            }}
+                                        />
+                                    </p>
                                 ) : (
-                                    <p>Covishield : Unavailable</p>
+                                    <p
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        Covishield :{" "}
+                                        <ClearSharpIcon
+                                            style={{ color: "Red" }}
+                                        />
+                                    </p>
                                 )}
                                 {hospital && hospital.remedesivir > 0 ? (
-                                    <p>Remedesivir : Available</p>
+                                    <p
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "Center",
+                                        }}
+                                    >
+                                        Remedesivir :
+                                        <DoneIcon
+                                            style={{
+                                                color: "green",
+                                                fontWeight: 1100,
+                                            }}
+                                        />
+                                    </p>
                                 ) : (
-                                    <p>Remedesivir : Unavailable</p>
+                                    <p
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "Center",
+                                        }}
+                                    >
+                                        Remedesivir :{" "}
+                                        <ClearSharpIcon
+                                            style={{ color: "Red" }}
+                                        />
+                                    </p>
                                 )}
                             </div>
                         ) : null}

@@ -88,9 +88,10 @@
     color: white;
     background-color: rgb(56, 46, 46);
     padding: 25px;
-    width: 96vw;
+    width: 99vw;
 }
 .app-reachus {
     text-decoration: none;
     color: white;
+    margin-right: 3vw;
 }

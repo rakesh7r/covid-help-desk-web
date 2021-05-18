@@ -19,7 +19,7 @@
     margin-top: 5px;
 }
 .vaccination-center-text {
-    color: rgb(0, 131, 0);
+    color: rgb(0, 92, 129);
 }
 .hospital-vac-phc {
     float: right;
@@ -37,4 +37,15 @@
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 20px;
+}
+.govt-hospital-text {
+    color: green;
+}
+.available {
+    color: rgb(22, 133, 22);
+    font-weight: 500;
+}
+.unavailable {
+    color: rgb(236, 104, 104);
+    font-weight: 500;
 }

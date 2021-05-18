@@ -10,7 +10,6 @@ function AppDashboard() {
     const [positives, setPositives] = useState(0)
     const [discharged, setDischarged] = useState(0)
     useEffect(() => {
-        console.clear()
         fire.firestore()
             .collection("dayToDayInfo")
             .onSnapshot((snapshot) => {
@@ -23,7 +22,6 @@ function AppDashboard() {
                         doc.id.slice(-8) ===
                         new Date().toJSON().slice(0, 10).replaceAll("-", "")
                     ) {
-                        console.log(doc.data())
                         setDeaths(
                             (prevState) =>
                                 prevState + parseInt(doc.data().deaths)
@@ -59,7 +57,6 @@ function AppDashboard() {
                         doc.id.slice(-8) ===
                         date.replaceAll("-", "").replaceAll("/", "")
                     ) {
-                        console.log(doc.data())
                         setDeaths(
                             (prevState) =>
                                 prevState + parseInt(doc.data().deaths)
