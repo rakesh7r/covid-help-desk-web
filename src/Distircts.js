@@ -49,6 +49,9 @@ function Distircts(props) {
                     }}
                     label="Select District"
                 >
+                    <MenuItem value="" text="ALL">
+                        All
+                    </MenuItem>
                     <MenuItem value="GHMC">Hyderabad</MenuItem>
                     <MenuItem value="Adilabad">Adilabad</MenuItem>
                     <MenuItem value="Bhadradri Kothagudem">

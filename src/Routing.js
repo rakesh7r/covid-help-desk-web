@@ -6,6 +6,7 @@ import Analytics from "./Analytics/Analytics"
 import App from "./App"
 import CheckAuth from "./CheckAuth"
 import ForgotPassword from "./ForgotPassword"
+import GeoTest from "./Geo/GeoTest"
 
 function Routing() {
     return (
@@ -24,6 +25,7 @@ function Routing() {
                         component={CheckAuthForAdmin}
                     />
                     <Route path="/analytics" exact component={Analytics} />
+                    <Route path="/test" exact component={GeoTest} />
                     <Route path="/" default component={App} />
                 </Switch>
             </Router>

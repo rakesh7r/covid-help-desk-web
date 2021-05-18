@@ -6,6 +6,8 @@ import fire from "../Config/fire"
 import "./AdminPanel.css"
 import ErrorPage from "../error/ErrorPage"
 import Loading from "../Loading"
+import SelectArea from "../SelectArea"
+
 function AdminPanel() {
     const [beds, setBeds] = useState(0)
     const [totalBeds, setTotalBeds] = useState(0)
@@ -24,87 +26,103 @@ function AdminPanel() {
     const [totaldeaths, setTotalDeaths] = useState(0)
     const [errorPage, setErrorPage] = useState(false)
     const [loading, setLoading] = useState(true)
+    const [mandal, setMandal] = useState("")
+    const [district, setDistrict] = useState("")
+    const [filter, setFilter] = useState("")
     useEffect(() => {
         document.title = "Admin Panel"
-        fire.firestore()
-            .collection("adminData")
-            .doc(firebase.auth().currentUser.email)
-            .get()
-            .then((u) => {
-                setLoading(false)
-                if (u.exists) {
-                    fire.firestore()
-                        .collection("hospitals")
-                        .onSnapshot((snapshot) => {
-                            setBeds(0)
-                            setTotalBeds(0)
-                            setOxygen(0)
-                            setVentilators(0)
-                            setRemedesivir(0)
-                            setCovaxin(0)
-                            setCovishield(0)
-                            setPositive(0)
-                            setRecovered(0)
-                            setDischarged(0)
-                            setDeaths(0)
-                            setTotalPositive(0)
-                            setTotalRecovered(0)
-                            setTotalDischarged(0)
-                            setTotalDeaths(0)
-                            setTotalDeaths(0)
-                            setTotalPositive(0)
-                            setTotalDischarged(0)
-                            setRecovered(0)
-                            snapshot.forEach((doc) => {
-                                const data = doc.data()
-                                setBeds(
-                                    (prevState) =>
-                                        prevState + data.beds.available
-                                )
-                                setTotalBeds(
-                                    (prevState) => prevState + data.beds.total
-                                )
-                                setOxygen(
-                                    (prevState) =>
-                                        prevState + data.oxygen.Available
-                                )
-                                if (!isNaN(data.ventilators))
-                                    setVentilators(
+        if (district.length > 0 && mandal.length === 0) {
+            fire.firestore()
+                .collection("adminData")
+                .doc(firebase.auth().currentUser.email)
+                .get()
+                .then((u) => {
+                    setLoading(false)
+                    if (u.exists) {
+                        fire.firestore()
+                            .collection("hospitals")
+                            .where("district", "==", district)
+                            .onSnapshot((snapshot) => {
+                                setBeds(0)
+                                setTotalBeds(0)
+                                setOxygen(0)
+                                setVentilators(0)
+                                setRemedesivir(0)
+                                setCovaxin(0)
+                                setCovishield(0)
+                                setPositive(0)
+                                setRecovered(0)
+                                setDischarged(0)
+                                setDeaths(0)
+                                setTotalPositive(0)
+                                setTotalRecovered(0)
+                                setTotalDischarged(0)
+                                setTotalDeaths(0)
+                                setTotalDeaths(0)
+                                setTotalPositive(0)
+                                setTotalDischarged(0)
+                                setRecovered(0)
+                                snapshot.forEach((doc) => {
+                                    const data = doc.data()
+                                    setBeds(
                                         (prevState) =>
-                                            prevState + data.ventilators
+                                            prevState + data.beds.available
                                     )
-                                setRemedesivir(
-                                    (prevState) => prevState + data.remedesivir
-                                )
-                                setCovaxin(
-                                    (prevState) => prevState + data.covaxin
-                                )
-                                setCovishield(
-                                    (prevState) => prevState + data.covishield
-                                )
-                                setPositive(
-                                    (prevState) =>
-                                        prevState + data.patients.positive
-                                )
-                                setRecovered(
-                                    (prevState) =>
-                                        prevState + data.patients.recovered
-                                )
-                                setDischarged(
-                                    (prevState) =>
-                                        prevState + data.patients.discharged
-                                )
-                                setDeaths(
-                                    (prevState) =>
-                                        prevState + data.patients.deaths
-                                )
-                                var arr = data.daytoday
-                                arr.forEach((item) => {
-                                    fire.firestore()
-                                        .collection("dayToDayInfo")
-                                        .get()
-                                        .then((snap) => {
-                                            snap.forEach((document) => {
+                                    setTotalBeds(
+                                        (prevState) =>
+                                            prevState + data.beds.total
+                                    )
+                                    setOxygen(
+                                        (prevState) =>
+                                            prevState + data.oxygen.Available
+                                    )
+                                    if (!isNaN(data.ventilators))
+                                        setVentilators(
+                                            (prevState) =>
+                                                prevState + data.ventilators
+                                        )
+                                    setRemedesivir(
+                                        (prevState) =>
+                                            prevState + data.remedesivir
+                                    )
+                                    setCovaxin(
+                                        (prevState) => prevState + data.covaxin
+                                    )
+                                    setCovishield(
+                                        (prevState) =>
+                                            prevState + data.covishield
+                                    )
+                                    if (
+                                        data.date ===
+                                        new Date().toJSON().slice(0, 10)
+                                    ) {
+                                        setPositive(
+                                            (prevState) =>
+                                                prevState +
+                                                data.patients.positive
+                                        )
+                                        setRecovered(
+                                            (prevState) =>
+                                                prevState +
+                                                data.patients.recovered
+                                        )
+                                        setDischarged(
+                                            (prevState) =>
+                                                prevState +
+                                                data.patients.discharged
+                                        )
+                                        setDeaths(
+                                            (prevState) =>
+                                                prevState + data.patients.deaths
+                                        )
+                                    }
+                                    var arr = data.daytoday
+                                    arr.forEach((item) => {
+                                        fire.firestore()
+                                            .collection("dayToDayInfo")
+                                            .doc(item)
+                                            .get()
+                                            .then((document) => {
                                                 setTotalDeaths(
                                                     (prevState) =>
                                                         prevState +
@@ -138,15 +156,272 @@ function AdminPanel() {
                                                         )
                                                 )
                                             })
-                                        })
+                                    })
                                 })
                             })
-                        })
-                } else {
-                    setErrorPage(true)
-                }
-            })
-    }, [])
+                    } else {
+                        setErrorPage(true)
+                    }
+                })
+        } else if (district.length > 0 && mandal.length > 0) {
+            fire.firestore()
+                .collection("adminData")
+                .doc(firebase.auth().currentUser.email)
+                .get()
+                .then((u) => {
+                    setLoading(false)
+                    if (u.exists) {
+                        fire.firestore()
+                            .collection("hospitals")
+                            .where("mandal", "==", mandal)
+                            .onSnapshot((snapshot) => {
+                                setBeds(0)
+                                setTotalBeds(0)
+                                setOxygen(0)
+                                setVentilators(0)
+                                setRemedesivir(0)
+                                setCovaxin(0)
+                                setCovishield(0)
+                                setPositive(0)
+                                setRecovered(0)
+                                setDischarged(0)
+                                setDeaths(0)
+                                setTotalPositive(0)
+                                setTotalRecovered(0)
+                                setTotalDischarged(0)
+                                setTotalDeaths(0)
+                                setTotalDeaths(0)
+                                setTotalPositive(0)
+                                setTotalDischarged(0)
+                                setRecovered(0)
+                                snapshot.forEach((doc) => {
+                                    const data = doc.data()
+                                    setBeds(
+                                        (prevState) =>
+                                            prevState + data.beds.available
+                                    )
+                                    setTotalBeds(
+                                        (prevState) =>
+                                            prevState + data.beds.total
+                                    )
+                                    setOxygen(
+                                        (prevState) =>
+                                            prevState + data.oxygen.Available
+                                    )
+                                    if (!isNaN(data.ventilators))
+                                        setVentilators(
+                                            (prevState) =>
+                                                prevState + data.ventilators
+                                        )
+                                    setRemedesivir(
+                                        (prevState) =>
+                                            prevState + data.remedesivir
+                                    )
+                                    setCovaxin(
+                                        (prevState) => prevState + data.covaxin
+                                    )
+                                    setCovishield(
+                                        (prevState) =>
+                                            prevState + data.covishield
+                                    )
+                                    if (
+                                        data.date ===
+                                        new Date().toJSON().slice(0, 10)
+                                        // true
+                                    ) {
+                                        setPositive(
+                                            (prevState) =>
+                                                prevState +
+                                                data.patients.positive
+                                        )
+                                        setRecovered(
+                                            (prevState) =>
+                                                prevState +
+                                                data.patients.recovered
+                                        )
+                                        setDischarged(
+                                            (prevState) =>
+                                                prevState +
+                                                data.patients.discharged
+                                        )
+                                        setDeaths(
+                                            (prevState) =>
+                                                prevState + data.patients.deaths
+                                        )
+                                    }
+                                    var arr = data.daytoday
+                                    arr.forEach((item) => {
+                                        fire.firestore()
+                                            .collection("dayToDayInfo")
+                                            .doc(item)
+                                            .get()
+                                            .then((document) => {
+                                                setTotalDeaths(
+                                                    (prevState) =>
+                                                        prevState +
+                                                        parseInt(
+                                                            document.data()
+                                                                .deaths
+                                                        )
+                                                )
+                                                setTotalPositive(
+                                                    (prevState) =>
+                                                        prevState +
+                                                        parseInt(
+                                                            document.data()
+                                                                .positive
+                                                        )
+                                                )
+                                                setTotalDischarged(
+                                                    (prevState) =>
+                                                        prevState +
+                                                        parseInt(
+                                                            document.data()
+                                                                .discharged
+                                                        )
+                                                )
+                                                setTotalRecovered(
+                                                    (prevState) =>
+                                                        prevState +
+                                                        parseInt(
+                                                            document.data()
+                                                                .recovered
+                                                        )
+                                                )
+                                            })
+                                    })
+                                })
+                            })
+                    } else {
+                        setErrorPage(true)
+                    }
+                })
+        } else if (district === "" && mandal === "") {
+            fire.firestore()
+                .collection("adminData")
+                .doc(firebase.auth().currentUser.email)
+                .get()
+                .then((u) => {
+                    setLoading(false)
+                    if (u.exists) {
+                        fire.firestore()
+                            .collection("hospitals")
+                            .onSnapshot((snapshot) => {
+                                setBeds(0)
+                                setTotalBeds(0)
+                                setOxygen(0)
+                                setVentilators(0)
+                                setRemedesivir(0)
+                                setCovaxin(0)
+                                setCovishield(0)
+                                setPositive(0)
+                                setRecovered(0)
+                                setDischarged(0)
+                                setDeaths(0)
+                                setTotalPositive(0)
+                                setTotalRecovered(0)
+                                setTotalDischarged(0)
+                                setTotalDeaths(0)
+                                setTotalDeaths(0)
+                                setTotalPositive(0)
+                                setTotalDischarged(0)
+                                setRecovered(0)
+                                snapshot.forEach((doc) => {
+                                    const data = doc.data()
+                                    setBeds(
+                                        (prevState) =>
+                                            prevState + data.beds.available
+                                    )
+                                    setTotalBeds(
+                                        (prevState) =>
+                                            prevState + data.beds.total
+                                    )
+                                    setOxygen(
+                                        (prevState) =>
+                                            prevState + data.oxygen.Available
+                                    )
+                                    if (!isNaN(data.ventilators))
+                                        setVentilators(
+                                            (prevState) =>
+                                                prevState + data.ventilators
+                                        )
+                                    setRemedesivir(
+                                        (prevState) =>
+                                            prevState + data.remedesivir
+                                    )
+                                    setCovaxin(
+                                        (prevState) => prevState + data.covaxin
+                                    )
+                                    setCovishield(
+                                        (prevState) =>
+                                            prevState + data.covishield
+                                    )
+                                    setPositive(
+                                        (prevState) =>
+                                            prevState + data.patients.positive
+                                    )
+                                    setRecovered(
+                                        (prevState) =>
+                                            prevState + data.patients.recovered
+                                    )
+                                    setDischarged(
+                                        (prevState) =>
+                                            prevState + data.patients.discharged
+                                    )
+                                    setDeaths(
+                                        (prevState) =>
+                                            prevState + data.patients.deaths
+                                    )
+                                    var arr = data.daytoday
+                                    arr.forEach((item) => {
+                                        fire.firestore()
+                                            .collection("dayToDayInfo")
+                                            .get()
+                                            .then((snap) => {
+                                                snap.forEach((document) => {
+                                                    setTotalDeaths(
+                                                        (prevState) =>
+                                                            prevState +
+                                                            parseInt(
+                                                                document.data()
+                                                                    .deaths
+                                                            )
+                                                    )
+                                                    setTotalPositive(
+                                                        (prevState) =>
+                                                            prevState +
+                                                            parseInt(
+                                                                document.data()
+                                                                    .positive
+                                                            )
+                                                    )
+                                                    setTotalDischarged(
+                                                        (prevState) =>
+                                                            prevState +
+                                                            parseInt(
+                                                                document.data()
+                                                                    .discharged
+                                                            )
+                                                    )
+                                                    setTotalRecovered(
+                                                        (prevState) =>
+                                                            prevState +
+                                                            parseInt(
+                                                                document.data()
+                                                                    .recovered
+                                                            )
+                                                    )
+                                                })
+                                            })
+                                    })
+                                })
+                            })
+                    } else {
+                        setErrorPage(true)
+                    }
+                })
+        }
+    }, [mandal, district])
     return (
         <div className="admin-outer-cont">
             {loading ? (
@@ -255,11 +530,19 @@ function AdminPanel() {
                             <div className="admin-mini-cont"></div>
                         </div>
                         <div className="admin-sidebar">
+                            <SelectArea
+                                mandal={mandal}
+                                setMandal={setMandal}
+                                district={district}
+                                setDistrict={setDistrict}
+                                filter={filter}
+                                setFilter={setFilter}
+                            />
                             <Button
                                 variant="contained"
                                 type="button"
                                 color="secondary"
-                                style={{ marginBottom: "20px", width: "100%" }}
+                                style={{ width: "295px", marginTop: "15px" }}
                                 onClick={() => {
                                     fire.auth().signOut()
                                 }}
