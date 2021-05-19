@@ -4,10 +4,22 @@ import {
     FormControlLabel,
     TextField,
 } from "@material-ui/core"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import MandalSelector from "../Mandals/MandalSelector"
 import Districts from "../Distircts"
+import SaveIcon from "@material-ui/icons/Save"
+import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined"
+import firebase from "firebase"
+import fire from "../Config/fire"
+
 function EditData(props) {
+    const btnStyle = {
+        marginTop: "10px",
+        marginBottom: "10px",
+        padding: "8px",
+        backgroundColor: "#2685d3",
+        color: "white",
+    }
     const {
         hospitalName,
         mandal,
@@ -48,6 +60,26 @@ function EditData(props) {
         hospital,
         handleSave,
     } = props
+    const [updated, setUpdated] = useState(false)
+    const updateHospitalLocation = () => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            fire.firestore()
+                .collection("hospitals")
+                .doc(fire.auth().currentUser.email)
+                .update({
+                    location: new firebase.firestore.GeoPoint(
+                        position.coords.latitude,
+                        position.coords.longitude
+                    ),
+                })
+                .then(() => {
+                    setUpdated(true)
+                    setInterval(() => {
+                        setUpdated(false)
+                    }, 2000)
+                })
+        })
+    }
     return (
         <div>
             <div className="hospital-edit-cont">
@@ -74,7 +106,6 @@ function EditData(props) {
                         />
                     ) : null}
                 </div>
-
                 <TextField
                     style={{ marginBottom: "15px" }}
                     value={availableOxygen}
@@ -85,7 +116,6 @@ function EditData(props) {
                     variant="outlined"
                     type="number"
                 />
-
                 <TextField
                     style={{ marginBottom: "15px" }}
                     value={availbleBeds}
@@ -169,6 +199,21 @@ function EditData(props) {
                     variant="outlined"
                     type="number"
                 />
+                <div>
+                    <p className="heading-small">
+                        Update Hospital Location to this current location
+                    </p>
+
+                    <Button
+                        onClick={() => {
+                            updateHospitalLocation()
+                        }}
+                        style={btnStyle}
+                    >
+                        Update
+                        {updated ? <CheckCircleOutlinedIcon /> : <SaveIcon />}
+                    </Button>
+                </div>
                 <FormControlLabel
                     control={
                         <Checkbox
@@ -244,7 +289,6 @@ function EditData(props) {
                         />
                     </div>
                 ) : null}
-
                 <Button
                     variant="contained"
                     style={{

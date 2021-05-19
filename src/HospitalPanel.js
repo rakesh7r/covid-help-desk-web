@@ -9,8 +9,8 @@ import EditAccountSettings from "./EditAccountSettings"
 import { Link } from "react-router-dom"
 import Loading from "./Loading"
 import ErrorPage from "./error/ErrorPage"
+
 function HospitalPanel(props) {
-    // const classes = useStyles()
     const { user } = props
     const [hospital, setHospital] = useState("")
     const [edit, setEdit] = useState(false)
@@ -35,6 +35,8 @@ function HospitalPanel(props) {
     const [isPHC, setIsPHC] = useState(false)
     const [isPrivate, setIsPrivate] = useState(false)
     const [errorPage, setErrorPage] = useState(false)
+    const [latitude, setLatitude] = useState(0)
+    const [longitude, setLongitude] = useState(0)
 
     useEffect(() => {
         document.title = "Hospital Panel"

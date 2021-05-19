@@ -17,6 +17,8 @@ const CheckAuth = () => {
     const [verifyPassword, setVerifyPassword] = useState("")
     const [hasAccount, setHasAccount] = useState(true)
     const [loading, setLoading] = useState(true)
+    const [latitude, setLatitude] = useState(0)
+    const [longitude, setLongitude] = useState(0)
 
     const handleLogin = () => {
         clearErrors()
@@ -55,6 +57,14 @@ const CheckAuth = () => {
         clearErrors()
         const dt = new Date().toJSON().slice(0, 10)
         // const date = new Date().toJSON().slice(0, 10).replaceAll("-", "")
+        let lat = 0,
+            lng = 0
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLatitude(position.coords.latitude)
+            setLongitude(position.coords.longitude)
+            lat = position.coords.latitude
+            lng = position.coords.longitude
+        })
         fire.auth()
             .createUserWithEmailAndPassword(email, password)
             .then((user) => {
@@ -89,6 +99,7 @@ const CheckAuth = () => {
                         covaxin: 0,
                         covishield: 0,
                         remedesivir: 0,
+                        location: new firebase.firestore.GeoPoint(lat, lng),
                     })
                 fire.firestore()
                     .collection("hopital-names")

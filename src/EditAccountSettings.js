@@ -1,7 +1,7 @@
 import { Button, TextField } from "@material-ui/core"
 import React, { useEffect, useState } from "react"
-import SaveIcon from "@material-ui/icons/Save"
 import "./EditAccountSettings.css"
+import SaveIcon from "@material-ui/icons/Save"
 import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined"
 import VerifiedUserOutlinedIcon from "@material-ui/icons/VerifiedUserOutlined"
 function EditAccountSettings({ user }) {
