@@ -4,16 +4,10 @@ import HotelIcon from "@material-ui/icons/Hotel"
 import "./Hospital.css"
 import { Avatar } from "@material-ui/core"
 import DoneIcon from "@material-ui/icons/Done"
-import Unavailable from "./Icons/Unavaliable"
 import ClearSharpIcon from "@material-ui/icons/ClearSharp"
 function Hospital(props) {
     const { hospital } = props
     const [show, setShow] = useState(false)
-    const paraStyle = {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-    }
     return (
         <div>
             <div
@@ -23,7 +17,6 @@ function Hospital(props) {
             >
                 <div className="flex-row hospital-card-title-cont">
                     <h2>{hospital.name}</h2>
-
                     <div
                         className="flex-column"
                         style={{ alignItems: "center" }}
