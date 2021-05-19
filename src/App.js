@@ -308,9 +308,15 @@ function App() {
             <div className="app-main">
                 <div className="app-intermediate">
                     {hospitals.length > 0 ? (
-                        hospitals.map((hospital) => (
-                            <Hospital key={hospital.id} hospital={hospital} />
-                        ))
+                        hospitals.map((hospital) => {
+                            console.log(hospital.name, hospital.isPrivate)
+                            return (
+                                <Hospital
+                                    key={hospital.id}
+                                    hospital={hospital}
+                                />
+                            )
+                        })
                     ) : loading ? (
                         <center>
                             {/* <h2 className="app-notfound">Loading...</h2> */}

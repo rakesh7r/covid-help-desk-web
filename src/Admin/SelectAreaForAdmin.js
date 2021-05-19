@@ -1,7 +1,7 @@
 import React from "react"
-import "./SelectArea.css"
-import Distircts from "./Distircts"
-import MandalSelector from "./Mandals/MandalSelector"
+import "../SelectArea.css"
+import Distircts from "../Distircts"
+import MandalSelector from "../Mandals/MandalSelector"
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core"
 function SelectAreaForAdmin(props) {
     const { mandal, setMandal, district, setDistrict, filter, setFilter } =
@@ -17,7 +17,7 @@ function SelectAreaForAdmin(props) {
                 mandal={mandal}
                 setMandal={setMandal}
             />
-            <FormControl variant="outlined" style={{ width: "100%" }}>
+            {/* <FormControl variant="outlined" style={{ width: "100%" }}>
                 <InputLabel id="demo-simple-select-outlined-label">
                     Apply A Filter
                 </InputLabel>
@@ -41,7 +41,7 @@ function SelectAreaForAdmin(props) {
                     <MenuItem value="covishield">Covishield</MenuItem>
                     <MenuItem value="remedesivir">Remedesivir</MenuItem>
                 </Select>
-            </FormControl>
+            </FormControl> */}
         </div>
     )
 }

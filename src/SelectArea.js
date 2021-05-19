@@ -53,7 +53,7 @@ function SelectArea(props) {
                 />
                 Remedesivir */}
             </div>
-            {/* <FormControl
+            <FormControl
                 variant="outlined"
                 // className={classes.formControl}
                 style={{ width: "100%" }}
@@ -81,7 +81,7 @@ function SelectArea(props) {
                     <MenuItem value="covishield">Covishield</MenuItem>
                     <MenuItem value="remedesivir">Remedesivir</MenuItem>
                 </Select>
-            </FormControl> */}
+            </FormControl>
             {/* 
                 <FormControl component="fieldset" style={{ width: "100%" }}>
                     <FormLabel component="legend">Apply a Filter</FormLabel>

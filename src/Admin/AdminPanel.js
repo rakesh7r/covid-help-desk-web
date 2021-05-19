@@ -7,6 +7,7 @@ import "./AdminPanel.css"
 import ErrorPage from "../error/ErrorPage"
 import Loading from "../Loading"
 import SelectArea from "../SelectArea"
+import SelectAreaForAdmin from "./SelectAreaForAdmin"
 
 function AdminPanel() {
     const [beds, setBeds] = useState(0)
@@ -530,7 +531,7 @@ function AdminPanel() {
                             <div className="admin-mini-cont"></div>
                         </div>
                         <div className="admin-sidebar">
-                            <SelectArea
+                            <SelectAreaForAdmin
                                 mandal={mandal}
                                 setMandal={setMandal}
                                 district={district}

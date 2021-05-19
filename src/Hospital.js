@@ -23,29 +23,26 @@ function Hospital(props) {
             >
                 <div className="flex-row hospital-card-title-cont">
                     <h2>{hospital.name}</h2>
-                    {hospital.isVaccinationCenter ||
-                    hospital.isPHC ||
-                    hospital.isPrivate ? (
-                        <div
-                            className="flex-column"
-                            style={{ alignItems: "center" }}
-                        >
-                            {hospital.isVaccinationCenter || hospital.isPHC ? (
-                                <strong className="vaccination-center-text">
-                                    Vaccination Center
-                                </strong>
-                            ) : null}
-                            {hospital.isPrivate ? (
-                                <strong className="error-text">
-                                    Private hospital
-                                </strong>
-                            ) : (
-                                <strong className="govt-hospital-text">
-                                    Government Hospital
-                                </strong>
-                            )}
-                        </div>
-                    ) : null}
+
+                    <div
+                        className="flex-column"
+                        style={{ alignItems: "center" }}
+                    >
+                        {hospital.isVaccinationCenter || hospital.isPHC ? (
+                            <strong className="vaccination-center-text">
+                                Vaccination Center
+                            </strong>
+                        ) : null}
+                        {hospital.isPrivate ? (
+                            <strong className="error-text">
+                                Private hospital
+                            </strong>
+                        ) : (
+                            <strong className="govt-hospital-text">
+                                Government Hospital
+                            </strong>
+                        )}
+                    </div>
                 </div>
                 <p>
                     Area : {hospital.mandal || hospital.area} , Dist :{" "}
