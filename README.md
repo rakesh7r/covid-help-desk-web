@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# Covid-19 Help Desk
+In such hard times where the severity of the pandemic has shown it’s ultimate form and is not going to stop by any means, it is an high time where the patients struck by the COVID-19 require proper medication and medical help.
+At the present situation we see that most of the people are not able to get the proper medication due to the lack of information where the required medical assistance is available.
+We have come up with a solution, where people can search for their required medical assistance. We believe this would at least decrease some extent of the damage caused by the pandemic.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ We mainly focus on providing the information of the availability of the resources to the people who need them. One could just go to the website and get all the hospitals nearby with his required resources.
+The information regarding the resources is mainly provided by the hospital management where they update the data regularly as they use the resources.
+The government can monitor the validity of the information uploaded by the hospitals.
+This would not only help the people but also help the government where and when the resources are being used, which prevents the moving out of such important resources into the black markets.
 
-## Available Scripts
+###### This application has 3 panels
+1. User/Client
+2. Hospital panel
+3. Admin Panel
 
-In the project directory, you can run:
+## User Panel (https://covidhelpdesk-ts.web.app/)
+This panel is built for end-users, at which user can list all the hospitals which are at the selected location. A user can aslo apply filters based on available beds, vaccines, ventilators and private/government hospital.
+There is a dashboard on this page shows the Covid-19 cases on that particular day.
 
-### `yarn start`
+## Hospital Panel (https://covidhelpdesk-ts.web.app/hospitalpanel)
+This panel is built for hospitals to add/edit information about beds, vaccines, ventilator information and vaccination information in their hospital. Hospital management can also add day-to-day Covid-19 cases details of that hospital.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Admin panel (https://covidhelpdesk-ts.web.app/adminpanel) 
+This panel is designed for the admin of this entire web application. An admin is a person who can manage all the data in the website. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+##### Features to be added
+1. Admin can verify hospitals
+2. GPS based hospital listing
+3. Analytics which shows the graph of the Covid-19 cases
 
-### `yarn test`
+ *This application is currently under developement 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
