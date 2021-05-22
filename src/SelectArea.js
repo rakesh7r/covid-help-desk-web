@@ -72,7 +72,8 @@ function SelectArea(props) {
                     label="Apply a Filter"
                 >
                     <MenuItem value="">All</MenuItem>
-                    <MenuItem value="beds">Search for Beds</MenuItem>
+                    <MenuItem value="beds">Beds</MenuItem>
+                    <MenuItem value="oxygen">Oxygen</MenuItem>
                     <MenuItem value="ventilators">ventilators</MenuItem>
                     <MenuItem value="vaccinations">Vaccination Center</MenuItem>
                     <MenuItem value="private">Private Hospitals</MenuItem>

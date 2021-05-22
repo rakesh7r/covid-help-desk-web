@@ -4,7 +4,7 @@ import {
     FormControlLabel,
     TextField,
 } from "@material-ui/core"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import MandalSelector from "../Mandals/MandalSelector"
 import Districts from "../Distircts"
 import SaveIcon from "@material-ui/icons/Save"
@@ -63,6 +63,7 @@ function EditData(props) {
     const [updated, setUpdated] = useState(false)
     const updateHospitalLocation = () => {
         navigator.geolocation.getCurrentPosition((position) => {
+            
             fire.firestore()
                 .collection("hospitals")
                 .doc(fire.auth().currentUser.email)

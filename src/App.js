@@ -109,6 +109,19 @@ function App() {
                             setHospitals((oldArr) => [...oldArr, doc.data()])
                         })
                     })
+            } else if (filter === "oxygen") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("district", "==", district)
+                    .where("oxygen.Available", ">", 0)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
             } else if (filter === "vaccinations") {
                 fire.firestore()
                     .collection("hospitals")
@@ -233,6 +246,19 @@ function App() {
                     .collection("hospitals")
                     .where("mandal", "==", mandal)
                     .where("isVaccinationCenter", "==", true)
+                    .onSnapshot((docs) => {
+                        setHospitals([])
+                        setLoading(false)
+
+                        docs.forEach((doc) => {
+                            setHospitals((oldArr) => [...oldArr, doc.data()])
+                        })
+                    })
+            } else if (filter === "oxygen") {
+                fire.firestore()
+                    .collection("hospitals")
+                    .where("mandal", "==", mandal)
+                    .where("oxygen.Available", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
                         setLoading(false)
