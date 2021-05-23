@@ -2,14 +2,15 @@ import React, { useState } from "react"
 import OxygenLogo from "./OxygenLogo"
 import HotelIcon from "@material-ui/icons/Hotel"
 import "./Hospital.css"
-import { Avatar } from "@material-ui/core"
+import { Button } from "@material-ui/core"
 import DoneIcon from "@material-ui/icons/Done"
 import ClearSharpIcon from "@material-ui/icons/ClearSharp"
+import NavigationIcon from "@material-ui/icons/Navigation"
 function Hospital(props) {
     const { hospital } = props
     const [show, setShow] = useState(false)
     return (
-        <div>
+        <div key={hospital.id}>
             <div
                 key={hospital.id}
                 className="hospital-cont"
@@ -47,10 +48,11 @@ function Hospital(props) {
                             style={{
                                 display: "flex",
                                 flexDirection: "row",
-                                justifyContent: "flex-start",
+                                justifyContent: "space-between",
                                 padding: "4px",
                                 paddingTop: "10px",
                                 alignItems: "center",
+                                width: "80%",
                             }}
                         >
                             <span
@@ -69,7 +71,6 @@ function Hospital(props) {
                             </span>
                             <p
                                 style={{
-                                    marginLeft: "5vw",
                                     display: "flex",
                                     justifyContent: "center",
                                     alignItems: "center",
@@ -77,6 +78,20 @@ function Hospital(props) {
                             >
                                 <HotelIcon /> Covid-19 Beds :
                                 {hospital.beds.available > 0 ? (
+                                    <DoneIcon style={{ color: "green" }} />
+                                ) : (
+                                    <ClearSharpIcon style={{ color: "red" }} />
+                                )}
+                            </p>
+                            <p
+                                style={{
+                                    fontSize: "0.9rem",
+                                    display: "flex",
+                                    alignItems: "center",
+                                }}
+                            >
+                                Ventilators :{" "}
+                                {hospital.ventilators > 0 ? (
                                     <DoneIcon style={{ color: "green" }} />
                                 ) : (
                                     <ClearSharpIcon style={{ color: "red" }} />
@@ -180,45 +195,152 @@ function Hospital(props) {
                 {show ? (
                     <div>
                         <br />
-                        <h2>
+                        <h4>
                             <OxygenLogo /> Oxygen{" "}
-                        </h2>
+                        </h4>
                         <p>Available(cylinders): {hospital.oxygen.Available}</p>
                         <br />
-                        <h2>
+                        <h4
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                            }}
+                        >
                             <HotelIcon /> Covid-19 Beds
-                        </h2>
+                        </h4>
                         <p>Available Beds: {hospital.beds.available}</p>
                         <p>Total Beds : {hospital.beds.total}</p>
                         <br />
                         <p>Ventilators Available : {hospital.ventilators}</p>
                         <br />
-                        <h3> As of : {hospital.date} </h3>
-                        <p>Total Patients : {hospital.totalPatients}</p>
-                        <p>Total Deaths : {hospital.patients.deaths}</p>
-                        <p>discharged : {hospital.patients.discharged}</p>
-                        <p>Recovered : {hospital.patients.recovered}</p>
-                        <p>
-                            Positive Cases Today : {hospital.patients.positive}
-                        </p>
-                        {hospital.isVaccinationCenter || hospital.isPHC ? (
-                            <div className="app-card-vaccine-info">
-                                <div className="flex-row">
-                                    <Avatar
-                                        src="injection.png"
-                                        variant="square"
-                                        style={{
-                                            width: "30px",
-                                            height: "30px",
-                                        }}
-                                    />
-                                    <h2>Vaccine Information : </h2>
-                                </div>
-                                <p>Covishield : {hospital.covishield} Doses</p>
-                                <p>Covaxin : {hospital.covaxin} Doses</p>
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                            }}
+                        >
+                            <div
+                                style={{
+                                    width: "fit-content",
+                                }}
+                            >
+                                <h4> As of : {hospital.date} </h4>
+                                <p>Total Patients : {hospital.totalPatients}</p>
+                                <p>Total Deaths : {hospital.patients.deaths}</p>
                                 <p>
-                                    Remedesivir : {hospital.remedesivir} Doses
+                                    discharged : {hospital.patients.discharged}
                                 </p>
+                                <p>Recovered : {hospital.patients.recovered}</p>
+                                <p>
+                                    Positive Cases Today :{" "}
+                                    {hospital.patients.positive}
+                                </p>
+                            </div>
+                            {!hospital.isVaccinationCenter &&
+                            !hospital.isPHC &&
+                            hospital.location ? (
+                                <div
+                                    style={{
+                                        width: "fit-content",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        justifyContent: "flex-end",
+                                    }}
+                                    onClick={() => setShow(true)}
+                                >
+                                    <a
+                                        href={`https://www.google.com/maps/place/${hospital.location.latitude}+${hospital.location.longitude}`}
+                                        style={{
+                                            textDecoration: "none",
+                                        }}
+                                    >
+                                        {/* <IconButton>
+                                            <DirectionsOutlinedIcon
+                                                style={{ color: "blue" }}
+                                            />
+                                        </IconButton> */}
+                                        <Button
+                                            color="primary"
+                                            variant="contained"
+                                            style={{
+                                                backgroundColor: "#4285F4",
+                                                borderRadius: "4rem",
+                                            }}
+                                        >
+                                            Navigate{" "}
+                                            <NavigationIcon
+                                                style={{ color: "white" }}
+                                            />
+                                        </Button>
+                                    </a>
+                                </div>
+                            ) : null}
+                        </div>
+                        {hospital.isVaccinationCenter || hospital.isPHC ? (
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                }}
+                            >
+                                <div
+                                    className="app-card-vaccine-info"
+                                    style={{ width: "fit-content" }}
+                                >
+                                    <div className="flex-row">
+                                        {/* <Avatar
+                                            src="injection.png"
+                                            variant="square"
+                                            style={{
+                                                width: "1.5rem",
+                                                height: "1.5rem",
+                                                marginRight: "0.5rem",
+                                            }}
+                                        /> */}
+                                        <h3>Vaccine Information : </h3>
+                                    </div>
+                                    <p>
+                                        Covishield : {hospital.covishield} Doses
+                                    </p>
+                                    <p>Covaxin : {hospital.covaxin} Doses</p>
+                                    <p>
+                                        Remedesivir : {hospital.remedesivir}{" "}
+                                        Doses
+                                    </p>
+                                </div>
+                                {hospital.location ? (
+                                    <div
+                                        style={{
+                                            width: "fit-content",
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            justifyContent: "flex-end",
+                                        }}
+                                        onClick={() => setShow(true)}
+                                    >
+                                        <a
+                                            style={{
+                                                textDecoration: "none",
+                                                color: "white",
+                                            }}
+                                            href={`https://www.google.com/maps/place/${hospital.location.latitude}+${hospital.location.longitude}`}
+                                        >
+                                            <Button
+                                                color="primary"
+                                                variant="contained"
+                                                style={{
+                                                    backgroundColor: "#4285F4",
+                                                    borderRadius: "4rem",
+                                                }}
+                                            >
+                                                Navigate
+                                                <NavigationIcon
+                                                    style={{ color: "white" }}
+                                                />
+                                            </Button>
+                                        </a>
+                                    </div>
+                                ) : null}
                             </div>
                         ) : null}
                     </div>

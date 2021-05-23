@@ -1,20 +1,10 @@
 import { Button } from "@material-ui/core"
-import React, { useState } from "react"
+import React from "react"
 import fire from "./Config/fire"
 import HospitalDashBoard from "./HospitalDashBoard"
-import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined"
-import SaveIcon from "@material-ui/icons/Save"
 
 function HospitalSideBar(props) {
     const { edit, setEdit, editSettings, setEditSettings, hospital } = props
-    const btnStyle = {
-        marginTop: "10px",
-        marginBottom: "10px",
-        padding: "8px",
-        backgroundColor: "#2685d3",
-        color: "white",
-    }
-    const [updated, setUpdated] = useState(false)
     return (
         <div>
             {hospital ? (

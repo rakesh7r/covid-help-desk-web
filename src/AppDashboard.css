@@ -5,6 +5,8 @@
     background-color: white;
     border-radius: 4px;
     /* box-shadow: 6px 6px 20px #ccc; */
+    width: 20vw;
+    max-width: 350px;
 }
 .app-dash-search {
     display: flex;

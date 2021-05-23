@@ -2,7 +2,7 @@ import React from "react"
 
 function OxygenLogo() {
     return (
-        <div style={{ width: "20px", float: "left", marginRight: "4px" }}>
+        <div style={{ width: "18px", float: "left", marginRight: "4px" }}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="ionicon"

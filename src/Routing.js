@@ -1,6 +1,5 @@
 import React from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import AdminPanel from "./Admin/AdminPanel"
 import CheckAuthForAdmin from "./Admin/CheckAuthForAdmin"
 import Analytics from "./Analytics/Analytics"
 import App from "./App"

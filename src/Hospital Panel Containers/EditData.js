@@ -63,7 +63,6 @@ function EditData(props) {
     const [updated, setUpdated] = useState(false)
     const updateHospitalLocation = () => {
         navigator.geolocation.getCurrentPosition((position) => {
-            
             fire.firestore()
                 .collection("hospitals")
                 .doc(fire.auth().currentUser.email)
@@ -72,6 +71,7 @@ function EditData(props) {
                         position.coords.latitude,
                         position.coords.longitude
                     ),
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                 })
                 .then(() => {
                     setUpdated(true)

@@ -1,0 +1,21 @@
+.mobile-app {
+    display: flex;
+    flex-direction: column;
+}
+.mobile-app .header {
+    padding: 1rem;
+    color: white;
+    background-color: #1e78d3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mobile-app .header strong {
+    font-size: 1.3rem;
+}
+.filter-text:hover {
+    text-decoration: underline;
+}
+.mobile-app-main {
+    padding: 0.5rem;
+}

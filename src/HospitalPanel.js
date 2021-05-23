@@ -35,8 +35,6 @@ function HospitalPanel(props) {
     const [isPHC, setIsPHC] = useState(false)
     const [isPrivate, setIsPrivate] = useState(false)
     const [errorPage, setErrorPage] = useState(false)
-    const [latitude, setLatitude] = useState(0)
-    const [longitude, setLongitude] = useState(0)
 
     useEffect(() => {
         document.title = "Hospital Panel"
@@ -144,6 +142,8 @@ function HospitalPanel(props) {
                         covaxin: parseInt(covaxin),
                         covishield: parseInt(covishield),
                         remedesivir: parseInt(remedesivir),
+                        timestamp:
+                            firebase.firestore.FieldValue.serverTimestamp(),
                     })
                     .then(() => {
                         setEdit(!edit)

@@ -1,33 +1,26 @@
-import { useEffect, useState } from "react"
-import "./App.css"
-import fire from "./Config/fire"
-import Hospital from "./Hospital"
-import AppDashboard from "./AppDashboard"
-import SelectArea from "./SelectArea"
-import { Link } from "react-router-dom"
-import Loading from "./Loading"
-import $ from "jquery"
-import MobileApp from "./Mobile/MobileApp"
-function App() {
-    const [district, setDistrict] = useState("GHMC")
+import Menu from "@material-ui/core/Menu"
+import React, { useEffect, useState } from "react"
+import Button from "@material-ui/core/Button"
+import "./MobileApp.css"
+import SelectAreaMobile from "./SelectAreaMobile"
+import MobileCard from "./MobileCard"
+import fire from "../Config/fire"
+import Loading from "../Loading"
+function MobileApp() {
+    const [anchorEl, setAnchorEl] = useState(null)
     const [mandal, setMandal] = useState("")
-    const [hospitals, setHospitals] = useState([])
-    const [searchCovaxin, setSearchCovaxin] = useState(false)
-    const [searchCovishield, setSearchCovishield] = useState(false)
-    const [searchRemedesivir, setsearchRemedesivir] = useState(false)
+    const [district, setDistrict] = useState("GHMC")
     const [filter, setFilter] = useState("")
-    const [found, setFound] = useState(false)
     const [loading, setLoading] = useState(true)
-    const [isMobile, setIsMobile] = useState(false)
+    const [hospitals, setHospitals] = useState([])
+    const [found, setFound] = useState(false)
 
     useEffect(() => {
-        if ($(window).width() < 600 || navigator.userAgentData.mobile) {
-            setIsMobile(true)
-        }
         setHospitals([])
         fire.firestore()
             .collection("hospitals")
             .where("district", "==", district)
+            .orderBy("timestamp")
             .onSnapshot((docs) => {
                 setHospitals([])
                 docs.forEach((doc) => {
@@ -42,6 +35,8 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("district", "==", district)
+                    // .orderBy("timestamp")
+                    // .orderBy("timestamp", "desc")
                     .onSnapshot((docs) => {
                         setHospitals([])
                         setLoading(false)
@@ -54,6 +49,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("district", "==", district)
+                    // .orderBy("timestamp")
                     .where("covaxin", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -67,6 +63,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("district", "==", district)
+                    // .orderBy("timestamp")
                     .where("covishield", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -80,6 +77,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("district", "==", district)
+                    // .orderBy("timestamp")
                     .where("remedesivir", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -93,6 +91,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("district", "==", district)
+                    // .orderBy("timestamp")
                     .where("beds.available", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -106,6 +105,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("district", "==", district)
+                    // .orderBy("timestamp")
                     .where("ventilators", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -119,6 +119,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("district", "==", district)
+                    // .orderBy("timestamp")
                     .where("oxygen.Available", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -132,6 +133,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("district", "==", district)
+                    // .orderBy("timestamp")
                     .where("isVaccinationCenter", "==", true)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -145,6 +147,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("district", "==", district)
+                    // .orderBy("timestamp")
                     .where("isPrivate", "==", true)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -158,6 +161,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("district", "==", district)
+                    // .orderBy("timestamp")
                     .where("isPrivate", "==", false)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -173,6 +177,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("mandal", "==", mandal)
+                    // .orderBy("timestamp")
                     .onSnapshot((docs) => {
                         setHospitals([])
                         setLoading(false)
@@ -185,6 +190,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("mandal", "==", mandal)
+                    // .orderBy("timestamp")
                     .where("covaxin", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -199,6 +205,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("mandal", "==", mandal)
+                    // .orderBy("timestamp")
                     .where("covishield", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -212,6 +219,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("mandal", "==", mandal)
+                    // .orderBy("timestamp")
                     .where("remedesivir", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -225,6 +233,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("mandal", "==", mandal)
+                    // .orderBy("timestamp")
                     .where("beds.available", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -238,6 +247,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("mandal", "==", mandal)
+                    // .orderBy("timestamp")
                     .where("ventilators", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -251,6 +261,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("mandal", "==", mandal)
+                    // .orderBy("timestamp")
                     .where("isVaccinationCenter", "==", true)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -264,6 +275,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("mandal", "==", mandal)
+                    // .orderBy("timestamp")
                     .where("oxygen.Available", ">", 0)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -277,6 +289,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("mandal", "==", mandal)
+                    // .orderBy("timestamp")
                     .where("isPrivate", "==", true)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -290,6 +303,7 @@ function App() {
                 fire.firestore()
                     .collection("hospitals")
                     .where("mandal", "==", mandal)
+                    // .orderBy("timestamp")
                     .where("isPrivate", "==", false)
                     .onSnapshot((docs) => {
                         setHospitals([])
@@ -302,6 +316,13 @@ function App() {
             }
         }
     }, [district, mandal, filter])
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget)
+    }
+    const handleClose = () => {
+        setAnchorEl(null)
+    }
     const getRadians = (degree) => {
         const oneDeg = Math.PI / 180
         return oneDeg * degree
@@ -363,105 +384,67 @@ function App() {
         })
     }
     return (
-        <div className="App">
-            {!isMobile ? (
+        <div className="mobile-app">
+            <div className="header">
+                <strong>Covid help desk</strong>
                 <div>
-                    <div className="app-header">
-                        <Link
-                            to="/"
-                            style={{
-                                textDecoration: "none",
-                                color: "white",
-                                width: "fitContent",
-                            }}
-                        >
-                            <p>Covid-19 Help Desk</p>
-                        </Link>
-                        {/* <input
-                    type="text"
-                    placeholder="Enter Hospital Name"
-                    value={search}
-                    className="app-header-search"
-                    autoFocus
-                    onChange={(e) => {
-                        setSearch(e.target.value)
-                        handleSearch(e)
-                    }}
-                /> */}
-                        {/* <Link
-                    to="/analytics"
-                    style={{ textDecoration: "none", color: "white" }}
-                >
-                    <h2>
-                        Analytics <ShowChartIcon />
-                    </h2>
-                </Link> */}
-                    </div>
-
-                    <div className="app-main">
-                        <div className="app-intermediate">
-                            {hospitals.length > 0 ? (
-                                hospitals.map((hospital) => {
-                                    return (
-                                        <Hospital
-                                            key={hospital.id}
-                                            hospital={hospital}
-                                        />
-                                    )
-                                })
-                            ) : loading ? (
-                                <center>
-                                    <Loading />
-                                </center>
-                            ) : found ? null : (
-                                <center>
-                                    <h2 className="app-notfound">
-                                        No Hospitals Found
-                                    </h2>
-                                </center>
-                            )}
-                        </div>
-                        <div className="app-dashboard">
-                            <AppDashboard />
-                            <SelectArea
-                                mandal={mandal}
-                                setMandal={setMandal}
-                                district={district}
-                                setDistrict={setDistrict}
-                                searchCovaxin={searchCovaxin}
-                                searchCovishield={searchCovishield}
-                                searchRemedesivir={searchRemedesivir}
-                                setSearchCovaxin={setSearchCovaxin}
-                                setSearchCovishield={setSearchCovishield}
-                                setsearchRemedesivir={setsearchRemedesivir}
-                                filter={filter}
-                                setFilter={setFilter}
-                                getNearerHospitalsDriver={
-                                    getNearerHospitalsDriver
-                                }
-                            />
-                        </div>
-                    </div>
+                    <Button
+                        aria-controls="simple-menu"
+                        aria-haspopup="true"
+                        onClick={handleClick}
+                        style={{ color: "white" }}
+                    >
+                        Apply Filter
+                    </Button>
+                    <Menu
+                        id="simple-menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                        style={{ width: "100vw" }}
+                    >
+                        <SelectAreaMobile
+                            mandal={mandal}
+                            setMandal={setMandal}
+                            district={district}
+                            filter={filter}
+                            setDistrict={setDistrict}
+                            setFilter={setFilter}
+                            getNearerHospitalsDriver={getNearerHospitalsDriver}
+                        />
+                    </Menu>
                 </div>
-            ) : (
-                <MobileApp />
-            )}
-            <footer
-                className="app-footer flex-row"
-                style={{
-                    display: isMobile ? "none" : "flex",
-                }}
-            >
-                <p>Telangana Covid-19 Help line Number : 104</p>
-                <a
-                    className="app-reachus"
-                    href="mailto:rakeshgandla201@gmail.com"
+            </div>
+            <div className="mobile-app-main">
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "0.5rem",
+                    }}
                 >
-                    <p>Reach us</p>
-                </a>
-            </footer>
+                    <p>District : {district} </p>
+                    {mandal ? <p>Mandal : {mandal} </p> : null}
+                    {filter ? <p>filter : {filter} </p> : null}
+                </div>
+                {hospitals.length > 0 ? (
+                    hospitals.map((hospital) => (
+                        <MobileCard hospital={hospital} />
+                    ))
+                ) : loading ? (
+                    <center>
+                        <Loading />
+                    </center>
+                ) : found ? null : (
+                    <center>
+                        <h2 className="app-notfound">No Hospitals Found</h2>
+                    </center>
+                )}{" "}
+            </div>
         </div>
     )
 }
 
-export default App
+export default MobileApp
