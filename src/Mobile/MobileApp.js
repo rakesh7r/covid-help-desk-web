@@ -425,7 +425,11 @@ function MobileApp() {
                         padding: "0.5rem",
                     }}
                 >
-                    <p>District : {district} </p>
+                    {district ? (
+                        <p>District : {district} </p>
+                    ) : (
+                        <p>Fetching nearest Hospitals</p>
+                    )}
                     {mandal ? <p>Mandal : {mandal} </p> : null}
                     {filter ? <p>filter : {filter} </p> : null}
                 </div>

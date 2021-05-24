@@ -17,6 +17,9 @@ function HospitalDashBoard(props) {
                 .doc(id)
                 .get()
                 .then((doc) => {
+                    setRecovered(0)
+                    setDischarged(0)
+                    setDeaths(0)
                     if (doc.exists) {
                         setRecovered(
                             (prevState) =>

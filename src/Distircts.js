@@ -43,13 +43,15 @@ function Distircts(props) {
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
                     value={props.district}
-                    onChange={(e) => props.setDistrict(e.target.value)}
+                    onChange={(e) => {
+                        props.setDistrict(e.target.value)
+                        props.setMandal("")
+                    }}
                     style={{
                         marginBottom: "15px",
                     }}
                     label="Select District"
                 >
-                    
                     <MenuItem value="GHMC">Hyderabad</MenuItem>
                     <MenuItem value="Adilabad">Adilabad</MenuItem>
                     <MenuItem value="Bhadradri Kothagudem">

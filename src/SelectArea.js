@@ -64,7 +64,11 @@ function SelectArea(props) {
             <center className="select-area-h2">
                 <h2>Select an area</h2>
             </center>
-            <Distircts district={district} setDistrict={setDistrict} />
+            <Distircts
+                district={district}
+                setDistrict={setDistrict}
+                setMandal={setMandal}
+            />
             <MandalSelector
                 district={district}
                 mandal={mandal}

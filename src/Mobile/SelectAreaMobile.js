@@ -1,19 +1,77 @@
 import React, { useEffect, useState } from "react"
 import $ from "jquery"
 import Districts from "../Distircts"
-import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core"
+import {
+    Button,
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+} from "@material-ui/core"
 import MandalSelector from "../Mandals/MandalSelector"
+import MyLocationOutlinedIcon from "@material-ui/icons/MyLocationOutlined"
+
 function SelectAreaMobile(props) {
-    const { mandal, setMandal, district, setDistrict, filter, setFilter } =
-        props
+    const {
+        mandal,
+        setMandal,
+        district,
+        setDistrict,
+        filter,
+        setFilter,
+        getNearerHospitalsDriver,
+    } = props
     const [dispWidth, setDispWidth] = useState(0)
     useEffect(() => {
         setDispWidth($(window).width())
     }, [])
     return (
         <div style={{ width: dispWidth * 0.7, padding: "10px" }}>
+            <Button
+                variant="contained"
+                onClick={() => getNearerHospitalsDriver()}
+                style={{
+                    backgroundColor: "#4285F4",
+                    marginBottom: "1rem",
+                    color: "white",
+                    width: "100%",
+                }}
+            >
+                <MyLocationOutlinedIcon style={{ marginRight: "0.4rem" }} />
+                <span>Hospitals under 10km</span>
+            </Button>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginBottom: "1rem",
+                }}
+            >
+                <div
+                    style={{
+                        height: "0.1px",
+                        border: "0.5px solid gray",
+                        width: "43%",
+                        backgroundColor: "#898989",
+                    }}
+                />
+                <span style={{ margin: "0 0.2rem", color: "#898989" }}>OR</span>
+                <div
+                    style={{
+                        height: "0.1px",
+                        border: "0.5px solid #898989",
+                        width: "43%",
+                        backgroundColor: "gray",
+                    }}
+                />
+            </div>
             <center style={{ marginBottom: "1rem" }}>Apply Filter</center>
-            <Districts district={district} setDistrict={setDistrict} />
+            <Districts
+                district={district}
+                setDistrict={setDistrict}
+                setMandal={setMandal}
+            />
             <MandalSelector
                 district={district}
                 mandal={mandal}

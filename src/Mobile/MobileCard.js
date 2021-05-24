@@ -3,7 +3,7 @@ import OxygenLogo from "../OxygenLogo"
 import HotelIcon from "@material-ui/icons/Hotel"
 import DoneIcon from "@material-ui/icons/Done"
 import ClearSharpIcon from "@material-ui/icons/ClearSharp"
-import { Avatar, IconButton } from "@material-ui/core"
+import { Avatar, Button, IconButton } from "@material-ui/core"
 import DirectionsOutlinedIcon from "@material-ui/icons/DirectionsOutlined"
 function MobileCard(props) {
     const { hospital } = props
@@ -123,8 +123,14 @@ function MobileCard(props) {
                                 <a
                                     href={`https://www.google.com/maps/place/${hospital.location.latitude}+${hospital.location.longitude}`}
                                 >
-                                    <IconButton>
-                                        <DirectionsOutlinedIcon />
+                                    <IconButton
+                                        style={{
+                                            backgroundColor: "#4285F4",
+                                        }}
+                                    >
+                                        <DirectionsOutlinedIcon
+                                            style={{ color: "white" }}
+                                        />
                                     </IconButton>
                                 </a>
                             </div>
@@ -172,8 +178,14 @@ function MobileCard(props) {
                                     <a
                                         href={`https://www.google.com/maps/place/${hospital.location.latitude}+${hospital.location.longitude}`}
                                     >
-                                        <IconButton>
-                                            <DirectionsOutlinedIcon />
+                                        <IconButton
+                                            style={{
+                                                backgroundColor: "#4285F4",
+                                            }}
+                                        >
+                                            <DirectionsOutlinedIcon
+                                                style={{ color: "white" }}
+                                            />
                                         </IconButton>
                                     </a>
                                 </div>

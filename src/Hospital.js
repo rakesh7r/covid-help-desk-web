@@ -38,7 +38,13 @@ function Hospital(props) {
                         )}
                     </div>
                 </div>
-                <p>
+                <p
+                    style={
+                        navigator.userAgentData.mobile
+                            ? { fontSize: "0.7rem" }
+                            : { fontSize: "1rem" }
+                    }
+                >
                     Area : {hospital.mandal || hospital.area} , Dist :{" "}
                     {hospital.district}
                 </p>
@@ -198,7 +204,15 @@ function Hospital(props) {
                         <h4>
                             <OxygenLogo /> Oxygen{" "}
                         </h4>
-                        <p>Available(cylinders): {hospital.oxygen.Available}</p>
+                        <p
+                            style={
+                                navigator.userAgentData.mobile
+                                    ? { fontSize: "0.7rem" }
+                                    : { fontSize: "1rem" }
+                            }
+                        >
+                            Available(cylinders): {hospital.oxygen.Available}
+                        </p>
                         <br />
                         <h4
                             style={{
@@ -208,10 +222,34 @@ function Hospital(props) {
                         >
                             <HotelIcon /> Covid-19 Beds
                         </h4>
-                        <p>Available Beds: {hospital.beds.available}</p>
-                        <p>Total Beds : {hospital.beds.total}</p>
+                        <p
+                            style={
+                                navigator.userAgentData.mobile
+                                    ? { fontSize: "0.7rem" }
+                                    : { fontSize: "1rem" }
+                            }
+                        >
+                            Available Beds: {hospital.beds.available}
+                        </p>
+                        <p
+                            style={
+                                navigator.userAgentData.mobile
+                                    ? { fontSize: "0.7rem" }
+                                    : { fontSize: "1rem" }
+                            }
+                        >
+                            Total Beds : {hospital.beds.total}
+                        </p>
                         <br />
-                        <p>Ventilators Available : {hospital.ventilators}</p>
+                        <p
+                            style={
+                                navigator.userAgentData.mobile
+                                    ? { fontSize: "0.7rem" }
+                                    : { fontSize: "1rem" }
+                            }
+                        >
+                            Ventilators Available : {hospital.ventilators}
+                        </p>
                         <br />
                         <div
                             style={{
