@@ -34,6 +34,7 @@ function AdminLogin(props) {
         emailError,
         passwordError,
         handleLogin,
+        signin,
     } = props
     const classes = useStyles()
     const [open] = useState(true)
@@ -72,9 +73,6 @@ function AdminLogin(props) {
                             Sign in As Admin
                         </h1>
                     </span>
-                    {/* <p className="heading-big" style={{ marginBottom: "15px" }}>
-                        Sign in As Admin
-                    </p> */}
                 </center>
 
                 <TextField
@@ -121,14 +119,24 @@ function AdminLogin(props) {
                 <Button
                     variant="contained"
                     color="primary"
-                    style={{
-                        marginBottom: "15px",
-                        height: "49px",
-                        backgroundColor: "#006FE6",
-                    }}
+                    style={
+                        signin === "Sign in"
+                            ? {
+                                  marginBottom: "15px",
+                                  height: "49px",
+                                  backgroundColor: "#006FE6",
+                              }
+                            : {
+                                  marginBottom: "15px",
+                                  height: "49px",
+                                  backgroundColor: "#4f9ef2",
+                                  color: "white",
+                              }
+                    }
                     onClick={handleLogin}
+                    disabled={signin === "Sign in" ? false : true}
                 >
-                    Signin
+                    {signin}
                 </Button>
             </div>
         </Modal>

@@ -50,7 +50,6 @@ function HospitalPanel(props) {
                         .onSnapshot((doc) => {
                             if (doc.data()) {
                                 setHospital(doc.data())
-                                console.log(doc.data())
                                 setHospitalName(doc.data().name)
                                 setMandal(doc.data().area || doc.data().mandal)
                                 setDistrict(doc.data().district)
@@ -79,21 +78,6 @@ function HospitalPanel(props) {
             })
     }, [])
     const handleSave = () => {
-        //validation
-        if (
-            isNaN(availableOxygen) ||
-            isNaN(oxygenLastsfor) ||
-            isNaN(availbleBeds) ||
-            isNaN(totalBeds) ||
-            isNaN(ventilators) ||
-            isNaN(totalPatients) ||
-            isNaN(deathsToday) ||
-            isNaN(discharged) ||
-            isNaN(recovered) ||
-            isNaN(positive)
-        ) {
-            return alert("Trying to Add Invalid Data")
-        }
         const date = new Date().toJSON().slice(0, 10).replaceAll("-", "")
         const dt = new Date().toJSON().slice(0, 10)
         fire.firestore()

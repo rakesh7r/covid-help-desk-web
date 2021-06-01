@@ -49,6 +49,8 @@ const Login = (props) => {
         setHospitalArea,
         setHospitalDistrict,
         setVerifyPassword,
+        signin,
+        signup,
     } = props
 
     const handleClose = () => {
@@ -109,6 +111,7 @@ const Login = (props) => {
                     <Districts
                         district={hospitalDistrict}
                         setDistrict={setHospitalDistrict}
+                        setMandal={setHospitalArea}
                     />
                 )}
                 {hasAccount && hospitalDistrict ? null : (
@@ -146,6 +149,7 @@ const Login = (props) => {
                             display: "flex",
                             flexDirection: "row",
                             justifyContent: "flex-end",
+                            marginBottom: "5px",
                         }}
                     >
                         <Link to="/forgotPassword">Forgot Password</Link>
@@ -176,27 +180,47 @@ const Login = (props) => {
                     <Button
                         variant="contained"
                         color="primary"
-                        style={{
-                            marginBottom: "15px",
-                            height: "49px",
-                            backgroundColor: "#006FE6",
-                        }}
+                        style={
+                            signin === "Sign in"
+                                ? {
+                                      marginBottom: "15px",
+                                      height: "49px",
+                                      backgroundColor: "#006FE6",
+                                  }
+                                : {
+                                      marginBottom: "15px",
+                                      height: "49px",
+                                      backgroundColor: "#4f9ef2",
+                                      color: "white",
+                                  }
+                        }
+                        disabled={signin === "Sign in" ? false : true}
                         onClick={handleLogin}
                     >
-                        Signin
+                        {signin}
                     </Button>
                 ) : (
                     <Button
                         variant="contained"
                         color="primary"
-                        style={{
-                            marginBottom: "15px",
-                            height: "49px",
-                            backgroundColor: "#006FE6",
-                        }}
+                        style={
+                            signup === "Sign up"
+                                ? {
+                                      marginBottom: "15px",
+                                      height: "49px",
+                                      backgroundColor: "#006FE6",
+                                  }
+                                : {
+                                      marginBottom: "15px",
+                                      height: "49px",
+                                      backgroundColor: "#4f9ef2",
+                                      color: "white",
+                                  }
+                        }
+                        disabled={signup === "Sign up" ? false : true}
                         onClick={handleSignup}
                     >
-                        Signup
+                        {signup}
                     </Button>
                 )}
                 <Button

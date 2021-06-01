@@ -543,7 +543,7 @@ function AdminPanel() {
                                 variant="contained"
                                 type="button"
                                 color="secondary"
-                                style={{ width: "295px", marginTop: "15px" }}
+                                style={{ width: "23vw", marginTop: "15px" }}
                                 onClick={() => {
                                     fire.auth().signOut()
                                 }}

@@ -19,12 +19,15 @@ const CheckAuth = () => {
     const [loading, setLoading] = useState(true)
     const [latitude, setLatitude] = useState(0)
     const [longitude, setLongitude] = useState(0)
-
+    const [signin, setSignin] = useState("Sign in")
+    const [signup, setSignup] = useState("Sign up")
     const handleLogin = () => {
+        setSignin("Signing in...")
         clearErrors()
         fire.auth()
             .signInWithEmailAndPassword(email, password)
             .catch((err) => {
+                setSignin("Sign in")
                 switch (err.code) {
                     case "auth/invalid-email":
                     case "auth/user-disabled":
@@ -39,6 +42,7 @@ const CheckAuth = () => {
                         break
                 }
             })
+            .then(() => setSignin("Sign in"))
     }
 
     const handleSignup = () => {
@@ -55,6 +59,7 @@ const CheckAuth = () => {
             return false
         }
         clearErrors()
+        setSignup("Signing up...")
         const dt = new Date().toJSON().slice(0, 10)
         // const date = new Date().toJSON().slice(0, 10).replaceAll("-", "")
         let lat = 0,
@@ -111,6 +116,7 @@ const CheckAuth = () => {
                     })
             })
             .catch((err) => {
+                setSignup("Sign Up")
                 switch (err.code) {
                     case "auth/email-already-in-use":
                     case "auth/invalid-email":
@@ -124,6 +130,7 @@ const CheckAuth = () => {
                         break
                 }
             })
+            .then(() => setSignup("Sign up"))
     }
 
     useEffect(() => {
@@ -179,6 +186,8 @@ const CheckAuth = () => {
                     setHospitalArea={setHospitalArea}
                     setHospitalDistrict={setHospitalDistrict}
                     setVerifyPassword={setVerifyPassword}
+                    signin={signin}
+                    signup={signup}
                 />
             ) : (
                 <HospitalPanel user={user} handleLogout={handleLogout} />

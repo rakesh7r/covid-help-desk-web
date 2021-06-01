@@ -11,7 +11,7 @@ function CheckAuthForAdmin() {
     const [emailError, setEmailError] = useState("")
     const [passwordError, setPasswordError] = useState("")
     const [loading, setLoading] = useState(true)
-
+    const [signin, setSignin] = useState("Sign in")
     const clearErrors = () => {
         setEmailError("")
         setPasswordError("")
@@ -19,6 +19,7 @@ function CheckAuthForAdmin() {
 
     const handleLogin = () => {
         clearErrors()
+        setSignin("Signing in...")
         fire.firestore()
             .collection("adminData")
             .doc(email)
@@ -46,6 +47,7 @@ function CheckAuthForAdmin() {
                             }
                         })
                 }
+                setSignin("Sign in")
             })
     }
 
@@ -91,6 +93,7 @@ function CheckAuthForAdmin() {
                     passwordError={passwordError}
                     setPasswordError={setPasswordError}
                     handleLogin={handleLogin}
+                    signin={signin}
                 />
             ) : (
                 <AdminPanel />

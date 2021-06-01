@@ -116,6 +116,7 @@ function EditData(props) {
                     label="Available Oxygen(in cylinders)"
                     variant="outlined"
                     type="number"
+                    InputProps={{ inputProps: { min: 0, max: 100 } }}
                 />
                 <TextField
                     style={{ marginBottom: "15px" }}
@@ -126,6 +127,7 @@ function EditData(props) {
                     label="Available Beds"
                     variant="outlined"
                     type="number"
+                    InputProps={{ inputProps: { min: 0, max: 100 } }}
                 />
                 <TextField
                     style={{ marginBottom: "15px" }}
@@ -136,6 +138,7 @@ function EditData(props) {
                     label="Total Beds"
                     variant="outlined"
                     type="number"
+                    InputProps={{ inputProps: { min: 0, max: 100 } }}
                 />
                 <TextField
                     style={{ marginBottom: "15px" }}
@@ -146,6 +149,7 @@ function EditData(props) {
                     label="Available Ventilators"
                     variant="outlined"
                     type="number"
+                    InputProps={{ inputProps: { min: 0, max: 100 } }}
                 />
                 <TextField
                     style={{ marginBottom: "15px" }}
@@ -156,6 +160,7 @@ function EditData(props) {
                     label="Total Patients in hospital"
                     variant="outlined"
                     type="number"
+                    InputProps={{ inputProps: { min: 0, max: 100 } }}
                 />
                 <span style={{ marginBottom: "15px" }}>
                     On : {hospital.date}
@@ -169,6 +174,7 @@ function EditData(props) {
                     label="Deaths Today"
                     variant="outlined"
                     type="number"
+                    InputProps={{ inputProps: { min: 0, max: 100 } }}
                 />
                 <TextField
                     style={{ marginBottom: "15px" }}
@@ -179,6 +185,7 @@ function EditData(props) {
                     label="Patients Discharged Today"
                     variant="outlined"
                     type="number"
+                    InputProps={{ inputProps: { min: 0, max: 100 } }}
                 />
                 <TextField
                     style={{ marginBottom: "15px" }}
@@ -189,6 +196,7 @@ function EditData(props) {
                     label="Patients Recovered today"
                     variant="outlined"
                     type="number"
+                    InputProps={{ inputProps: { min: 0, max: 100 } }}
                 />
                 <TextField
                     style={{ marginBottom: "15px" }}
@@ -199,6 +207,7 @@ function EditData(props) {
                     label="Covid-19 Patients admitted today"
                     variant="outlined"
                     type="number"
+                    InputProps={{ inputProps: { min: 0, max: 100 } }}
                 />
                 <div>
                     <p className="heading-small">
@@ -267,6 +276,7 @@ function EditData(props) {
                             label="Available Covaxin doses(Qty)"
                             variant="outlined"
                             type="number"
+                            InputProps={{ inputProps: { min: 0 } }}
                         />
                         <TextField
                             style={{ marginBottom: "15px" }}
@@ -277,6 +287,7 @@ function EditData(props) {
                             label="Available Covishield doses(Qty)"
                             variant="outlined"
                             type="number"
+                            InputProps={{ inputProps: { min: 0 } }}
                         />
                         <TextField
                             style={{ marginBottom: "15px" }}
@@ -287,6 +298,7 @@ function EditData(props) {
                             label="Available Remdesivir Doses(Qty)"
                             variant="outlined"
                             type="number"
+                            InputProps={{ inputProps: { min: 0 } }}
                         />
                     </div>
                 ) : null}

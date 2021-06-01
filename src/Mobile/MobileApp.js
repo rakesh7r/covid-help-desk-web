@@ -353,9 +353,8 @@ function MobileApp() {
         setMandal("")
         navigator.geolocation.getCurrentPosition((position) => {
             const { latitude, longitude } = position.coords
-            let latitude2 = 18.112667
-            let longitude2 = 79.018831
-
+            let latitude2, longitude2
+            console.log(position)
             fire.firestore()
                 .collection("hospitals")
                 .orderBy("timestamp", "desc")

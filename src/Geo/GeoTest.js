@@ -1,8 +1,12 @@
+import { Button, TextField, Typography } from "@material-ui/core"
 import React, { useEffect, useState } from "react"
 import fire from "../Config/fire"
 function GeoTest() {
     const [latitude, setLatitude] = useState(0)
     const [longitude, setLongitude] = useState(0)
+    const [admin, setAdmin] = useState("")
+    const [beds, setBeds] = useState(0)
+    const [updateStatus, setUpdateStatus] = useState("")
     // const [hospitals, setHospitals] = useState([])
     // const google = window.google
     useEffect(() => {
@@ -33,6 +37,31 @@ function GeoTest() {
         )
     }, [])
 
+    const getAdmin = () => {
+        fire.firestore()
+            .collection("adminData")
+            .doc("admin@gmail.com")
+            .get()
+            .then((doc) => {
+                if (doc.exists) {
+                    setAdmin(doc.data().email)
+                } else {
+                    alert("doc not found")
+                }
+            })
+            .catch((err) => setAdmin(err.message))
+    }
+    const updateBeds = () => {
+        fire.firestore()
+            .collection("hospitals")
+            .doc("bajaj@gmail.com")
+            .update({ "beds.available": beds })
+            .then(() => {
+                setUpdateStatus("Doc updated successfully")
+            })
+            .catch((err) => setUpdateStatus(err.message))
+    }
+
     return (
         <div>
             <h1>Hell</h1>
@@ -42,6 +71,20 @@ function GeoTest() {
                 Go
             </a>
             {navigator.userAgentData.mobile ? <p>Mobile</p> : <p>desktop</p>}
+            <br />
+            <p>{admin}</p>
+            <Button onClick={() => getAdmin()}>get Admin Data</Button>
+            <br />
+            <Typography paragraph> {updateStatus}</Typography>
+            <TextField
+                style={{ width: "40vw", padding: "20px" }}
+                type="number"
+                InputProps={{ inputProps: { min: 0, max: 1000 } }}
+                value={beds}
+                placeholder="Enter Beds"
+                onChange={(e) => setBeds(e.target.value)}
+            />
+            <Button onClick={updateBeds}>Update Beds</Button>
         </div>
     )
 }
