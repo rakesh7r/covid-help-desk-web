@@ -13,15 +13,15 @@ This would not only help the people but also help the government where and when 
 2. Hospital panel
 3. Admin Panel
 
-## User Panel [URL](https://covidhelpdesk-in.web.app/)
+## [User Panel](https://covidhelpdesk-in.web.app/)
 1. This panel is built for end-users, at which user can list all the hospitals which are at the ```selected location```. A user can aslo apply filters based on available beds, vaccines, ventilators and private/government hospital.
 2. There is a `dashboard` on this page shows the Covid-19 cases on that particular day.
 3. A user can ``Fetch Hospitals under 10km`` from his/her current location
 
-## Hospital Panel [URL](https://covidhelpdesk-in.web.app/hospitalpanel)
+## [Hospital Panel](https://covidhelpdesk-in.web.app/hospitalpanel)
 This panel is built for ```hospitals to add/edit information``` about beds, vaccines, ventilator information and vaccination information in their hospital. Hospital management can also add day-to-day Covid-19 cases details of that hospital.
 
-## Admin panel [URL](https://covidhelpdesk-in.web.app/adminpanel) 
+## [Admin panel](https://covidhelpdesk-in.web.app/adminpanel) 
 This panel is designed for the admin of this entire web application. An admin is a person who can manage all the data in the website. 
 
 ## Mobile Application [git-repo](https://github.com/rakesh7r/CovidHelpDesk-app-expo)
