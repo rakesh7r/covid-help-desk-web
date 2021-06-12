@@ -28,8 +28,8 @@ This panel is designed for the admin of this entire web application. An admin is
 An Application is designed and developed for the client/user. This application conatins user panel.<br/>
 Android apk : [Click to download](https://drive.google.com/file/d/13qP31lmbIAzJNctxTqxGGs0yd_I02rEi/view?usp=sharing)
 ##### Features to be added
-[]. Admin can verify hospitals<br/>
-[]. Analytics which shows the graph of the Covid-19 cases<br/>
-[x]. Fetch Nearer Hospitals <br/>
+-[ ]. Admin can verify hospitals<br/>
+-[ ]. Analytics which shows the graph of the Covid-19 cases<br/>
+-[x]. Fetch Nearer Hospitals <br/>
 ~~*This application is currently under developement~~
 
