@@ -13,9 +13,7 @@ This would not only help the people but also help the government where and when 
 2. Hospital panel
 3. Admin Panel
 
-<br/>
- >Click the blue colored text to access links
-<br/>
+>Click the blue colored text to access links
 
 ## [User Panel](https://covidhelpdesk-in.web.app/)
 1. This panel is built for end-users, at which user can list all the hospitals which are at the ```selected location```. A user can aslo apply filters based on available beds, vaccines, ventilators and private/government hospital.
