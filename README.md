@@ -31,5 +31,5 @@ To download android apk : https://drive.google.com/file/d/13qP31lmbIAzJNctxTqxGG
 1. Admin can verify hospitals
 2. Analytics which shows the graph of the Covid-19 cases
 
- *This application is currently under developement 
+~~ *This application is currently under developement ~~
 
