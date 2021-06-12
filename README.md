@@ -16,7 +16,7 @@ This would not only help the people but also help the government where and when 
 ## User Panel (https://covidhelpdesk-in.web.app/)
 1. This panel is built for end-users, at which user can list all the hospitals which are at the selected location. A user can aslo apply filters based on available beds, vaccines, ventilators and private/government hospital.
 2. There is a dashboard on this page shows the Covid-19 cases on that particular day.
-3. A user can Fetch Hospitals under 10km from his/her current location
+3. A user can ``Fetch Hospitals under 10km`` from his/her current location
 
 ## Hospital Panel (https://covidhelpdesk-in.web.app/hospitalpanel)
 This panel is built for hospitals to add/edit information about beds, vaccines, ventilator information and vaccination information in their hospital. Hospital management can also add day-to-day Covid-19 cases details of that hospital.
