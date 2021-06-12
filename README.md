@@ -23,6 +23,8 @@ This panel is built for hospitals to add/edit information about beds, vaccines, 
 ## Admin panel (https://covidhelpdesk-in.web.app/adminpanel) 
 This panel is designed for the admin of this entire web application. An admin is a person who can manage all the data in the website. 
 
+## Mobile Application (https://github.com/rakesh7r/CovidHelpDesk-app-expo)
+An Application is designed and developed for the client/user. This application conatins user panel.
 ##### Features to be added
 1. Admin can verify hospitals
 2. GPS based hospital listing
