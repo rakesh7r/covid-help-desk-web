@@ -35,5 +35,6 @@ Android apk : [Click to download](https://drive.google.com/file/d/13qP31lmbIAzJN
 - [x] Fetch Nearer Hospitals <br/>
 <br/>
 <br/>
+
 ~~*This application is currently under developement~~
 
