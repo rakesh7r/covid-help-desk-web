@@ -26,10 +26,10 @@ This panel is designed for the admin of this entire web application. An admin is
 
 ## Mobile Application [git-repo](https://github.com/rakesh7r/CovidHelpDesk-app-expo)
 An Application is designed and developed for the client/user. This application conatins user panel.<br/>
-Android apk : [###Click to download](https://drive.google.com/file/d/13qP31lmbIAzJNctxTqxGGs0yd_I02rEi/view?usp=sharing)
+Android apk : [Click to download](https://drive.google.com/file/d/13qP31lmbIAzJNctxTqxGGs0yd_I02rEi/view?usp=sharing)
 ##### Features to be added
-1. Admin can verify hospitals
-2. Analytics which shows the graph of the Covid-19 cases
-
+[]. Admin can verify hospitals
+[]. Analytics which shows the graph of the Covid-19 cases
+[x]. Fetch Nearer Hospitals 
 ~~*This application is currently under developement~~
 
