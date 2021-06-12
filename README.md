@@ -14,7 +14,7 @@ This would not only help the people but also help the government where and when 
 3. Admin Panel
 
 <br/>
- > Click the blue colored text to access links
+ >Click the blue colored text to access links
 <br/>
 
 ## [User Panel](https://covidhelpdesk-in.web.app/)
