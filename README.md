@@ -33,5 +33,7 @@ Android apk : [Click to download](https://drive.google.com/file/d/13qP31lmbIAzJN
 - [ ] Admin can verify hospitals<br/>
 - [ ] Analytics which shows the graph of the Covid-19 cases<br/>
 - [x] Fetch Nearer Hospitals <br/>
+<br/>
+<br/>
 ~~*This application is currently under developement~~
 
